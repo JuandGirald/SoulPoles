@@ -1,0 +1,17 @@
+// Product Styles
+#product-images {
+  .panel-body {
+    height: 33em;
+    img {
+      width: 400px;
+      height: 400px;
+    }
+  }
+}
+
+.add-to-cart {
+  width: 11em;
+  .form-control {
+    padding: 6px 9px;
+  }
+}
