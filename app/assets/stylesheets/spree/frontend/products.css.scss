@@ -1,10 +1,15 @@
 // Product Styles
+#individual-products {
+  margin-bottom: 4em;
+}
+
 #product-images {
   .panel-body {
     height: 33em;
+    padding-top: 4em;
     img {
-      width: 400px;
-      height: 400px;
+      width: 300px;
+      height: 300px;
     }
   }
 }
@@ -14,4 +19,45 @@
   .form-control {
     padding: 6px 9px;
   }
+}
+
+.items-related {
+  margin-top: 6em;
+}
+
+// related items
+.related-entries-title {
+  margin-top:20px;
+  display:inline-block;
+  font-size:17px;
+  margin-bottom:15px;
+}
+ul.related-entries {
+  padding-left:0;
+  margin-left:-30px;
+}
+ul.related-entries li {
+  width:33.33%;
+  float:left;
+  list-style:none;
+}
+ul.related-entries li .relatedinner {
+  border:1px solid #eaeaea;
+  margin-left:30px;
+  margin-bottom:30px;
+}
+ul.related-entries li .relatedinner .edd-the-price {
+  padding:10px 20px 0;
+  display:block;
+}
+ul.related-entries li .relatedinner a.related-entry-title {
+  padding:0px 20px 10px;
+  display:block;
+  font-weight:700;
+  color:#333;
+  font-size:14px;
+  text-transform:uppercase;
+}
+ul.related-entries li .relatedinner a {
+  color: inherit;
 }

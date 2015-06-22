@@ -1,48 +1,73 @@
 <% @body_id = 'product-details' %>
 
-<% cache cache_key_for_product do %>
-  <div data-hook="product_show" class="row" itemscope itemtype="https://schema.org/Product">
-    <div class="col-md-8" data-hook="product_left_part">
-      <div data-hook="product_left_part_wrap">
-        <div id="product-images" data-hook="product_images">
-          <div id="main-image" class="panel panel-default" data-hook>
-            <div class="panel-body text-center">
-              <%= render :partial => 'image' %>
+<div class="container" id="individual-products">
+  <% cache cache_key_for_product do %>
+    <div data-hook="product_show" class="row" itemscope itemtype="https://schema.org/Product">
+      <div class="col-md-8" data-hook="product_left_part">
+        <div data-hook="product_left_part_wrap">
+          <div id="product-images" data-hook="product_images">
+            <div id="main-image" class="panel panel-default" data-hook>
+              <div class="panel-body text-center">
+                <%= render :partial => 'image' %>
+              </div>
+            </div>
+            <div id="thumbnails" data-hook>
+              <%= render :partial => 'thumbnails' %>
             </div>
           </div>
-          <div id="thumbnails" data-hook>
-            <%= render :partial => 'thumbnails' %>
+
+          <div data-hook="product_properties">
+            <%= render :partial => 'properties' %>
+          </div>
+
+          <div data-hook="promotions">
+            <%= render :partial => 'promotions' %>
           </div>
         </div>
+      </div>
 
-        <div data-hook="product_properties">
-          <%= render :partial => 'properties' %>
-        </div>
+      <div class="col-md-4" data-hook="product_right_part">
+        <div data-hook="product_right_part_wrap">
+          <div id="product-description" data-hook="product_description">
+            <h1 class="product-title" itemprop="name"><%= @product.name %></h1>
 
-        <div data-hook="promotions">
-          <%= render :partial => 'promotions' %>
+            <div class="well" itemprop="description" data-hook="description">
+              <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
+            </div>
+
+            <div id="cart-form" data-hook="cart_form">
+              <%= render :partial => 'cart_form' %>
+            </div>
+          </div>
+
+          <div id="taxon-crumbs" class=" five " data-hook="product_taxons">
+            <%= render :partial => 'taxons' %>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="col-md-4" data-hook="product_right_part">
-      <div data-hook="product_right_part_wrap">
-        <div id="product-description" data-hook="product_description">
-          <h1 class="product-title" itemprop="name"><%= @product.name %></h1>
-
-          <div class="well" itemprop="description" data-hook="description">
-            <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
-          </div>
-
-          <div id="cart-form" data-hook="cart_form">
-            <%= render :partial => 'cart_form' %>
-          </div>
-        </div>
-
-        <div id="taxon-crumbs" class=" five " data-hook="product_taxons">
-          <%= render :partial => 'taxons' %>
-        </div>
-      </div>
+    <div class="row items-related">
+      <% if !@product.relations.empty? %>
+        <h4> YOU MAY ALSO LIKE</h4>
+      
+        <ul class="related-entries related-list">
+          <% @product.relations[0..2].each do |relation| %>
+            <% related_product = Spree::Product.find_by_id( relation.related_to_id ) %>
+            <li class="related-product"> 
+              <div class="relatedinner text-center">
+                <%= link_to product_image(related_product), product_path(related_product) %>    
+                <div class="edd-the-price">
+                  <%= related_product.price %>
+                </div>
+                <%= link_to related_product.name, product_path(related_product), :class => "related-entry-title" %>
+              </div>
+              
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
-  </div>
-<% end %>
+
+  <% end %>  
+</div>
