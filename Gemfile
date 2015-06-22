@@ -2,10 +2,11 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
+gem 'bootstrap-sass', '~> 3.3.5'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -44,6 +45,6 @@ group :development, :test do
 end
 
 
-gem 'spree', '3.0.1'
-gem 'spree_gateway', github: 'spree/spree_gateway', branch: '3-0-stable'
-gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-0-stable'
+gem 'spree', github: 'spree/spree', branch: '~> 3.1.0.beta'
+gem 'spree_gateway', github: 'spree/spree_gateway', branch: '~> 3.1.0.beta'
+gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '~> 3.1.0.beta'
