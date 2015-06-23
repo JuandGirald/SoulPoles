@@ -3,15 +3,15 @@
 <div class="container" id="individual-products">
   <% cache cache_key_for_product do %>
     <div data-hook="product_show" class="row" itemscope itemtype="https://schema.org/Product">
-      <div class="col-md-8" data-hook="product_left_part">
+      <div class="col-xs-8" data-hook="product_left_part">
         <div data-hook="product_left_part_wrap">
           <div id="product-images" data-hook="product_images">
-            <div id="main-image" class="panel panel-default" data-hook>
+            <div id="main-image" data-hook>
               <div class="panel-body text-center">
                 <%= render :partial => 'image' %>
               </div>
             </div>
-            <div id="thumbnails" data-hook>
+            <div class="text-center" id="thumbnails" data-hook>
               <%= render :partial => 'thumbnails' %>
             </div>
           </div>
@@ -26,18 +26,34 @@
         </div>
       </div>
 
-      <div class="col-md-4" data-hook="product_right_part">
+      <div class="col-xs-4" data-hook="product_right_part">
         <div data-hook="product_right_part_wrap">
           <div id="product-description" data-hook="product_description">
-            <h1 class="product-title" itemprop="name"><%= @product.name %></h1>
+            <h1 class="product-title" itemprop="name"><%= @product.name.upcase %></h1>
 
-            <div class="well" itemprop="description" data-hook="description">
+            <h3 class="product-category">
+              <% @product.taxons.each do |taxon| %>
+                <%= taxon.name.upcase %>
+              <% end %>
+            </h3>
+            <hr>
+            <h2 class="price selling" itemprop="price">
+              <%= display_price(@product) %>
+            </h2>
+            <div class="product-description" itemprop="description" data-hook="description">
               <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
             </div>
+            <div class="row">
+              <a class="learn-more" href="#">Learn More</a>              
+            </div>
+            
+            <hr>
 
             <div id="cart-form" data-hook="cart_form">
               <%= render :partial => 'cart_form' %>
             </div>
+
+
           </div>
 
           <div id="taxon-crumbs" class=" five " data-hook="product_taxons">
