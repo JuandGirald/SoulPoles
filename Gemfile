@@ -47,6 +47,9 @@ end
 #Deploy to heroku
 gem 'rails_12factor', group: :production
 
+#Amazon s3 service
+gem 'aws-sdk', '< 2.0'
+
 
 gem 'spree', github: 'spree/spree', branch: '~> 3.1.0.beta'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '~> 3.1.0.beta'
