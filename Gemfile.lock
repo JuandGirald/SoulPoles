@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/JuandGirald/spree_variant_options.git
-  revision: d5fc161ec3bc7bbd3979576165792b2d09853ca2
+  revision: 82ada55d97e993e093898f38f2eaf008311c925f
   branch: master
   specs:
     spree_variant_options (0.8.0)
