@@ -18,11 +18,8 @@
 
           <div data-hook="product_properties">
             <%= render :partial => 'properties' %>
-          </div>
+          </div>  
 
-          <div data-hook="promotions">
-            <%= render :partial => 'promotions' %>
-          </div>
         </div>
       </div>
 
@@ -61,6 +58,36 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="col-xs-8 col-xs-offset-2 product-tabs">
+
+            <!-- Nav tabs -->
+      <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation" class="active"><a href="#reviews_tab" aria-controls="reviews_tab" role="tab" data-toggle="tab">
+        <icon class="glyphicon glyphicon-comment"></icon> Reviews</a></li>
+        <li role="presentation"><a href="#promotions_tab" aria-controls="promotions_tab" role="tab" data-toggle="tab">
+        <icon class="glyphicon glyphicon-comment"></icon> Description </a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active in" id="reviews_tab">
+          <div data-hook="product_reviews">
+            <%= render :partial => 'spree/shared/reviews' %>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="promotions_tab">
+          <div data-hook="promotions">
+            <%= render :partial => 'promotions' %>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="messages">...</div>
+        <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
+      </div>
+
     </div>
 
     <div class="row items-related">
