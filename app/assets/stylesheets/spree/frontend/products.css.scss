@@ -13,6 +13,15 @@
   }
 }
 
+#products {
+  .product-list-item {
+    .img-responsive {
+      max-width: 60%;
+      margin: 0 auto;
+    }
+  }
+}
+
 #product-description {
   hr {
     margin-bottom: 10px;
