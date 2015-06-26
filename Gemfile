@@ -7,6 +7,7 @@ gem 'rails', '4.2.2'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'font-awesome-rails'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -50,6 +51,8 @@ gem 'rails_12factor', group: :production
 #Amazon s3 service
 gem 'aws-sdk', '< 2.0'
 
+gem 'simple_form'
+
 
 gem 'spree', github: 'spree/spree', branch: '~> 3.1.0.beta'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '~> 3.1.0.beta'
@@ -57,4 +60,5 @@ gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '~> 3.1.0.be
 gem 'spree_related_products', github: 'spree-contrib/spree_related_products', branch: 'master'
 gem 'spree_reviews', github: 'spree-contrib/spree_reviews', branch: 'master'
 gem 'spree_variant_options', :git => 'git://github.com/JuandGirald/spree_variant_options.git', :branch => "master"
+gem 'spree_editor', :github => 'spree/spree_editor'
 # gem 'spree_image_multi_upload', :git => 'git://github.com/huyngvu/spree_image_multi_upload.git'
