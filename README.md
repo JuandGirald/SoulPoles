@@ -1,8 +1,8 @@
 SoulPoles Website
 ============
 
-****Maintainers**
-* Juan David Giraldo (primary) jdgiraldo88@hotmail.com
+****Maintainers*** 
+Juan David Giraldo (primary) jdgiraldo88@hotmail.com
 
 Staging server: http://soulpoles.herokuapp.com/
 
