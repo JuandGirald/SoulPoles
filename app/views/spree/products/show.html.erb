@@ -15,11 +15,6 @@
               <%= render :partial => 'thumbnails' %>
             </div>
           </div>
-
-          <div data-hook="product_properties">
-            <%= render :partial => 'properties' %>
-          </div>  
-
         </div>
       </div>
 
@@ -64,17 +59,22 @@
 
             <!-- Nav tabs -->
       <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation" class="active"><a href="#reviews_tab" aria-controls="reviews_tab" role="tab" data-toggle="tab">
-        <icon class="glyphicon glyphicon-comment"></icon> Reviews</a></li>
-        <li role="presentation"><a href="#promotions_tab" aria-controls="promotions_tab" role="tab" data-toggle="tab">
-        <icon class="glyphicon glyphicon-comment"></icon> Description </a></li>
-        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+        <li role="presentation" class="active"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab">
+        <icon class="glyphicon glyphicon-comment"></icon> Properties</a></li>
+        <li role="presentation"><a href="#reviews_tab" aria-controls="reviews_tab" role="tab" data-toggle="tab">
+        <icon class="glyphicon glyphicon-comment"></icon> Reviews </a></li>
+        <li role="presentation"><a href="#promotions_tab" aria-controls="promotions_tab" role="tab" data-toggle="tab">Promotions</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Size Info</a></li>
       </ul>
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade active in" id="reviews_tab">
+        <div role="tabpanel" class="tab-pane fade active in" id="properties">
+          <div data-hook="product_properties">
+            <%= render :partial => 'properties' %>
+          </div>  
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="reviews_tab">
           <div data-hook="product_reviews">
             <%= render :partial => 'spree/shared/reviews' %>
           </div>
@@ -84,7 +84,6 @@
             <%= render :partial => 'promotions' %>
           </div>
         </div>
-        <div role="tabpanel" class="tab-pane fade" id="messages">...</div>
         <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
       </div>
 
