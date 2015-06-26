@@ -15,6 +15,17 @@ Spree.config do |config|
   # config.track_inventory_levels = false
 end
 
+SpreeEditor::Config.tap do |config|
+  config.current_editor = 'CKEditor'
+  config.ids = 'product_product_properties_attributes_1_value 
+                product_product_properties_attributes_0_value
+                product_product_properties_attributes_2_value
+                product_product_properties_attributes_3_value
+                product_product_properties_attributes_4_value
+                product_product_properties_attributes_5_value
+                product_description page_body event_body'
+end
+
 Spree.user_class = "Spree::User"
 
 attachment_config = {
