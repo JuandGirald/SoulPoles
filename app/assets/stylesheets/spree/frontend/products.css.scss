@@ -164,3 +164,14 @@ ul.related-entries li .relatedinner a.related-entry-title {
 ul.related-entries li .relatedinner a {
   color: inherit;
 }
+
+// instagram styles 
+#instagram_photos {
+  margin-top: 4em;
+  .instagram-image {
+    margin-bottom: 1em;
+    img {
+      width: 315px;
+    }
+  }
+}

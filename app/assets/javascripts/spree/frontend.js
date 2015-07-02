@@ -5,3 +5,4 @@
 //= require spree/frontend/checkout
 //= require spree/frontend/product
 //= require spree/frontend/products
+//= require lightbox-bootstrap
