@@ -8,7 +8,6 @@
     height: 40em;
     img {
       width: 500px;
-      height: 500px;
     }
   }
 }
@@ -67,8 +66,18 @@
 .btn-wood {
   background-image: url('button-bg.png');
   background-color: white;
+  background-size: 226px 120px;
   color: white;
   border: 1px solid #ccc;
+  a:hover {
+    color: black;
+  }
+  a .active {
+    color: black;
+  }
+  a {
+    color: white;
+  }
 }
 
 .add-to-cart {
