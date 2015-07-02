@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <div class="col-xs-8 col-xs-offset-2 product-tabs">
+    <div class="col-xs-8 product-tabs">
 
             <!-- Nav tabs -->
       <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -87,6 +87,16 @@
         <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
       </div>
 
+    </div>
+
+    <div id="instagram_photos" class="col-xs-4">
+      <% instagram_photos_for_tag('soulpoles')[3..6].each do |soulpole| %>
+        <div class="instagram-image">
+          <a href="<%= soulpole.full %>" data-toggle="lightbox" data-gallery="multiimages">
+            <%= image_tag soulpole.full %>
+          </a>
+        </div>
+      <% end %>
     </div>
 
     <div class="row items-related">

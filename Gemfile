@@ -52,6 +52,7 @@ gem 'rails_12factor', group: :production
 gem 'aws-sdk', '< 2.0'
 
 gem 'simple_form'
+gem 'lightbox-bootstrap-rails'
 
 
 gem 'spree', github: 'spree/spree', branch: '~> 3.1.0.beta'
@@ -61,4 +62,5 @@ gem 'spree_related_products', github: 'spree-contrib/spree_related_products', br
 gem 'spree_reviews', github: 'spree-contrib/spree_reviews', branch: 'master'
 gem 'spree_variant_options', :git => 'git://github.com/JuandGirald/spree_variant_options.git', :branch => "master"
 gem 'spree_editor', :github => 'spree/spree_editor'
+gem 'spree_instagram_photos', git: 'https://github.com/JuandGirald/spree_instagram_photos.git', branch: 'master'
 # gem 'spree_image_multi_upload', :git => 'git://github.com/huyngvu/spree_image_multi_upload.git'

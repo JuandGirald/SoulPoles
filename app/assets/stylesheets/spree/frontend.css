@@ -4,4 +4,5 @@
  *= require spree/frontend/products
  *= require_self
  *= require_tree .
+ *= require lightbox-bootstrap
 */

@@ -115,6 +115,15 @@ GIT
     spree_gateway (3.0.0.beta)
       spree_core (~> 3.1.0.beta)
 
+GIT
+  remote: https://github.com/JuandGirald/spree_instagram_photos.git
+  revision: 42623f55042b4dd74184ff54d01173bd1ffc2d84
+  branch: master
+  specs:
+    spree_instagram_photos (0.0.1)
+      instagram
+      spree_core (~> 3.1.0.beta)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -175,9 +184,9 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.3.5)
+    bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.2.19)
+      sass (>= 3.3.0)
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
@@ -223,6 +232,10 @@ GEM
       devise (>= 2.1.0)
     erubis (2.7.0)
     execjs (2.5.2)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.9.1)
+      faraday (>= 0.7.4, < 0.10)
     ffaker (2.0.0)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
@@ -230,12 +243,18 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    hashie (3.4.2)
     highline (1.6.21)
     htmlentities (4.3.3)
     httparty (0.13.5)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
+    instagram (1.1.5)
+      faraday (>= 0.7, < 0.10)
+      faraday_middleware (>= 0.8, < 0.10)
+      hashie (>= 0.4.0)
+      multi_json (~> 1.0, >= 1.0.3)
     jbuilder (2.3.0)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -249,6 +268,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    lightbox-bootstrap-rails (3.3.0.2)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -262,6 +282,7 @@ GEM
       i18n (>= 0.6.4, <= 0.7.0)
     multi_json (1.11.1)
     multi_xml (0.5.5)
+    multipart-post (2.0.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -399,6 +420,7 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
+  lightbox-bootstrap-rails
   pg
   rails (= 4.2.2)
   rails_12factor
@@ -409,6 +431,7 @@ DEPENDENCIES
   spree_auth_devise!
   spree_editor!
   spree_gateway!
+  spree_instagram_photos!
   spree_related_products!
   spree_reviews!
   spree_variant_options!

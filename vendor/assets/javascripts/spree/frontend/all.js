@@ -11,3 +11,4 @@
 //= require_tree .
 //= require spree/frontend/spree_reviews
 //= require spree/frontend/spree_variant_options
+//= require spree/frontend/spree_instagram_photos
