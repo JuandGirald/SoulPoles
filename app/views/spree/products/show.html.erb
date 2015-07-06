@@ -31,7 +31,6 @@
             <hr>
             <h2 class="price selling" itemprop="price">
               <%= display_price(@product) %>
-              <%= render 'spree/shared/ratings', product: @product, review: 0 %>
             </h2>
             <div class="product-description" itemprop="description" data-hook="description">
               <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
@@ -40,6 +39,7 @@
               <a class="learn-more" href="#">Learn More</a>              
             </div>
             
+            <%= render 'spree/shared/ratings', product: @product, review: 0 %>
             <hr>
 
             <div id="cart-form" data-hook="cart_form">
