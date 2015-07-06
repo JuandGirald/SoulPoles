@@ -1,0 +1,16 @@
+// customes styles
+
+#spree-header {
+  background-image: url('website_header_banner.png');
+  background-size: initial;
+  #header {
+    background: none;
+    padding: 5px 0;
+  }
+  #search-bar {
+    #taxon, input[type='search'] {
+      background-color: white;
+      opacity: 0.6;
+    }
+  }
+}

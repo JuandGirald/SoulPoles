@@ -73,6 +73,15 @@
   }
 }
 
+#spree-header {
+  #logo {
+    padding-top: 14px;
+    img {
+      width: initial;
+    }
+  }
+}
+
 .btn-wood {
   background-image: url('button-bg.png');
   background-color: white;
