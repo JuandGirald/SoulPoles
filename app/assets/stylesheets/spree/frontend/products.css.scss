@@ -39,19 +39,26 @@
   }
 }
 
+#thumbnails {
+  .thumbnail {
+    width: 100% !important;
+    height: 58px !important;
+  }
+}
+
 #product-description {
   hr {
     border: 1px solid rgb(208, 205, 205);
     margin-bottom: 10px;
   }
   .product-title {
-    font-size: 32px;
+    font-size: 26px;
     font-weight: bold;
     margin-bottom: 4px;
   }
   .product-category {
     color: #747171;
-    font-size: 20px;
+    font-size: 16px;
     margin-top: 2px;
   }
   .product-description {
@@ -207,5 +214,13 @@ ul.related-entries li .relatedinner a {
     img {
       width: 315px;
     }
+  }
+}
+
+// Reviews
+.reviews_link {
+  .ratings {
+    width: 28%;
+    float: left;
   }
 }

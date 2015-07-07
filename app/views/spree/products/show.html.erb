@@ -22,16 +22,21 @@
         <div data-hook="product_right_part_wrap">
           <div id="product-description" data-hook="product_description">
             <h1 class="product-title" itemprop="name"><%= @product.name.upcase %></h1>
-
             <h3 class="product-category">
               <% @product.taxons.each do |taxon| %>
                 <%= taxon.name.upcase %>
               <% end %>
             </h3>
+
+            <div class="reviews_link">
+              <%= render 'spree/shared/ratings', product: @product, review: 0 %>
+              <a class="customers-reviews" href=""> <%= pluralize(@product.reviews.count, 'customer review') %> </a>  
+            </div>
+            
             <hr>
-            <h2 class="price selling" itemprop="price">
+            <h3 class="price selling" itemprop="price">
               <%= display_price(@product) %>
-            </h2>
+            </h3>
             <div class="product-description" itemprop="description" data-hook="description">
               <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
             </div>
@@ -39,18 +44,12 @@
               <a class="learn-more" href="#">Learn More</a>              
             </div>
             
-            <%= render 'spree/shared/ratings', product: @product, review: 0 %>
             <hr>
 
             <div id="cart-form" data-hook="cart_form">
               <%= render :partial => 'cart_form' %>
             </div>
 
-
-          </div>
-
-          <div id="taxon-crumbs" class=" five " data-hook="product_taxons">
-            <%= render :partial => 'taxons' %>
           </div>
         </div>
       </div>
@@ -98,6 +97,10 @@
           </a>
         </div>
       <% end %>
+    </div>
+
+    <div id="taxon-crumbs" class=" five " data-hook="product_taxons">
+      <%= render :partial => 'taxons' %>
     </div>
 
     <div class="row items-related">
