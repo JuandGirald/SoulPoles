@@ -2,7 +2,7 @@
 
 <%= order_form.fields_for :line_items, line_item do |item_form| %>
   <tr class="line-item">
-    <td class="cart-item-image" data-hook="cart_item_image">
+    <td class="cart-item-image col-xs-2" data-hook="cart_item_image">
       <% if variant.images.length == 0 %>
         <%= link_to product_image(variant.product), variant.product %>
       <% else %>
@@ -12,7 +12,10 @@
     <td class="cart-item-description col-xs-6" data-hook="cart_item_description">
       <h4 class="col-xs-12"><%= link_to line_item.name, product_path(variant.product), class: 'bamboo-color' %></h4>
       <% variant.options_text.split(',').each do |variant| %>
-        <h6 class="col-xs-12"><%= variant %></h6>
+        <h6 class="col-xs-12">
+          <% details = variant.split(':') %>
+          <b> <%= details.first %> </b> : <%= details.last %>
+        </h6>
       <% end %>
       <% if line_item.insufficient_stock? %>
         <span class="out-of-stock">
@@ -20,10 +23,12 @@
         </span>
       <% end %>
       <h6 class="col-xs-12 line-item-description" data-hook="line_item_description">
-        Description: <%= line_item_description_text(line_item.description) %>
+        <b> Description </b> : <%= line_item_description_text(line_item.description) %>
       </h6>
       <h5 class="cart-item-delete col-xs-12" data-hook="cart_item_delete">
-        <%= link_to content_tag(:span, 'Remove', class: 'fa fa-times bamboo-color'), '#', class: 'delete', id: "delete_#{dom_id(line_item)}" %>
+        <%= link_to content_tag(:span, 'Remove |', class: 'bamboo-color'), '#', class: 'delete', id: "delete_#{dom_id(line_item)}" 
+        %> 
+        <%= link_to 'Edit', product_path(variant.product), class: 'bamboo-color' %>
       </h5>
     </td>
     <td class="lead col-xs-2 cart-item-price text-center" data-hook="cart_item_price">
