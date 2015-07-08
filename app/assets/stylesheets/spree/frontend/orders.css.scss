@@ -1,0 +1,34 @@
+// Shopping cart
+.cart-header {
+  h1 {
+    margin-bottom: 0;
+  }
+  h5 {
+    font-weight: 300;
+    margin-bottom: 2em;
+  }
+}
+
+#line_items {
+  td {
+    h6 {
+      font-weight: 400;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+  }
+  .cart-item-quantity {
+    h6 {
+      float: left;
+      margin-top: 10px;
+      margin-right: 6px;
+    }
+    .line_item_quantity {
+      width: 70%;
+    }
+  }
+}
+
+.bamboo-color {
+  color: #C07947;
+}
