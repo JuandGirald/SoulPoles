@@ -17,6 +17,9 @@
           <b> <%= details.first %> </b> : <%= details.last %>
         </h6>
       <% end %>
+      <% if !variant.engraving.nil? %>
+        <h6 class="col-xs-12"><b> Engraving: </b>  <%= variant.engraving %> </h6>
+      <% end %>
       <% if line_item.insufficient_stock? %>
         <span class="out-of-stock">
           <%= Spree.t(:out_of_stock) %>&nbsp;&nbsp;<br />

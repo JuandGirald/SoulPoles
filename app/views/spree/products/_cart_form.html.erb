@@ -11,6 +11,17 @@
       <%= hidden_field_tag "variant_id", @product.master.id %>
     <% end %>
 
+    
+    <div class="engraving text-left">
+      <a href="#" class="engraving-link">Add custom engraving</a>
+      <div class="custom-engraving">
+        <%= text_field_tag :engraving %>
+
+        <a href="#" class="dismiss-engraving">Delete custom engraving</a>
+      </div>
+        
+    </div>
+    
     <% if @product.price_in(current_currency) and !@product.price.nil? %>
       <div data-hook="product_price" class="col-xs-5">
         <div id="product-price">
@@ -45,3 +56,4 @@
     <% end %>
   </div>
 <% end %>
+
