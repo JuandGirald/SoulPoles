@@ -46,6 +46,10 @@
   }
 }
 
+.custom-engraving {
+  display: none;
+}
+
 #product-description {
   hr {
     border: 1px solid rgb(208, 205, 205);
@@ -166,6 +170,12 @@
     box-shadow: 0 0 4px rgba(0,0,0,.4);
     border-radius: 0;
     padding: 10px;
+  }
+}
+
+#product-properties {
+  tr {
+    background-color: white;
   }
 }
 

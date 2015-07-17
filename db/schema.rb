@@ -505,6 +505,7 @@ ActiveRecord::Schema.define(version: 20150626120333) do
     t.string   "meta_title"
     t.decimal  "avg_rating",           precision: 7, scale: 5, default: 0.0,  null: false
     t.integer  "reviews_count",                                default: 0,    null: false
+    t.boolean  "has_engraving",                                default: false
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
@@ -1105,6 +1106,7 @@ ActiveRecord::Schema.define(version: 20150626120333) do
     t.integer  "tax_category_id"
     t.datetime "updated_at"
     t.integer  "stock_items_count",                          default: 0,     null: false
+    t.text     "engraving"
   end
 
   add_index "spree_variants", ["deleted_at"], name: "index_spree_variants_on_deleted_at", using: :btree
