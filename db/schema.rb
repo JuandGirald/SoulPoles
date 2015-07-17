@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626120333) do
+ActiveRecord::Schema.define(version: 20150717081439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ad_hoc_option_types", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "option_type_id"
+    t.string   "price_modifier_type"
+    t.boolean  "is_required",         default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ad_hoc_option_values", force: :cascade do |t|
+    t.integer  "ad_hoc_option_type_id"
+    t.integer  "option_value_id"
+    t.decimal  "price_modifier",        precision: 8, scale: 2, default: 0.0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "boxes", force: :cascade do |t|
     t.string   "title",              limit: 255
@@ -102,6 +119,18 @@ ActiveRecord::Schema.define(version: 20150626120333) do
     t.datetime "updated_at"
   end
 
+  create_table "product_customization_types_products", id: false, force: :cascade do |t|
+    t.integer "product_customization_type_id"
+    t.integer "product_id"
+  end
+
+  create_table "product_customizations", force: :cascade do |t|
+    t.integer  "line_item_id"
+    t.integer  "product_customization_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", limit: 255, null: false
     t.text     "data"
@@ -111,6 +140,40 @@ ActiveRecord::Schema.define(version: 20150626120333) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "spree_ad_hoc_option_types", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "option_type_id"
+    t.string   "price_modifier_type"
+    t.boolean  "is_required",         default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "position",            default: 0
+  end
+
+  create_table "spree_ad_hoc_option_values", force: :cascade do |t|
+    t.integer  "ad_hoc_option_type_id"
+    t.integer  "option_value_id"
+    t.decimal  "price_modifier",        precision: 8, scale: 2, default: 0.0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "position"
+    t.boolean  "selected"
+    t.decimal  "cost_price_modifier",   precision: 8, scale: 2
+  end
+
+  create_table "spree_ad_hoc_option_values_line_items", force: :cascade do |t|
+    t.integer  "line_item_id"
+    t.integer  "ad_hoc_option_value_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spree_ad_hoc_variant_exclusions", force: :cascade do |t|
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "spree_addresses", force: :cascade do |t|
     t.string   "firstname"
@@ -221,6 +284,30 @@ ActiveRecord::Schema.define(version: 20150626120333) do
     t.integer  "stock_location_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "spree_customizable_product_options", force: :cascade do |t|
+    t.integer  "product_customization_type_id"
+    t.integer  "position"
+    t.string   "presentation",                  null: false
+    t.string   "name",                          null: false
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spree_customized_product_options", force: :cascade do |t|
+    t.integer  "product_customization_id"
+    t.integer  "customizable_product_option_id"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "customization_image"
+  end
+
+  create_table "spree_excluded_ad_hoc_option_values", force: :cascade do |t|
+    t.integer "ad_hoc_variant_exclusion_id"
+    t.integer "ad_hoc_option_value_id"
   end
 
   create_table "spree_feedback_reviews", force: :cascade do |t|
@@ -445,6 +532,19 @@ ActiveRecord::Schema.define(version: 20150626120333) do
   add_index "spree_payments", ["payment_method_id"], name: "index_spree_payments_on_payment_method_id", using: :btree
   add_index "spree_payments", ["source_id", "source_type"], name: "index_spree_payments_on_source_id_and_source_type", using: :btree
 
+  create_table "spree_paypal_express_checkouts", force: :cascade do |t|
+    t.string   "token"
+    t.string   "payer_id"
+    t.string   "transaction_id"
+    t.string   "state",                 default: "complete"
+    t.string   "refund_transaction_id"
+    t.datetime "refunded_at"
+    t.string   "refund_type"
+    t.datetime "created_at"
+  end
+
+  add_index "spree_paypal_express_checkouts", ["transaction_id"], name: "index_spree_paypal_express_checkouts_on_transaction_id", using: :btree
+
   create_table "spree_preferences", force: :cascade do |t|
     t.text     "value"
     t.string   "key"
@@ -463,6 +563,21 @@ ActiveRecord::Schema.define(version: 20150626120333) do
 
   add_index "spree_prices", ["deleted_at"], name: "index_spree_prices_on_deleted_at", using: :btree
   add_index "spree_prices", ["variant_id", "currency"], name: "index_spree_prices_on_variant_id_and_currency", using: :btree
+
+  create_table "spree_product_customization_types", force: :cascade do |t|
+    t.string   "name"
+    t.string   "presentation"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spree_product_customizations", force: :cascade do |t|
+    t.integer  "line_item_id"
+    t.integer  "product_customization_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "spree_product_option_types", force: :cascade do |t|
     t.integer  "position"
@@ -490,7 +605,7 @@ ActiveRecord::Schema.define(version: 20150626120333) do
   add_index "spree_product_properties", ["property_id"], name: "index_spree_product_properties_on_property_id", using: :btree
 
   create_table "spree_products", force: :cascade do |t|
-    t.string   "name",                                         default: "",   null: false
+    t.string   "name",                                         default: "",    null: false
     t.text     "description"
     t.datetime "available_on"
     t.datetime "deleted_at"
@@ -499,12 +614,12 @@ ActiveRecord::Schema.define(version: 20150626120333) do
     t.string   "meta_keywords"
     t.integer  "tax_category_id"
     t.integer  "shipping_category_id"
-    t.datetime "created_at",                                                  null: false
-    t.datetime "updated_at",                                                  null: false
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
     t.boolean  "promotionable",                                default: true
     t.string   "meta_title"
-    t.decimal  "avg_rating",           precision: 7, scale: 5, default: 0.0,  null: false
-    t.integer  "reviews_count",                                default: 0,    null: false
+    t.decimal  "avg_rating",           precision: 7, scale: 5, default: 0.0,   null: false
+    t.integer  "reviews_count",                                default: 0,     null: false
     t.boolean  "has_engraving",                                default: false
   end
 
@@ -1116,6 +1231,15 @@ ActiveRecord::Schema.define(version: 20150626120333) do
   add_index "spree_variants", ["sku"], name: "index_spree_variants_on_sku", using: :btree
   add_index "spree_variants", ["tax_category_id"], name: "index_spree_variants_on_tax_category_id", using: :btree
   add_index "spree_variants", ["track_inventory"], name: "index_spree_variants_on_track_inventory", using: :btree
+
+  create_table "spree_videos", force: :cascade do |t|
+    t.string   "youtube_ref"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "watchable_id"
+    t.string   "watchable_type"
+  end
 
   create_table "spree_zone_members", force: :cascade do |t|
     t.integer  "zoneable_id"

@@ -33,10 +33,24 @@
     .line_item_quantity {
       width: 70%;
     }
+    .btn {
+      display: none;
+      font-size: 10px !important;
+      margin-top: 0.2em;
+      margin-left: 55px;
+    }
   }
   .cart-item-image {
     img {
       width: 192px;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .cart-item-quantity {
+    .btn {
+      margin-left: 0 !important;
     }
   }
 }
