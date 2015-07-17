@@ -24,12 +24,14 @@
 
           <div class="links col-md-6 navbar-form pull-right text-right" data-hook="cart_buttons">
             <div class="form-group">
-              <%= button_tag class: 'btn btn-lg btn-wood', id: 'update-button' do %>
-                <%= Spree.t(:update) %>
-              <% end %>
               <%= button_tag class: 'btn btn-lg btn-success', id: 'checkout-link', name: 'checkout' do %>
                 <%= Spree.t(:checkout) %>
               <% end %>
+              <%= link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), paypal_express_url(:payment_method_id => '2'), :method => :post, :id => "paypal_button") %>
+
+              <script>
+                SpreePaypalExpress.paymentMethodID = "2"  
+               </script>
             </div>
           </div>
         </div>
