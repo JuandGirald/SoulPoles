@@ -14,6 +14,7 @@ Spree.ready ($) ->
     $(this).fadeOut()
     $('.custom-engraving').slideDown()
   $('.dismiss-engraving').click (event) ->
+    event.preventDefault()
     $(this).closest('.custom-engraving').slideUp()
     $('.engraving-link').fadeIn()
 
