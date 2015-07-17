@@ -1,4 +1,12 @@
 // Shopping cart
+#paypal_button{
+  img {
+    background-image: url('pp_btn.png');
+    width: 153px;
+    height: 36px;
+    display: inline-block;
+  }
+}
 .cart-header {
   h1 {
     margin-bottom: 0;
@@ -7,6 +15,16 @@
     font-weight: 300;
     margin-bottom: 2em;
   }
+}
+
+.btn-link {
+  background: none !important;
+  border: 0;
+  padding: 0 !important;
+  color: #494949;
+  margin-left: 30px;
+  font-weight: normal;
+  font-style: normal;
 }
 
 #line_items {
@@ -35,8 +53,8 @@
     }
     .btn {
       display: none;
-      font-size: 10px !important;
-      margin-top: 0.2em;
+      font-size: 12px !important;
+      margin-top: 0.3em;
       margin-left: 55px;
     }
   }

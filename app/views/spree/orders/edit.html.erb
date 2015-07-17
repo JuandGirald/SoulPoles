@@ -27,10 +27,10 @@
               <%= button_tag class: 'btn btn-lg btn-success', id: 'checkout-link', name: 'checkout' do %>
                 <%= Spree.t(:checkout) %>
               <% end %>
-              <%= link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), paypal_express_url(:payment_method_id => '2'), :method => :post, :id => "paypal_button") %>
+              <%= link_to(image_tag(""), paypal_express_url(:payment_method_id => '6'), :method => :post, :id => "paypal_button", :class => 'btn btn-lg') %>
 
               <script>
-                SpreePaypalExpress.paymentMethodID = "2"  
+                SpreePaypalExpress.paymentMethodID = "6"  
                </script>
             </div>
           </div>
