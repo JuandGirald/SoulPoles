@@ -40,9 +40,6 @@
             <div class="product-description" itemprop="description" data-hook="description">
               <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
             </div>
-            <div class="row">
-              <a class="learn-more" href="#">Learn More</a>              
-            </div>
             
             <hr>
 
@@ -59,12 +56,10 @@
 
             <!-- Nav tabs -->
       <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation" class="btn-wood active"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab">
-        <icon class="fa fa-archive"></icon> Properties</a></li>
+        <li role="presentation" class="btn-wood active"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab">  Properties</a></li>
         <li class="btn-wood" role="presentation"><a href="#reviews_tab" aria-controls="reviews_tab" role="tab" data-toggle="tab">
-        <icon class="fa fa-comments"></icon> Reviews </a></li>
-        <li class="btn-wood" role="presentation"><a href="#promotions_tab" aria-controls="promotions_tab" role="tab" data-toggle="tab"><icon class="fa fa-usd"></icon> Promotions</a></li>
-        <li class="btn-wood" role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><icon class="fa fa-search-plus"></icon> Size Info</a></li>
+        Reviews </a></li>
+        <li class="btn-wood" role="presentation"><a href="#promotions_tab" aria-controls="promotions_tab" role="tab" data-toggle="tab">Promotions</a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -76,7 +71,13 @@
         </div>
         <div role="tabpanel" class="tab-pane fade" id="reviews_tab">
           <div data-hook="product_reviews">
-            <%= render :partial => 'spree/shared/reviews' %>
+            <div class="yotpo yotpo-main-widget"
+              data-product-id= <%= @product.id %> 
+              data-name= <%= @product.name %>
+              data-url="The url to the page where the product is url escaped"
+              data-image-url= "The product image url. Url escaped"
+              data-description="Product description">
+            </div>
           </div>
         </div>
         <div role="tabpanel" class="tab-pane fade" id="promotions_tab">
@@ -84,7 +85,6 @@
             <%= render :partial => 'promotions' %>
           </div>
         </div>
-        <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
       </div>
 
     </div>
@@ -127,3 +127,7 @@
 
   <% end %>  
 </div>
+
+<script type="text/javascript">
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/Ha4qpItPu8AQe0dX1FhXeDCBq69guZSAhd227Ur6/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script>

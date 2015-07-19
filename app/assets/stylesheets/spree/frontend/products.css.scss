@@ -83,8 +83,17 @@
       font-size: 0.8em;
     }
   }
+  .variant-option-type {
+    .selection {
+      color: #5cb85c;
+    }
+  }
 }
 
+.option-value.selected, .option-value.in-stock:hover {
+  background-color: rgba(92, 184, 92, 0.57) !important;
+  border-color: #FFFFFF !important;
+}
 #spree-header {
   #logo {
     padding-top: 14px;
@@ -97,7 +106,7 @@
 .btn-wood {
   background-image: url('button-bg.png');
   background-color: white;
-  background-size: 226px 120px;
+  background-size: 300px 120px;
   color: white;
   border: 1px solid #ccc;
   a:hover {
@@ -112,9 +121,15 @@
 }
 
 .add-to-cart {
-  width: 11em;
+  width: 100%;
   .form-control {
     padding: 6px 9px;
+  }
+  .btn {
+    width: 100%;
+    padding: 8px 0;
+    font-size: 16px;
+    letter-spacing: 0.5px;
   }
 }
 
