@@ -1,11 +1,14 @@
 <% @body_id = 'cart' %>
 <div data-hook="cart_container">
   <div class="cart-header">
-    <h1><%= Spree.t(:shopping_cart) %></h1>
-    <h5>
-      <%= pluralize(@order.line_items.sum(:quantity), 'Article') %> - 
-      Estimated Total: <%= @order.display_item_total %>
-    </h5>  
+    <div class="col-xs-5">
+      <h1><%= Spree.t(:shopping_cart) %></h1>
+      <h5>
+        <%= pluralize(@order.line_items.sum(:quantity), 'Article') %> - 
+        Estimated Total: <%= @order.display_item_total %>
+      </h5>    
+    </div>
+    
   </div>
   
   <% if @order.line_items.empty? %>
@@ -14,25 +17,26 @@
       <p><%= link_to Spree.t(:continue_shopping), products_path, class: 'btn btn-default' %></p>
     </div>
   <% else %>
-    <div data-hook="outside_cart_form">
+    <div class="col-xs-12" data-hook="outside_cart_form">
       <%= form_for @order, url: update_cart_path, html: { id: 'update-cart' } do |order_form| %>
+
+        <div class="links col-xs-6 navbar-form pull-right text-right" data-hook="cart_buttons">
+          <div class="form-group">
+            <%= button_tag class: 'btn btn-lg btn-success', id: 'checkout-link', name: 'checkout' do %>
+              <%= Spree.t(:checkout) %>
+            <% end %>
+            <%= link_to(image_tag(""), paypal_express_url(:payment_method_id => '2'), :method => :post, :id => "paypal_button", :class => 'btn btn-lg') %>
+
+            <script>
+              SpreePaypalExpress.paymentMethodID = "6"  
+             </script>
+          </div>
+        </div>
+        
         <div data-hook="inside_cart_form">
 
           <div data-hook="cart_items" class="table-responsive">
             <%= render partial: 'form', locals: { order_form: order_form } %>
-          </div>
-
-          <div class="links col-md-6 navbar-form pull-right text-right" data-hook="cart_buttons">
-            <div class="form-group">
-              <%= button_tag class: 'btn btn-lg btn-success', id: 'checkout-link', name: 'checkout' do %>
-                <%= Spree.t(:checkout) %>
-              <% end %>
-              <%= link_to(image_tag(""), paypal_express_url(:payment_method_id => '2'), :method => :post, :id => "paypal_button", :class => 'btn btn-lg') %>
-
-              <script>
-                SpreePaypalExpress.paymentMethodID = "6"  
-               </script>
-            </div>
           </div>
         </div>
       <% end %>

@@ -29,9 +29,9 @@
         <b> Description </b> : <%= line_item_description_text(line_item.description) %>
       </h6>
       <h5 class="cart-item-delete col-xs-12" data-hook="cart_item_delete">
-        <%= link_to content_tag(:span, 'Remove |', class: 'bamboo-color'), '#', class: 'delete', id: "delete_#{dom_id(line_item)}" 
+        <%= link_to 'Edit |', product_path(variant.product), class: 'bamboo-color' %>
+        <%= link_to content_tag(:span, 'Remove', class: 'bamboo-color'), '#', class: 'delete', id: "delete_#{dom_id(line_item)}" 
         %> 
-        <%= link_to 'Edit', product_path(variant.product), class: 'bamboo-color' %>
       </h5>
     </td>
     <td class="lead col-xs-2 cart-item-price text-center" data-hook="cart_item_price">
