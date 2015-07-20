@@ -15,8 +15,15 @@
 
   <% end %>
   <tr class="cart-total">
-    <td colspan="4" align='right'><h5><%= Spree.t(:total) %></h5></td>
-    <td class="lead" colspan><%= order_form.object.display_total %></td>
-    <td></td>
-  </tr>
+    <td colspan="3">
+      <p class='field promo_code' data-hook='coupon_code'>
+        <%= order_form.label :have_a_promo_code? %>
+        <%= order_form.text_field :coupon_code, :class => 'form-control', placeholder: 'Enter a coupon code?' %>
+      </p>
+      
+    </td>
+    <td class="lead" colspan='1' align='right'>
+      <div class="top-margin"><h5 class="col-xs-8"><%= Spree.t(:total) %></h5> <span class="col-xs-3"> <%= order_form.object.display_total %> </span></div>
+    </td>
+  </tr> 
 </table>

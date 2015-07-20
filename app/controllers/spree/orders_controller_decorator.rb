@@ -1,5 +1,6 @@
 Spree::OrdersController.class_eval do
 
+  before_action :apply_coupon_code
   # Adds a new item to the order (creating a new order if none already exists)
   def populate
     order    = current_order(create_order_if_necessary: true)
