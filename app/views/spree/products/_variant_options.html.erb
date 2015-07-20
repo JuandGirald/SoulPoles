@@ -6,6 +6,14 @@
         <h6 class="variant-option-type">
           <%= label_tag 'option-value-name', Spree.t(:select_a, :index => index + 1, :name => "Choose your #{type.presentation}") %>&nbsp;
           <strong class='selection'></strong>
+
+          <% if type.presentation == "ski pole size" %>
+            <a href="#" type="button" data-toggle="modal" data-target="#myModal">
+              What size I am?
+            </a>
+            <%= render 'spree/shared/size_modal' %>
+          <% end %>
+          
           <%= link_to "", "#clear", :class => "icon-remove clear-button clear-index-#{index}" %>
         </h6>
 
