@@ -80,7 +80,11 @@
 #product-variants {
   .variant-option-values {
     a {
-      font-size: 0.8em;
+      font-size: 0.7em;
+      width: 7em;
+      img {
+        width: 100%;
+      }
     }
   }
   .variant-option-type {

@@ -19,6 +19,7 @@
       <p class='field promo_code' data-hook='coupon_code'>
         <%= order_form.label :have_a_promo_code? %>
         <%= order_form.text_field :coupon_code, :class => 'form-control', placeholder: 'Enter a coupon code?' %>
+        <%= button_tag class: 'btn btn-default' do %> <%= Spree.t(:apply) %> <% end %>
       </p>
       
     </td>

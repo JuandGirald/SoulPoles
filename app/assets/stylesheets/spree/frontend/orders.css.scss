@@ -82,15 +82,19 @@
 }
 
 .promo_code {
-  width: 40%;
+  width: 60%;
   float: left;
   .form-control {
     border-radius: 0;
+    float: left;
+    margin-right: 1em;
+    width: 50%;
   }
   label {
     color: #494949;
     font-size: 10px;
     font-weight: 500;
+    width: 100%;
   }
 }
 @media (max-width: 1000px) {
