@@ -1,6 +1,7 @@
 <% variant = line_item.variant %>
 
 <%= order_form.fields_for :line_items, line_item do |item_form| %>
+  <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
   <tr class="line-item">
     <td class="cart-item-image col-xs-2" data-hook="cart_item_image">
       <% if variant.images.length == 0 %>
@@ -17,7 +18,7 @@
           <b> <%= details.first %> </b> : <%= details.last %>
         </h6>
       <% end %>
-      <% if !variant.engraving.nil? %>
+      <% if !variant.engraving.nil?  and !variant.engraving.empty? %>
         <h6 class="col-xs-12"><b> Engraving: </b>  <%= variant.engraving %> </h6>
       <% end %>
       <% if line_item.insufficient_stock? %>
@@ -29,7 +30,7 @@
         <b> Description </b> : <%= line_item_description_text(line_item.description) %>
       </h6>
       <h5 class="cart-item-delete col-xs-12" data-hook="cart_item_delete">
-        <%= link_to 'Edit |', product_path(variant.product), class: 'bamboo-color' %>
+        <%= link_to 'Edit |', edit_product_path(id: variant.product.id, line_item: line_item.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'data-dev' => "#{line_item.id}", class: 'bamboo-color'}%>
         <%= link_to content_tag(:span, 'Remove', class: 'bamboo-color'), '#', class: 'delete', id: "delete_#{dom_id(line_item)}" 
         %> 
       </h5>

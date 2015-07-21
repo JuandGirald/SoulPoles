@@ -1,58 +1,105 @@
-<%= form_for :order, :url => populate_orders_path do |f| %>
-  <div id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-    <% if @product.variants_and_option_values(current_currency).any? %>
-      <div id="product-variants" class="col-xs-12">
-        <h3 class="product-section-title"><%= Spree.t(:variants) %></h3>
-        <ul class="list-group">
-          <%= select_tag "variant_id",     options_for_select(@product.variants_and_option_values(current_currency).collect{|v| ["#{variant_options(v)}  #{variant_price(v)}", v.id]})%>
-        </ul>
-      </div>
-    <% else %>
-      <%= hidden_field_tag "variant_id", @product.master.id %>
-    <% end %>
-
-    
-    <% if @product.has_engraving? %>
-      <div class="engraving text-left">
-        <a href="#" class="engraving-link">Add custom engraving (+$19.00) </a>
-        <div class="custom-engraving">
-          <%= text_field_tag :engraving, nil, placeholder: 'Type up to 25 characters', class: 'form-control' %>
-
-          <a href="#" class="dismiss-engraving">Delete custom engraving</a>
+<% if params[:action] == 'edit' %>
+  <%= form_for @product do |f| %>
+    <%= hidden_field_tag "line_item_id", @line_item.id %>
+    <div id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+      <% if @product.variants_and_option_values(current_currency).any? %>
+        <div id="product-variants" class="col-xs-12">
+          <h3 class="product-section-title"><%= Spree.t(:variants) %></h3>
+          <ul class="list-group">
+            <%= select_tag "variant_id",     options_for_select(@product.variants_and_option_values(current_currency).collect{|v| ["#{variant_options(v)}  #{variant_price(v)}", v.id]})%>
+          </ul>
         </div>
-          
-      </div>
-    <% end %>
-    
-    <% if @product.price_in(current_currency) and !@product.price.nil? %>
-      <div data-hook="product_price" >
-        <div id="product-price">
-          <% if @product.master.can_supply? %>
-            <link itemprop="availability" href="https://schema.org/InStock" />
-          <% elsif @product.variants.empty? %>
-            <br />
-            <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
-          <% end %>
-        </div>
+      <% else %>
+        <%= hidden_field_tag "variant_id", @product.master.id %>
+      <% end %>
 
-        <div class="add-to-cart">
-          <br/>
-          <div class="input-group">
-            <span class="input-group-btn">
-              <%= number_field_tag :quantity, 1, :class => 'title form-control', :min => 1%>
-              <%= button_tag :class => 'btn btn-success', :id => 'add-to-cart-button', :type => :submit do %>
-                <%= Spree.t(:add_to_cart) %>
-              <% end %>
-            </span>
+      <% if @product.price_in(current_currency) and !@product.price.nil? %>
+        <div data-hook="product_price" >
+          <div id="product-price">
+            <% if @product.master.can_supply? %>
+              <link itemprop="availability" href="https://schema.org/InStock" />
+            <% elsif @product.variants.empty? %>
+              <br />
+              <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+            <% end %>
+          </div>
+
+          <div class="add-to-cart">
+            <br/>
+            <div class="input-group">
+              <span class="input-group-btn">
+                <%= number_field_tag :quantity, 1, :class => 'title form-control', :min => 1%>
+                <%= button_tag  'Update product', :class => 'btn btn-success', :id => 'add-to-cart-button', :type => :submit, 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Updating...".html_safe %>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-    <% else %>
-      <div id="product-price">
-        <br>
-        <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
-      </div>
-    <% end %>
-  </div>
+      <% else %>
+        <div id="product-price">
+          <br>
+          <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <%= form_for :order, :url => populate_orders_path do |f| %>
+    <div id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+      <% if @product.variants_and_option_values(current_currency).any? %>
+        <div id="product-variants" class="col-xs-12">
+          <h3 class="product-section-title"><%= Spree.t(:variants) %></h3>
+          <ul class="list-group">
+            <%= select_tag "variant_id",     options_for_select(@product.variants_and_option_values(current_currency).collect{|v| ["#{variant_options(v)}  #{variant_price(v)}", v.id]})%>
+          </ul>
+        </div>
+      <% else %>
+        <%= hidden_field_tag "variant_id", @product.master.id %>
+      <% end %>
+
+      
+      <% if @product.has_engraving? %>
+        <div class="engraving text-left">
+          <a href="#" class="engraving-link">Add custom engraving (+$19.00) </a>
+          <div class="custom-engraving">
+            <%= text_field_tag :engraving, nil, placeholder: 'Type up to 25 characters', class: 'form-control' %>
+
+            <a href="#" class="dismiss-engraving">Delete custom engraving</a>
+          </div>
+            
+        </div>
+      <% end %>
+      
+      <% if @product.price_in(current_currency) and !@product.price.nil? %>
+        <div data-hook="product_price" >
+          <div id="product-price">
+            <% if @product.master.can_supply? %>
+              <link itemprop="availability" href="https://schema.org/InStock" />
+            <% elsif @product.variants.empty? %>
+              <br />
+              <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+            <% end %>
+          </div>
+
+          <div class="add-to-cart">
+            <br/>
+            <div class="input-group">
+              <span class="input-group-btn">
+                <%= number_field_tag :quantity, 1, :class => 'title form-control', :min => 1%>
+                <%= button_tag :class => 'btn btn-success', :id => 'add-to-cart-button', :type => :submit do %>
+                  <%= Spree.t(:add_to_cart) %>
+                <% end %>
+              </span>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div id="product-price">
+          <br>
+          <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
+
 
