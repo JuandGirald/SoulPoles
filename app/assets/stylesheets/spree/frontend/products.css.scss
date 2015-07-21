@@ -16,11 +16,21 @@
   #product-images {
     .panel-body {
       img {
-        width: 30em;
+        width: 100%;
       }
     }
   }
 }
+
+// @media (max-width: 768px) {
+//   #product-images {
+//     .panel-body {
+//       img {
+//         width: 100%;
+//       }
+//     }
+//   } 
+// }
 
 #products {
   .product-list-item {

@@ -48,3 +48,9 @@
   background-color: #333;
   border-color: #333;
 }
+
+@media (min-width: 1280px) {
+  .modal-lg {
+    width: 1024px;
+  }
+}
