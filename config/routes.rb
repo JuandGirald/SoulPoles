@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get   "product/:id/edit" => 'product#edit'
   post  "product/update" => 'product#update'
   
+  Spree::Core::Engine.routes.append do
+    match 'wizard/:product_id/:state/', :to => 'products#customize', as: 'wizard', via: :get
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

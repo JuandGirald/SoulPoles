@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require lightbox-bootstrap
+//= require jquery-waypoints
 //= require_tree .

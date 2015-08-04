@@ -5,5 +5,7 @@
 //= require spree/frontend/checkout
 //= require spree/frontend/product
 //= require spree/frontend/products
+//= require spree/frontend/wizard_product
 //= require spree/frontend/shopping_cart
 //= require lightbox-bootstrap
+//= require jquery.waypoints

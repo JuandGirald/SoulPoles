@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717081439) do
+ActiveRecord::Schema.define(version: 20150804081043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -621,6 +621,16 @@ ActiveRecord::Schema.define(version: 20150717081439) do
     t.decimal  "avg_rating",           precision: 7, scale: 5, default: 0.0,   null: false
     t.integer  "reviews_count",                                default: 0,     null: false
     t.boolean  "has_engraving",                                default: false
+    t.string   "state"
+    t.string   "pole_size"
+    t.string   "grip_color"
+    t.string   "basket_size"
+    t.string   "strap_color"
+    t.string   "basket_color"
+    t.string   "grip_left"
+    t.string   "grip_right"
+    t.string   "basket_left"
+    t.string   "basket_right"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
