@@ -1,0 +1,48 @@
+<% basket_colors = @product.option_types.find_by_name("basket-color").option_values %>
+<% basket_sizes = @product.option_types.find_by_name("basket-size").option_values %>
+<div id="custom-basket">
+  <div class="col-xs-4 text-center">
+    <h3 class="select-subtitle">left basket color</h3>
+
+    <ul class="col-xs-12 basket left-basket list-inline">
+      <% basket_colors.each do |value| %>
+        <% classes = ["option-value"] %>
+        <% css_classes = 'select' if value.presentation == @product.basket_left %>
+        <% classes << 'with-image' if value.has_image? %>
+        <li value="<%= value.presentation %>" class="square-boxes <%= css_classes %>"><%= link_to value.has_image? ? image_tag(value.image.url, :alt => value.presentation) : content_tag(:span, value.presentation), "#", :title => value.presentation, :class => classes.join(" ") %></li>
+      <% end %>
+      <%= hidden_field_tag "product[basket_left]", @product.basket_left %>
+    </ul>
+  </div>
+
+  <div class="col-xs-4 text-center">
+    <h3 class="select-subtitle">right basket color</h3>
+
+    <ul class="col-xs-12 basket right-basket list-inline">
+      <% basket_colors.each do |value| %>
+        <% classes = ["option-value"] %>
+        <% css_classes = 'select' if value.presentation == @product.basket_right %>
+        <% classes << 'with-image' if value.has_image? %>
+        <li value="<%= value.presentation %>" class="square-boxes <%= css_classes %>"><%= link_to value.has_image? ? image_tag(value.image.url, :alt => value.presentation) : content_tag(:span, value.presentation), "#", :title => value.presentation, :class => classes.join(" ") %></li>
+      <% end %>
+      <%= hidden_field_tag "product[basket_right]", @product.basket_right %>
+    </ul>
+   
+  </div>  
+
+  <div class="col-xs-4 text-center basket-sizes">
+    <h3 class="select-subtitle">basket size</h3>
+
+    <ul class="col-xs-12 basket basket-size list-inline">
+      <% basket_sizes.each do |value| %>
+        <% classes = ["option-value"] %>
+        <% css_classes = 'select' if value.presentation == @product.basket_size %>
+        <% classes << 'with-image' if value.has_image? %>
+        <li value="<%= value.presentation %>" class="square-boxes <%= css_classes %>">
+          <h6><%= value.presentation %></h6>
+          <%= link_to value.has_image? ? image_tag(value.image.url, :alt => value.presentation) : content_tag(:span, value.presentation), "#", :title => value.presentation, :class => classes.join(" ") %></li>
+      <% end %>
+      <%= hidden_field_tag "product[basket_size]", @product.basket_size %>
+    </ul>
+  </div>  
+</div>

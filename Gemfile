@@ -49,10 +49,12 @@ end
 gem 'rails_12factor', group: :production
 
 #Amazon s3 service
+gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 
 gem 'simple_form'
 gem 'lightbox-bootstrap-rails'
+gem 'jquery-waypoints-rails', '~> 2.0.5'
 
 
 gem 'spree', github: 'spree/spree', branch: '~> 3.1.0.beta'

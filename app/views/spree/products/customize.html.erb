@@ -1,0 +1,22 @@
+<div class="col-sm-12" data-hook="product_progress"><%= product_progress %></div>
+
+<nav class="navbar navbar2 ">
+  <div class="container">
+    <div class="text-center">
+      <%= image_tag "spree/frontend/green-basket.png", :class => 'overlap righ-overlap hidden'%>
+      <%= image_tag "spree/frontend/orange-basket.png", :class => 'overlap left-overlap hidden' %>
+      <%= image_tag @product.images.first.attachment.url(:original), :itemprop => "image", :class => "top_image" %>
+    </div>
+  </div>
+</nav>
+<div id="custom-section">
+  <%= form_for @product do |f| %>
+    <%= render partial: "spree/products/steps/#{@product.state}", locals: { f: f } %>
+    <%= hidden_field_tag "product_id", @product.id %>
+    <div class="col-xs-3 pull-right">
+      <div class="add-to-cart">
+        <%= f.button 'Continue', :class => "btn btn-success" %>
+      </div>
+    </div>
+  <% end  %>  
+</div>

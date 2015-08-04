@@ -17,7 +17,10 @@ Spree.config do |config|
   config.logo = "spree_50.png"
 end
 
-# Spree::PermittedAttributes.product_attributes << :has_engraving
+Spree::PermittedAttributes.product_attributes << [
+  :pole_size, :basket_size, :grip_left, :grip_right, :strap_color, 
+  :basket_left, :basket_right
+]
 
 SpreeEditor::Config.tap do |config|
   config.current_editor = 'CKEditor'
