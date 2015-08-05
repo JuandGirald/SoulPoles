@@ -52,7 +52,7 @@ Spree::ProductsController.class_eval do
 
     if @product.next_step
       @product_image.save
-      redirect_to wizard_url(@product, @product.state)
+      redirect_to wizard_path(@product, @product.state)
     else
       redirect_to new_product_path
     end
