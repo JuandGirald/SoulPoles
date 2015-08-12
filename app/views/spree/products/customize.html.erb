@@ -1,4 +1,7 @@
-<div class="col-sm-12" data-hook="product_progress"><%= product_progress %></div>
+<div class="steps-nav col-sm-12" data-hook="product_progress">
+  <div class="col-xs-1"><%= image_tag "spree/frontend/sp-logo.png" %></div>
+  <div class="col-xs-11"><%= product_progress %></div> 
+</div>
 
 <nav class="navbar navbar2 ">
   <div class="container">
@@ -28,9 +31,9 @@
   <% end  %>  
 </div>
 <div class="col-xs-12 get-inspired">
-  <% @inspired.each do |product| %>
-    <h2 class="text-center"> Get <%= image_tag "spree/frontend/inspired.png" %></h2> 
-    <div class="owl-carousel">
+  <h2 class="text-center"> Get <%= image_tag "spree/frontend/inspired.png" %></h2> 
+  <div class="owl-carousel">
+    <% @inspired.each do |product| %>
       <div class="item">
         <%= link_to product do %>
           <%= product_image(product, :alt => "Owl Image", :itemprop => "image", :class => "custom_product") %>
@@ -49,18 +52,7 @@
         <% end %>
         <hr>
       </div>
-      <div class="item">
-        <%= link_to product do %>
-          <%= product_image(product, :alt => "Owl Image", :itemprop => "image", :class => "custom_product") %>
-        <% end %>
-        <hr>
-      </div>
-      <div class="item">
-        <%= link_to product do %>
-          <%= product_image(product, :alt => "Owl Image", :itemprop => "image", :class => "custom_product") %>
-        <% end %>
-        <hr>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  
 </div>

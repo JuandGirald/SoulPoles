@@ -61,3 +61,6 @@ Spree.ready ($) ->
       $("#continue-button").attr("disabled", false)
 
     
+  $("#product_custom_engraving").bind 'change paste keyup', ->
+    a = $(this).val()
+    $("#engraving-live").text(a)

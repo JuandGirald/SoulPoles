@@ -1,0 +1,10 @@
+<div id="engraving-section">
+  <h3 class="select-subtitle">engraving</h3>
+  <div class="engraving-input col-xs-4">
+    <%= text_field_tag "product[custom_engraving]", @product.custom_engraving, placeholder: 'Type up to 25 characters', class: 'form-control', maxlength: 25 %>  
+  </div>
+  <div class="col-xs-5 engraving_live">
+    <h1 id="engraving-live"> <%= @product.custom_engraving %></h1> 
+  </div>
+  
+</div>

@@ -8,6 +8,28 @@ $coolgrey: #656565;
   }
 }
 
+.steps-nav {
+  img {
+    margin-top: 10px;
+  }
+  .progress-steps {
+
+    a {
+      color: black;
+      font-size: 1.5em;
+    }
+    li {
+      width: 0 !important;
+    }
+    li.active {
+      a {
+        background-color: inherit;
+        color: #5cb85c !important;
+        font-weight: bold;
+      }
+    }
+  }
+}
 img.top_image {
   width: 100%;
 }
@@ -175,6 +197,18 @@ img.top_image {
   bottom:10%;
   border-left:1px solid #D7D7D7;
 }
+
+#engraving-section {
+  .engraving-input {
+    margin-top: 2em;
+  }
+  .engraving_live {
+    background-image: url('engraving_pole_bg.jpg');
+    background-size: contain;
+    height: 6em;
+  }
+}
+
 
 .get-inspired {
   margin-top: 3em;

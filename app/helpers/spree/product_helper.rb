@@ -6,11 +6,19 @@ module Spree
         states << state.name
       end
       items = states.map do |state|
-        text = state.to_s.titleize
-
         css_classes = []
         current_index = states.index(:"#{@product.state}")
         state_index = states.index(state)
+
+        text1 = (state_index + 1).to_s + ". Choose your " + state.to_s
+        text2 = (state_index + 1).to_s + "."
+        text3 = (state_index + 1).to_s + ". Choose your style"
+
+        if state.to_s == 'new'
+          text = state.to_s == @product.state ? text3 : text2        
+        else
+          text = state.to_s == @product.state ? text1 : text2 
+        end
 
         if state_index < current_index
           css_classes << 'completed'
