@@ -2,6 +2,7 @@ Spree::ProductsController.class_eval do
   before_action :load_product,       only: [:show, :edit, :update, :event]
   before_action :load_option_types,  only: [:create]
   before_action :load_styles_images, only: [:new, :create]
+  before_action :get_inspired,       only: [:new, :customize]
 
   def show
     @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
@@ -51,7 +52,6 @@ Spree::ProductsController.class_eval do
     end
 
     if @product.next_step
-      @product_image.save
       redirect_to wizard_path(@product, @product.state)
     else
       redirect_to new_product_path
@@ -72,12 +72,25 @@ Spree::ProductsController.class_eval do
 
     if @product.next_step
       if @product.state == "complete"
+        @product.update_attributes(:is_custom => true)
         redirect_to product_path(@product)
       else
         redirect_to wizard_path(@product, @product.state)
       end
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @product = Spree::Product.friendly.find(params[:id])
+    @product.destroy
+
+    flash[:success] = Spree.t('notice_messages.product_deleted')
+
+    respond_with(@product) do |format|
+      format.html { redirect_to new_product_path }
+      format.js  { render_js_for_destroy }
     end
   end
 
@@ -88,6 +101,10 @@ Spree::ProductsController.class_eval do
     else
       {}
     end
+  end
+
+  def get_inspired
+    @inspired = Spree::Product.where(:is_custom => true)
   end
 
   def load_styles_images

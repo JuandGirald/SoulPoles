@@ -17,9 +17,12 @@ Spree.config do |config|
   config.logo = "spree_50.png"
 end
 
+Spree::Config[:track_inventory_levels] = false
+
 Spree::PermittedAttributes.product_attributes << [
-  :pole_size, :basket_size, :grip_left, :grip_right, :strap_color, 
-  :basket_left, :basket_right
+  :pole_size, :basket_size, :grip_left, :grip_right, 
+  :basket_left, :basket_right, :tip_right, :tip_left, 
+  :is_custom
 ]
 
 SpreeEditor::Config.tap do |config|

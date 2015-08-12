@@ -6,4 +6,6 @@
  *= require_tree .
  *= require lightbox-bootstrap
  *= require font-awesome
+ *= require owl.carousel
+ *= require owl.theme
 */

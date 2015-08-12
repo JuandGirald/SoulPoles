@@ -21,6 +21,12 @@
     }
   }
 }
+.custom_product {
+  -ms-transform: rotate(7deg);
+  -webkit-transform: rotate(7deg);
+  transform: rotate(40deg);
+  margin-top: 13em;
+}
 
 // @media (max-width: 768px) {
 //   #product-images {

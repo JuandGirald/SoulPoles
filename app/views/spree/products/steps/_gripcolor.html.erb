@@ -1,5 +1,6 @@
 <% grip_colors = @product.option_types.find_by_name("grip-color").option_values %>
-<div class="col-xs-6">
+<%= hidden_field_tag "disabled", @product.grip_left.nil? && @product.grip_right.nil? ? true : false %>
+<div class="col-xs-4 text-center">
   <h3 class="select-subtitle">right grip color</h3>
 
   <ul class="col-xs-12 grip-colors right-grip list-inline">
@@ -12,7 +13,7 @@
     <%= hidden_field_tag "product[grip_right]", @product.grip_right %>
   </ul>
 </div>
-<div class="col-xs-6">
+<div class="col-xs-4 text-center">
   <h3 class="select-subtitle">left grip color</h3>
 
   <ul class="col-xs-12 grip-colors left-grip list-inline">
@@ -25,3 +26,4 @@
     <%= hidden_field_tag "product[grip_left]", @product.grip_left %>
   </ul>
 </div>
+

@@ -55,6 +55,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'simple_form'
 gem 'lightbox-bootstrap-rails'
 gem 'jquery-waypoints-rails', '~> 2.0.5'
+gem 'owlcarousel-rails'
 
 
 gem 'spree', github: 'spree/spree', branch: '~> 3.1.0.beta'

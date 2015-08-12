@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804081043) do
+ActiveRecord::Schema.define(version: 20150812062510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -631,6 +631,9 @@ ActiveRecord::Schema.define(version: 20150804081043) do
     t.string   "grip_right"
     t.string   "basket_left"
     t.string   "basket_right"
+    t.string   "tip_right"
+    t.string   "tip_left"
+    t.boolean  "is_custom",                                    default: false
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree

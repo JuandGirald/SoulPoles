@@ -9,3 +9,4 @@
 //= require spree/frontend/shopping_cart
 //= require lightbox-bootstrap
 //= require jquery.waypoints
+//= require owl.carousel

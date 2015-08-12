@@ -1,5 +1,9 @@
 <% if defined?(image) && image %>
   <%= image_tag image.attachment.url(:large), :itemprop => "image" %>
 <% else %>
-  <%= large_image(@product, :itemprop => "image") %>
+  <% if @product.is_custom == true %>
+    <%= large_image(@product, :itemprop => "image", :class => "custom_product") %>
+  <% else %>
+    <%= large_image(@product, :itemprop => "image") %>  
+  <% end %>
 <% end %>

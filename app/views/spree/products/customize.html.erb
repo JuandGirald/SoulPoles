@@ -7,16 +7,60 @@
       <%= image_tag "spree/frontend/orange-basket.png", :class => 'overlap left-overlap hidden' %>
       <%= image_tag @product.images.first.attachment.url(:original), :itemprop => "image", :class => "top_image" %>
     </div>
+    <hr>
+    <%= link_to @product, method: :delete, data: { confirm: 'Are you sure?' }, :class => "jumbotron-icon pull-right" do %>
+      <i class="fa fa-trash-o fa-3x"></i>
+    <% end %>
+    <%= link_to '', :class => "jumbotron-icon pull-right" do %>
+      <i class="fa fa-floppy-o fa-3x"></i>
+    <% end %>
   </div>
 </nav>
 <div id="custom-section">
   <%= form_for @product do |f| %>
     <%= render partial: "spree/products/steps/#{@product.state}", locals: { f: f } %>
     <%= hidden_field_tag "product_id", @product.id %>
-    <div class="col-xs-3 pull-right">
+    <div class="col-xs-3 pull-right continue-button">
       <div class="add-to-cart">
-        <%= f.button 'Continue', :class => "btn btn-success" %>
+        <%= f.button 'Continue', :class => "btn btn-success", :id => "continue-button" %>
       </div>
     </div>
   <% end  %>  
+</div>
+<div class="col-xs-12 get-inspired">
+  <% @inspired.each do |product| %>
+    <h2 class="text-center"> Get <%= image_tag "spree/frontend/inspired.png" %></h2> 
+    <div class="owl-carousel">
+      <div class="item">
+        <%= link_to product do %>
+          <%= product_image(product, :alt => "Owl Image", :itemprop => "image", :class => "custom_product") %>
+        <% end %>
+        <hr>
+      </div>
+      <div class="item">
+        <%= link_to product do %>
+          <%= product_image(product, :alt => "Owl Image", :itemprop => "image", :class => "custom_product") %>
+        <% end %>
+        <hr>
+      </div>
+      <div class="item">
+        <%= link_to product do %>
+          <%= product_image(product, :alt => "Owl Image", :itemprop => "image", :class => "custom_product") %>
+        <% end %>
+        <hr>
+      </div>
+      <div class="item">
+        <%= link_to product do %>
+          <%= product_image(product, :alt => "Owl Image", :itemprop => "image", :class => "custom_product") %>
+        <% end %>
+        <hr>
+      </div>
+      <div class="item">
+        <%= link_to product do %>
+          <%= product_image(product, :alt => "Owl Image", :itemprop => "image", :class => "custom_product") %>
+        <% end %>
+        <hr>
+      </div>
+    </div>
+  <% end %>
 </div>
