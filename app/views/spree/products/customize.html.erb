@@ -30,29 +30,4 @@
     </div>
   <% end  %>  
 </div>
-<div class="col-xs-12 get-inspired">
-  <h2 class="text-center"> Get <%= image_tag "spree/frontend/inspired.png" %></h2> 
-  <div class="owl-carousel">
-    <% @inspired.each do |product| %>
-      <div class="item">
-        <%= link_to product do %>
-          <%= product_image(product, :alt => "Owl Image", :itemprop => "image", :class => "custom_product") %>
-        <% end %>
-        <hr>
-      </div>
-      <div class="item">
-        <%= link_to product do %>
-          <%= product_image(product, :alt => "Owl Image", :itemprop => "image", :class => "custom_product") %>
-        <% end %>
-        <hr>
-      </div>
-      <div class="item">
-        <%= link_to product do %>
-          <%= product_image(product, :alt => "Owl Image", :itemprop => "image", :class => "custom_product") %>
-        <% end %>
-        <hr>
-      </div>
-    <% end %>
-  </div>
-  
-</div>
+<%= render 'spree/shared/inspired' %>
