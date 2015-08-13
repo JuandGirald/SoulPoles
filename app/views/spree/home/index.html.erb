@@ -56,9 +56,6 @@
                 <%= link_to product, :class => "captiondetails" do %>
                   <h2><%= product.name[0..22] %></h2>
                 <% end %>
-                <div class="description">
-                  <p><%= raw product.description[0..50] %>...</p>
-                </div>
                 <div class="notesbottom">
                   <div class="price pull-left">
                     <%= product.price  %>
@@ -68,6 +65,7 @@
                       <span class="edd-add-to-cart-label">Add to Cart</span>
                     </a>
                   </div>
+                  <div class="clearfix"></div>
                 </div>
               </div>
             </div>
