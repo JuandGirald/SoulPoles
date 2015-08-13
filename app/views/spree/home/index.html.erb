@@ -57,8 +57,7 @@
                   <h2><%= product.name[0..22] %></h2>
                 <% end %>
                 <div class="description">
-                  <% description = product.description[0..50] %>
-                  <p><%= description.html_safe %>...</p>
+                  <p><%= raw(product.description) %>...</p>
                 </div>
                 <div class="notesbottom">
                   <div class="price pull-left">
