@@ -228,7 +228,7 @@ header article h1 {
 
 .wowitemboxinner .notesarea .notesbottom {
 	font-size:13px;
-		margin-top:0;
+	margin-top:1em;
 	font-weight:400;
 }
 .wowitemboxinner .edd-submit.button {
