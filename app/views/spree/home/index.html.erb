@@ -52,7 +52,24 @@
                   </div>
                 </div>
               </div>
-              
+              <div class="notesarea">
+                <%= link_to product, :class => "captiondetails" do %>
+                  <h2><%= product.name[0..22] %></h2>
+                <% end %>
+                <div class="description">
+                  <p><%= raw product.description[0..50] %>...</p>
+                </div>
+                <div class="notesbottom">
+                  <div class="price pull-left">
+                    <%= product.price  %>
+                  </div>
+                  <div class="cart pull-right">
+                    <a href="#" class="edd-add-to-cart">
+                      <span class="edd-add-to-cart-label">Add to Cart</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
             <!-- .wowitemboxinner-->
           </div>
