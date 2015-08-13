@@ -1,5 +1,10 @@
 // customes styles
 
+body {
+  overflow-x: hidden;
+  position:relative;
+}
+
 #spree-header {
   background-image: url('website_header_banner.png');
   background-size: cover;
@@ -19,9 +24,9 @@
   border-radius: 0 !important;
 }
 
-#content {
-  margin-bottom: 2em;
-}
+// #content {
+//   margin-bottom: 2em;
+// }
 
 .top-margin {
   margin-top: 1.3em;
@@ -52,5 +57,27 @@
 @media (min-width: 1280px) {
   .modal-lg {
     width: 1024px;
+  }
+}
+
+.carousel-inner {
+  height: 40em;
+  .item {
+    background-color:#000;
+    background-repeat:no-repeat;
+    background-size:cover;
+    -moz-background-size:cover;
+    -webkit-background-size:cover;
+    -o-background-size:cover; 
+    height: 40em;
+  }
+  .bg-1 {
+    background-image: url("home-bg1.jpeg");
+  }
+  .bg-2 {
+    background-image: url("home-bg2.jpeg");
+  }
+  .bg-3 {
+    background-image: url("home-bg3.jpeg");
   }
 }

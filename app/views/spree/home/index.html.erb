@@ -1,0 +1,101 @@
+<!-- PAGE CONTENT
+    ================================================== -->
+    
+<!-- TITLE BEGINS -->
+<header class="headerimage full slider">
+  <div id="slider" class="carousel slide" >
+    <ul class="carousel-indicators">
+      <li data-target="#slider" data-slide-to="0" class="active"></li>
+      <li data-target="#slider" data-slide-to="1"></li>
+      <li data-target="#slider" data-slide-to="2"></li>
+    </ul>
+    
+    <div class="carousel-inner">
+      <div class="item active bg-1">
+      </div>
+      <div class="item bg-2">
+      </div>
+      <div class="item bg-3">
+      </div>
+    </div>
+  </div>  
+  <div class="overlay">
+    <article>
+      <h1>SoulPoles</h1>
+    </article>
+  </div>
+</header>
+
+
+<!-- TITLE ENDS -->
+
+<div class="container">
+  <div id="homepagetemplate" class="container padtop10 padbot40">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="clear text-center sectionlatestitems">
+          <h2 class="maintitle">LATEST ITEMS</h2>
+          <div class="separatr">
+            <span>
+            <a href="/products" class="view-all"><i class="fa fa-reorder"></i></a>
+            </span>
+          </div>
+        </div>
+        <div class="wowitemboxlist sectionlatestitems clear">
+          
+          <% @products[0..3].each do |product| %>
+            <div class="wowitembox">
+              <div class="wowitemboxinner">
+                <div class="imagearea">
+                  <%= product_image(product, :itemprop => "image", :class => "attachment-post-thumbnail wp-post-image") %>
+                  <div class="caption">
+                    <div class="blur">
+                    </div>
+                    <div class="caption-text">
+                      <div class="captionbuttons">
+                        <%= link_to product, :class => "captiondetails" do %>
+                          <i class="fa fa-link fa-2x"></i> VIEW DETAILS</a>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="notesarea">
+                  <%= link_to product, :class => "captiondetails" do %>
+                    <h2><%= product.name[0..22] %></h2>
+                  <% end %>
+                  <div class="description">
+                    <p><%= raw product.description[0..50] %>...</p>
+                  </div>
+                  <div class="notesbottom">
+                    <div class="price pull-left">
+                      <%= product.price  %>
+                    </div>
+                    <div class="cart pull-right">
+                      <a href="#" class="edd-add-to-cart">
+                        <span class="edd-add-to-cart-label">Add to Cart</span>
+                      </a>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- .wowitemboxinner-->
+            </div>
+            <!-- .wowitembox-->
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+  <!-- MAIN CONTENT BEGINS -->
+</div>
+
+<!-- ================================================== -->
+<div class="actionbeforefooter text-center">
+  <div class="container">
+    <span><i class="fa fa-star fa-spin"></i> Psst! Like what you see? Enter code <b>WOWKAILO10</b> and get 10% discount for your total shopping cart. This week only! <a target="_blank" class="actionbutton" href="#">Buy Now </a></span>
+  </div>
+</div>
