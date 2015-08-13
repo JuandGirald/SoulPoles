@@ -56,6 +56,9 @@
                 <%= link_to product, :class => "captiondetails" do %>
                   <h2><%= product.name[0..22] %></h2>
                 <% end %>
+                <div class="description">
+                  <p><%= product.description[0..50] %>...</p>
+                </div>
                 <div class="notesbottom">
                   <div class="price pull-left">
                     <%= product.price  %>
