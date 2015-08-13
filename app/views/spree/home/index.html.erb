@@ -37,7 +37,30 @@
       <div class="wowitemboxlist sectionlatestitems clear">
         
         <% @products[0..3].each do |product| %>
-          <%= product.name %>
+          <div class="wowitembox">
+            <div class="wowitemboxinner">
+              <div class="notesarea">
+                <%= link_to product, :class => "captiondetails" do %>
+                  <h2><%= product.name[0..22] %></h2>
+                <% end %>
+                <div class="description">
+                  <p><%= raw product.description[0..50] %>...</p>
+                </div>
+                <div class="notesbottom">
+                  <div class="price pull-left">
+                    <%= product.price  %>
+                  </div>
+                  <div class="cart pull-right">
+                    <a href="#" class="edd-add-to-cart">
+                      <span class="edd-add-to-cart-label">Add to Cart</span>
+                    </a>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+            <!-- .wowitemboxinner-->
+          </div>
           <!-- .wowitembox-->
         <% end %>
       </div>
