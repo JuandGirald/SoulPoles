@@ -290,59 +290,59 @@ span.price,span.cart {
 }
 
 .wowitemboxinner .imagearea:hover .caption {
-		opacity:1;
-		width:100%;
-		height:100%;
+	opacity:1;
+	width:100%;
+	height:100%;
 }
 .wowitemboxinner .imagearea:hover img {
-		opacity:1;
-		transform:scale(1.15,1.15);
-		-webkit-transform:scale(1.15,1.15);
-		-moz-transform:scale(1.15,1.15);
-		-ms-transform:scale(1.15,1.15);
-		-o-transform:scale(1.15,1.15);
-		width:100%;
-		height: auto;
+	opacity:1;
+	transform:scale(1.15,1.15);
+	-webkit-transform:scale(1.15,1.15);
+	-moz-transform:scale(1.15,1.15);
+	-ms-transform:scale(1.15,1.15);
+	-o-transform:scale(1.15,1.15);
+	width:100%;
+	height: auto;
 }
 .wowitemboxinner .imagearea img {
-		margin:0px;
-		padding:0px;
-		float:left;
-		z-index:4;
-		width:100%;
-		height: auto;
+	margin:0px;
+	padding:0px;
+	float:left;
+	z-index:4;
+	width:100%;
+	height: auto;
 }
 .wowitemboxinner .imagearea .caption {
-		cursor:pointer;
-		position:absolute;
-		opacity:0;
-		-webkit-transition:all 0.45s ease-in-out;
-		-moz-transition:all 0.45s ease-in-out;
-		-o-transition:all 0.45s ease-in-out;
-		-ms-transition:all 0.45s ease-in-out;
-		transition:all 0.45s ease-in-out;
-		width:100%;
-		height:100%;
+	cursor:pointer;
+	position:absolute;
+	opacity:0;
+	-webkit-transition:all 0.45s ease-in-out;
+	-moz-transition:all 0.45s ease-in-out;
+	-o-transition:all 0.45s ease-in-out;
+	-ms-transition:all 0.45s ease-in-out;
+	transition:all 0.45s ease-in-out;
+	width:100%;
+	height:100%;
 }
 .wowitemboxinner .imagearea img {
-		-webkit-transition:all 0.25s ease-in-out;
-		-moz-transition:all 0.25s ease-in-out;
-		-o-transition:all 0.25s ease-in-out;
-		-ms-transition:all 0.25s ease-in-out;
-		transition:all 0.25s ease-in-out;
-		width:100%;
-		height:auto;
+	-webkit-transition:all 0.25s ease-in-out;
+	-moz-transition:all 0.25s ease-in-out;
+	-o-transition:all 0.25s ease-in-out;
+	-ms-transition:all 0.25s ease-in-out;
+	transition:all 0.25s ease-in-out;
+	width:100%;
+	height:auto;
 }
 .wowitemboxinner .imagearea .blur {
-		background-color:rgba(0,0,0,0.65);
-		height:100%;
-		width:100%;
-		z-index:5;
-		position:absolute;
+	background-color:rgba(0,0,0,0.65);
+	height:100%;
+	width:100%;
+	z-index:5;
+	position:absolute;
 }
 .wowitemboxinner .imagearea .caption-text h1 {
-		text-transform:uppercase;
-		font-size:24px;
+	text-transform:uppercase;
+	font-size:24px;
 }
 .wowitemboxinner .imagearea .caption-text {
 	z-index:10;
@@ -377,10 +377,10 @@ span.price,span.cart {
 	font-weight:400;
 }
 .wowitemboxinner a.edd-add-to-cart .edd-add-to-cart-label:before {
-	font-style:normal;
-	font-family:FontAwesome;
-	content:"\f217";
-	margin-right:5px;
+	font-style: normal;
+	font-family: FontAwesome;
+	content: "\f217";
+	margin-right :5px;
 }
 .wowitemboxinner a.edd_go_to_checkout:before {
 	font-style:normal;
