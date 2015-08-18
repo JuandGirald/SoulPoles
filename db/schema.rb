@@ -16,23 +16,6 @@ ActiveRecord::Schema.define(version: 20150812102311) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "ad_hoc_option_types", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "option_type_id"
-    t.string   "price_modifier_type"
-    t.boolean  "is_required",         default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "ad_hoc_option_values", force: :cascade do |t|
-    t.integer  "ad_hoc_option_type_id"
-    t.integer  "option_value_id"
-    t.decimal  "price_modifier",        precision: 8, scale: 2, default: 0.0, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "boxes", force: :cascade do |t|
     t.string   "title",              limit: 255
     t.string   "url",                limit: 255
@@ -140,40 +123,6 @@ ActiveRecord::Schema.define(version: 20150812102311) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
-
-  create_table "spree_ad_hoc_option_types", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "option_type_id"
-    t.string   "price_modifier_type"
-    t.boolean  "is_required",         default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "position",            default: 0
-  end
-
-  create_table "spree_ad_hoc_option_values", force: :cascade do |t|
-    t.integer  "ad_hoc_option_type_id"
-    t.integer  "option_value_id"
-    t.decimal  "price_modifier",        precision: 8, scale: 2, default: 0.0, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "position"
-    t.boolean  "selected"
-    t.decimal  "cost_price_modifier",   precision: 8, scale: 2
-  end
-
-  create_table "spree_ad_hoc_option_values_line_items", force: :cascade do |t|
-    t.integer  "line_item_id"
-    t.integer  "ad_hoc_option_value_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "spree_ad_hoc_variant_exclusions", force: :cascade do |t|
-    t.integer  "product_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "spree_addresses", force: :cascade do |t|
     t.string   "firstname"
@@ -303,11 +252,6 @@ ActiveRecord::Schema.define(version: 20150812102311) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "customization_image"
-  end
-
-  create_table "spree_excluded_ad_hoc_option_values", force: :cascade do |t|
-    t.integer "ad_hoc_variant_exclusion_id"
-    t.integer "ad_hoc_option_value_id"
   end
 
   create_table "spree_feedback_reviews", force: :cascade do |t|
