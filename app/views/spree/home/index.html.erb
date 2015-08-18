@@ -20,8 +20,26 @@
   </div>
 </header>
 
-
 <!-- TITLE ENDS -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="instagram_photos col-xs-12">
+      <a href="http://instagram.com/soulpoles" target="_blank" ><h2 class="text-center maintitle">@Soulpoles</h2></a>
+      <% instagram_photos_for_tag('soulpoles')[2..6].each do |soulpole| %>
+        <div class="instagram-image">
+          <a href="<%= soulpole.full %>" data-toggle="lightbox" data-gallery="multiimages">
+            <%= image_tag soulpole.full %>
+          </a>
+        </div>
+      <% end %>
+    </div>  
+  </div>
+</div>
+
+<div class="row get_inspired">
+  <a href="/products/new"><img src=""> </a>
+</div>
 
 <div id="homepagetemplate" class="container padtop10 padbot40">
   <div class="row">

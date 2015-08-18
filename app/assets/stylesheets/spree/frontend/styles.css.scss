@@ -59,25 +59,3 @@ body {
     width: 1024px;
   }
 }
-
-.carousel-inner {
-  height: 40em;
-  .item {
-    background-color: #000;
-    background-repeat: no-repeat;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover; 
-    height: 40em;
-  }
-  .bg-1 {
-    background-image: url("home-bg1.jpeg");
-  }
-  .bg-2 {
-    background-image: url("home-bg2.jpeg");
-  }
-  .bg-3 {
-    background-image: url("home-bg3.jpeg");
-  }
-}

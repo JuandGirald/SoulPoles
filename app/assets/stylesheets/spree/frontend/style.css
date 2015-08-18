@@ -41,7 +41,7 @@ header article h1 {
 	font-family: 'Raleway';
 	background-attachment:fixed;
 	position:relative;
-	height: 40em;
+	height: auto;
 	margin-top: -1.5em;
 	margin-bottom: 2em;
 }
