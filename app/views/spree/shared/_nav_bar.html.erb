@@ -1,8 +1,49 @@
-<nav class="navbar col-md-8" id="top-nav-bar">
+<nav class="navbar col-xs-10" id="top-nav-bar">
   <ul id="nav-bar" class="nav navbar-nav navbar-right" data-hook>
-    <li id="search-bar" data-hook>
-      <%= render :partial => 'spree/shared/search' %>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ski<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">One more separated link</a></li>
+      </ul>
     </li>
+
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hike<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Something else here</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">One more separated link</a></li>
+      </ul>
+    </li>
+
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Custom<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="/products/new">Custome your own pole</a></li>
+        <li><a href="#">Get inspired</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Workshops</a></li>
+    
+    <li id="search-bar" data-hook>
+      <%= form_tag spree.products_path, :method => :get, class: "navbar-form" do %>
+        <div class="form-group">
+          <%= search_field_tag :keywords, params[:keywords], :placeholder => "what are you looking for?", class: "form-control text-center" %>
+        </div>
+        <%= link_to "#", :onclick => "$('#search-bar form').submit()", :class => "search-icon"  do %>
+          <i class="fa fa-search"></i>
+        <% end %>
+      <% end %>
+    </li>
+    
     <li id="link-to-cart" data-hook>
       <noscript>
         <%= link_to Spree.t(:cart), '/cart' %>

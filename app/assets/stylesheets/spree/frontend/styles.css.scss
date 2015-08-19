@@ -6,8 +6,7 @@ body {
 }
 
 #spree-header {
-  background-image: url('website_header_banner.png');
-  background-size: cover;
+  height: 4.5em;
   #header {
     background: none;
     padding: 5px 0;
@@ -16,8 +15,18 @@ body {
     #taxon, input[type='search'] {
       background-color: white;
       opacity: 0.6;
+      width: 25em;
     }
   }
+  .search-icon {
+    position: absolute;
+    top: 1em;
+    left: 1.5em;
+  }
+}
+.dropdown-menu, #spree-header {
+  background-image: url('website_header_banner.png');
+  background-size: cover;
 }
 
 .btn {
