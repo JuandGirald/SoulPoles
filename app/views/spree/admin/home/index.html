@@ -1,0 +1,26 @@
+<% content_for :page_title do %>
+  Home Fields
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:home_field), new_admin_home_path, { :class => "btn-success", :icon => 'add', :id => 'admin_new_product' } %>
+<% end if can?(:create, Spree::Product) %>
+
+<table class="table" id="listing_products">
+  <tbody>
+    <% @cms_fields.each do |product| %>
+        <tr >
+          <td class="sku"><%= product.product_title rescue '' %></td>
+          <td> <%= "Banner images" if  product.is_banner %> </td>
+          <td> <%= "Slider images" if  product.is_slider %> </td>
+          <% if !product.images.empty? %>
+            <td> <%= link_to image_tag(product.images.first.attachment.url(:mini)) %> </td>
+          <% end %>
+          <td class="actions actions-3 text-right" data-hook="admin_products_index_row_actions">
+            <%= link_to "edit", edit_admin_home_path(product), class: 'edit' if can?(:edit, product) %> | 
+            <%= link_to "delete", admin_home_path(product), method: :delete, data: { confirm: 'Are you sure?' }, :class => "jumbotron-icon pull-right" %>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

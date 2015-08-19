@@ -35,6 +35,14 @@ GIT
       spree_core (~> 3.1.0.beta)
 
 GIT
+  remote: git://github.com/spree-contrib/spree_static_content.git
+  revision: 75ca1a069a096fdb25836a868e3ae4002926237e
+  branch: master
+  specs:
+    spree_static_content (3.0.0.beta)
+      spree_core (~> 3.1.0.beta)
+
+GIT
   remote: git://github.com/spree/spree.git
   revision: 
   branch: ~> 3.0.1
@@ -455,6 +463,7 @@ DEPENDENCIES
   spree_paypal_express!
   spree_related_products!
   spree_reviews!
+  spree_static_content!
   spree_variant_options!
   spring
   turbolinks

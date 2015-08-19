@@ -67,4 +67,5 @@ gem 'spree_variant_options', :git => 'git://github.com/JuandGirald/spree_variant
 gem 'spree_editor', :github => 'spree/spree_editor'
 gem 'spree_instagram_photos', git: 'https://github.com/JuandGirald/spree_instagram_photos.git', branch: 'master'
 gem 'spree_paypal_express', github: 'spree-contrib/better_spree_paypal_express', branch: '~> 3.1.0'
+gem 'spree_static_content', github: 'spree-contrib/spree_static_content', branch: 'master'
 # gem 'spree_image_multi_upload', :git => 'git://github.com/huyngvu/spree_image_multi_upload.git'
