@@ -8,7 +8,7 @@
     </ul>
     
     <div class="carousel-inner">
-      <% if @sliders.images %>
+      <% if @sliders %>
         <div class="item active" style="background-image: url('<%= @sliders.images.first.attachment.url(:original) %>')"></div>
         <div class="item" style="background-image: url('<%= @sliders.images[1].attachment.url(:original) %>')"></div>
         <div class="item" style="background-image: url('<%= @sliders.images.last.attachment.url(:original) %>')"></div>
