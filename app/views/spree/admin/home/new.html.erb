@@ -1,0 +1,48 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:home_page) %>
+<% end %>
+
+<%= form_for @cms_field, :via => :post, :url => admin_home_index_path do |f| %>
+  <fieldset data-hook="home_page">
+    <div class="cms_booleans row">
+      <div class="col-xs-3">
+        <%= f.field_container :is_banner do %>
+          <%= f.label :is_banner, raw(Spree.t(:is_banner)) %>
+          <%= f.check_box :is_banner,  {}, 'true', 'false' %>
+          <%= f.error_message_on :is_banner %>
+        <% end %>
+      </div>
+      <div class="col-xs-3">
+        <%= f.field_container :is_slider do %>
+          <%= f.label :is_slider, raw(Spree.t(:is_slider)) %>
+          <%= f.check_box :is_slider,  {}, 'true', 'false' %>
+          <%= f.error_message_on :is_slider %>
+        <% end %>  
+      </div>
+      
+    </div>
+    <%= f.field_container :name, :class => ['form-group'] do %>
+      <%= f.label :product_title, Spree.t(:product_title) %> <span class="required">*</span>
+      <%= f.text_field :product_title, :class => 'form-control title' %>
+    <% end %>
+
+    <%= f.fields_for :images do |ff| %>
+      <div data-hook="file" class="form-group">
+        <%= ff.label :attachment, Spree.t(:filename) %>
+        <%= ff.file_field :attachment %>
+
+
+        <% if ff.object.persisted? %>
+          <%= ff.check_box :_destroy %>
+          <%= ff.label :_destroy, "Destroy" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="form-actions" data-hook="buttons">
+      <%= button Spree.t('actions.save'), 'ok', 'submit', {class: 'btn-success'} %>
+      <span class="or"><%= Spree.t(:or) %></span>
+      <%= button_link_to Spree.t('actions.cancel'), admin_home_index_path, :icon => 'delete' %>
+    </div>
+  </fieldset>
+<% end %>

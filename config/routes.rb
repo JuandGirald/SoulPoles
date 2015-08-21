@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   
   Spree::Core::Engine.routes.prepend do
     match 'wizard/:product_id/:state/', :to => 'products#customize', as: 'wizard', via: :get
+
+    namespace :admin do
+      resources :home
+    end
   end
 
   # Example of regular route:

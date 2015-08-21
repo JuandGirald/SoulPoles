@@ -1,16 +1,19 @@
 <!-- TITLE BEGINS -->
 <header class="headerimage slider">
+  <% css_bg = 'bg-1' unless @sliders.images %>
+  <% css_bg2 = 'bg-2' unless @sliders.images %>
+  <% css_bg3 = 'bg-3' unless @sliders.images %>
   <div id="slider" class="carousel slide" >
     <ul class="carousel-indicators">
-      <li data-target="#slider" data-slide-to="0" class="active"></li>
-      <li data-target="#slider" data-slide-to="1"></li>
-      <li data-target="#slider" data-slide-to="2"></li>
+      <li data-target="#slider <%= css_bg %>" data-slide-to="0" class="active"></li>
+      <li data-target="#slider <%= css_bg2 %>" data-slide-to="1"></li>
+      <li data-target="#slider <%= css_bg3 %>" data-slide-to="2"></li>
     </ul>
     
     <div class="carousel-inner">
-      <div class="item active bg-1"></div>
-      <div class="item bg-2"></div>
-      <div class="item bg-3"></div>
+      <div class="item active" style="background-image: url('<%= @sliders.images.first.attachment.url(:original) %>')"></div>
+      <div class="item" style="background-image: url('<%= @sliders.images[1].attachment.url(:original) %>')"></div>
+      <div class="item" style="background-image: url('<%= @sliders.images.last.attachment.url(:original) %>')"></div>
     </div>
   </div>  
   <div class="overlay">
@@ -38,14 +41,14 @@
 </div>
 
 <div class="row get_inspired">
-  <a href="/products/new"><img src=""> </a>
+  <a href="/products/new"><img src="" style="background-image: url('<%= @banner.images.first.attachment.url(:original) %>')"> </a>
 </div>
 
 <div id="homepagetemplate" class="container padtop10 padbot40">
   <div class="row">
     <div class="col-md-12">
       <div class="clear text-center sectionlatestitems">
-        <h2 class="maintitle">LATEST ITEMS</h2>
+        <h2 class="maintitle"> <%= @sliders.product_title.titleize %></h2>
         <div class="separatr">
           <span>
           <a href="/products" class="view-all"><i class="fa fa-reorder"></i></a>

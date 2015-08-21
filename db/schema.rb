@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812102311) do
+ActiveRecord::Schema.define(version: 20150819140144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ad_hoc_option_types", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "option_type_id"
+    t.string   "price_modifier_type"
+    t.boolean  "is_required",         default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ad_hoc_option_values", force: :cascade do |t|
+    t.integer  "ad_hoc_option_type_id"
+    t.integer  "option_value_id"
+    t.decimal  "price_modifier",        precision: 8, scale: 2, default: 0.0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "boxes", force: :cascade do |t|
     t.string   "title",              limit: 255
@@ -124,6 +141,40 @@ ActiveRecord::Schema.define(version: 20150812102311) do
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
+  create_table "spree_ad_hoc_option_types", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "option_type_id"
+    t.string   "price_modifier_type"
+    t.boolean  "is_required",         default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "position",            default: 0
+  end
+
+  create_table "spree_ad_hoc_option_values", force: :cascade do |t|
+    t.integer  "ad_hoc_option_type_id"
+    t.integer  "option_value_id"
+    t.decimal  "price_modifier",        precision: 8, scale: 2, default: 0.0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "position"
+    t.boolean  "selected"
+    t.decimal  "cost_price_modifier",   precision: 8, scale: 2
+  end
+
+  create_table "spree_ad_hoc_option_values_line_items", force: :cascade do |t|
+    t.integer  "line_item_id"
+    t.integer  "ad_hoc_option_value_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spree_ad_hoc_variant_exclusions", force: :cascade do |t|
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "spree_addresses", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
@@ -198,6 +249,12 @@ ActiveRecord::Schema.define(version: 20150812102311) do
   add_index "spree_calculators", ["calculable_id", "calculable_type"], name: "index_spree_calculators_on_calculable_id_and_calculable_type", using: :btree
   add_index "spree_calculators", ["id", "type"], name: "index_spree_calculators_on_id_and_type", using: :btree
 
+  create_table "spree_cms_fields", force: :cascade do |t|
+    t.string  "product_title"
+    t.boolean "is_banner",     default: false
+    t.boolean "is_slider",     default: false
+  end
+
   create_table "spree_countries", force: :cascade do |t|
     t.string   "iso_name"
     t.string   "iso"
@@ -252,6 +309,11 @@ ActiveRecord::Schema.define(version: 20150812102311) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "customization_image"
+  end
+
+  create_table "spree_excluded_ad_hoc_option_values", force: :cascade do |t|
+    t.integer "ad_hoc_variant_exclusion_id"
+    t.integer "ad_hoc_option_value_id"
   end
 
   create_table "spree_feedback_reviews", force: :cascade do |t|
@@ -431,6 +493,37 @@ ActiveRecord::Schema.define(version: 20150812102311) do
 
   add_index "spree_orders_promotions", ["order_id"], name: "index_spree_orders_promotions_on_order_id", using: :btree
   add_index "spree_orders_promotions", ["promotion_id", "order_id"], name: "index_spree_orders_promotions_on_promotion_id_and_order_id", using: :btree
+
+  create_table "spree_pages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "slug"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "show_in_header",           default: false, null: false
+    t.boolean  "show_in_footer",           default: false, null: false
+    t.string   "foreign_link"
+    t.integer  "position",                 default: 1,     null: false
+    t.boolean  "visible",                  default: true
+    t.string   "meta_keywords"
+    t.string   "meta_description"
+    t.string   "layout"
+    t.boolean  "show_in_sidebar",          default: false, null: false
+    t.string   "meta_title"
+    t.boolean  "render_layout_as_partial", default: false
+  end
+
+  add_index "spree_pages", ["slug"], name: "index_spree_pages_on_slug", using: :btree
+
+  create_table "spree_pages_stores", id: false, force: :cascade do |t|
+    t.integer  "store_id"
+    t.integer  "page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "spree_pages_stores", ["page_id"], name: "index_spree_pages_stores_on_page_id", using: :btree
+  add_index "spree_pages_stores", ["store_id"], name: "index_spree_pages_stores_on_store_id", using: :btree
 
   create_table "spree_payment_capture_events", force: :cascade do |t|
     t.decimal  "amount",     precision: 10, scale: 2, default: 0.0
