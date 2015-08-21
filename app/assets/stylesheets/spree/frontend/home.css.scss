@@ -48,11 +48,13 @@
   margin-bottom: 2em;
   a {
     img {
-      // background-image: url("banner1.png");
       background-position: center center;
       background-repeat: no-repeat;
       width: 100%;
       height: 30em;
+    }
+    .banner {
+      background-image: url("banner1.png");
     }
   }
 }
