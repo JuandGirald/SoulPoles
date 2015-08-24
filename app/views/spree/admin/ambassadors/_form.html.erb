@@ -20,7 +20,12 @@
   <%= f.error_message_on :description %>
 <% end %>
 
-<%= image_tag(ambassador.images.first.attachment.url(:small)) if ambassador.images(0) %>
+<% if ambassador.images %>
+  <% ambassador.images[0..1].each do |image| %>
+    <%= image_tag(image.attachment.url(:small)) %>
+  <% end %>
+<% end %>
+
 <%= f.fields_for :images do |image| %>
   <div data-hook="file" class="form-group">
     <%= image.label :attachment, Spree.t(:images) %>
@@ -33,5 +38,3 @@
     <% end %>
   </div>
 <% end %>
-<%= image_tag(ambassador.images.first.attachment.url(:small)) if ambassador.images(2) %>
-
