@@ -10,3 +10,8 @@
 //= require lightbox-bootstrap
 //= require jquery.waypoints
 //= require owl.carousel
+//= require spree/frontend/Card-circle
+//= require spree/frontend/demo
+//= require spree/frontend/ScrollToPlugin.min
+//= require spree/frontend/trianglify.min
+//= require spree/frontend/TweenMax.min

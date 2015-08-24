@@ -1,0 +1,37 @@
+<%= f.field_container :name, :class => ['form-group'] do %>
+  <%= f.label :name, Spree.t(:name) %> <span class="required">*</span>
+  <%= f.text_field :name, :class => 'form-control title' %>
+  <%= f.error_message_on :name %>
+<% end %>
+
+<%= f.field_container :website, :class => ['form-group'] do %>
+  <%= f.label :website, Spree.t(:website) %>
+  <%= f.text_field :website, :class => 'form-control title' %>
+<% end %>
+
+<%= f.field_container :home_town, :class => ['form-group'] do %>
+  <%= f.label :home_town, Spree.t(:home_town) %>
+  <%= f.text_field :home_town, :class => 'form-control title' %>
+<% end %>
+
+<%= f.field_container :description, :class => ['form-group'] do %>
+  <%= f.label :description, Spree.t(:description) %> <span class="required">*</span>
+  <%= f.text_area :description, :rows => 6, :class => 'form-control title', :id => "ambassador_description_area" %>
+  <%= f.error_message_on :description %>
+<% end %>
+
+<%= image_tag(ambassador.images.first.attachment.url(:small)) if ambassador.images(0) %>
+<%= f.fields_for :images do |image| %>
+  <div data-hook="file" class="form-group">
+    <%= image.label :attachment, Spree.t(:images) %>
+    <%= image.file_field :attachment %>
+
+
+    <% if image.object.persisted? %>
+      <%= image.check_box :_destroy %>
+      <%= image.label :_destroy, "Destroy" %>
+    <% end %>
+  </div>
+<% end %>
+<%= image_tag(ambassador.images.first.attachment.url(:small)) if ambassador.images(2) %>
+

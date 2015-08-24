@@ -17,9 +17,11 @@ Rails.application.routes.draw do
   
   Spree::Core::Engine.routes.prepend do
     match 'wizard/:product_id/:state/', :to => 'products#customize', as: 'wizard', via: :get
+    get 'ambassadors', :to => 'ambassadors#index', as: 'ambassadors'
 
     namespace :admin do
       resources :home
+      resources :ambassadors
     end
   end
 
