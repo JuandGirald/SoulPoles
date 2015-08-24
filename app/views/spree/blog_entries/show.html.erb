@@ -1,0 +1,72 @@
+<% @body_id = 'blog' %>
+
+<% content_for :head do %>
+  <% if !@blog_entry.author.blank? and !@blog_entry.author.google_plus_url.blank? %>
+    <link rel="author" href="<%= @blog_entry.author.google_plus_url %>"/>
+  <% end %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <%= render :partial => 'spree/blog_entries/blog_sidebar' %>
+<% end %>
+
+<div id="blog_entry_container">
+  <div id="blog_entry_entry">
+
+    <!-- PAGE CONTENT
+    ================================================== -->
+    <div class="templateblog">
+
+      <div class="container padtop50 padbot40">
+        <div class="row">
+        
+          <!-- MAIN CONTENT BEGINS -->
+          <div class="col-md-9">
+            <div id="primary" class="content-area">
+              <main id="main" class="site-main" role="main">
+                <div class="wrapindexcerpt">
+                  <div class="contenttext">
+                    <div class="post-content">
+                      <%= image_tag @blog_entry.blog_entry_image.attachment.url(:large), :itemprop => "image", :class => "attachment-post-thumbnail wp-post-image", :height => "555", :width => "370" %>
+                      <h2 class="post-title">
+                      <a style="color:#333;" href="#"><h1><%= @blog_entry.title %></h1></a>
+                      </h2>
+                      <div class="clearfix">
+                      </div>
+                      <div class="wowmetaposts entry-meta">
+                        <span class="wowmetadate"><i class="fa fa-clock-o"></i> <%= l(@blog_entry.published_at, :format => :blog_date) %></span>
+                        <span class="wowmetaauthor"><i class="fa fa-user"></i> <a href="#">Admin</a></span>
+                        <% @blog_entry.tag_counts_on(:categories).each do |category| %>
+                          <span class="wowmetacats"><i class="fa fa-folder-open"></i> &nbsp;<%= link_to category.name, blog_category_path(category.name) %></span>
+                        <% end %>
+                        <span class="wowmetacommentnumber"><i class="fa fa-comments"></i> <a href="#respond">Leave a Comment</a></span>
+                      </div>
+                      <!-- .wowmetaposts -->
+                      <p> <%= raw @blog_entry.body %></p>
+                      <div class="tagcloud">
+                        <% @blog_entry.tag_counts_on(:tags).each do |tag| %>
+                          <%= link_to tag.name, blog_tag_path(tag.name) %>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                  </div>
+                </div>
+              </main>
+            </div>
+          </div>
+          <!-- MAIN CONTENT ENDS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <%= render :partial => 'spree/blog_entries/comments', :locals => {:blog_entry => @blog_entry}  %>
+</div>
+
+
+
+
+      

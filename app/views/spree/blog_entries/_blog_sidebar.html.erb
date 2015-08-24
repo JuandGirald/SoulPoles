@@ -1,0 +1,32 @@
+<!-- SIDEBAR BEGINS -->
+<div class="col-md-12 padtop50">
+  <div id="secondary" class="widget-area" role="complementary">
+    <aside id="search-3" class="widget widget_search">
+    <h1 class="widget-title section-title"><span>Search in Blog</span></h1>
+      <form role="search" method="get" class="search-form" action="#">
+        <input type="search" class="search-field" placeholder="Type and hit enter..." value="" name="s" title=""/>
+        <input type="hidden" name="post_type" value="post"/>
+      </form>
+    </aside>
+    <aside id="recent-posts-3" class="widget widget_recent_entries">
+      <h1 class="widget-title section-title"><span>Latest Posts</span></h1>
+      <ul>
+        <%= render 'spree/blog_entries/recent_blog_entries', recent_blog_entries: Spree::BlogEntry.recent(10) %>
+      </ul>
+    </aside>
+    
+    <aside id="text-2" class="widget widget_text">
+      <h1 class="widget-title section-title"><span>Categories</span></h1>
+      <%= render 'spree/blog_entries/categories_list' %>
+    </aside>
+    <aside class="widget">
+      <h1 class="widget-title section-title"><span>Tags</span></h1>
+      <%= render 'spree/blog_entries/tag_cloud' %>
+    </aside>
+    <aside class="widget">
+      <h1 class="widget-title section-title"><span>Archive</span></h1>
+      <%= render 'spree/blog_entries/news_archive', news_archive: Spree::BlogEntry.organize_blog_entries %>
+    </aside>
+  </div>
+</div>
+<!-- SIDEBAR ENDS -->         

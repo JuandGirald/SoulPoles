@@ -33,7 +33,8 @@ SpreeEditor::Config.tap do |config|
                 product_product_properties_attributes_3_value
                 product_product_properties_attributes_4_value
                 product_product_properties_attributes_5_value
-                product_description page_body event_body'
+                product_description page_body event_body
+                blog_entry_body'
 end
 
 Spree.user_class = "Spree::User"

@@ -1,0 +1,27 @@
+<div class="blog_news_archve_wrapper">
+  <ul id="news-archive">
+    <% news_archive.to_a.reverse.each do |year, months_with_entries| %>
+      <% d = DateTime.parse("1/#{year}") %>
+
+      <li>
+        <div class="archive-year">
+          <%= link_to(year, blog_archive_path(:year => d.year)) %>
+        </div>
+
+        <ul class="months">
+          <% months_with_entries.each do |month, entries| %>
+            <% d = DateTime.parse("#{year}, #{month}") %>
+
+            <li class="col-sm-9 month">
+              <%= link_to I18n.l(d, :format => "%B"), blog_archive_path(:year => d.year, :month => d.month) %>
+            </li>
+            <li class="col-sm-3 total-posts">
+              <%= entries.count %>
+            </li>
+
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>

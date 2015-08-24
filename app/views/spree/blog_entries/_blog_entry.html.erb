@@ -1,0 +1,26 @@
+<div class="wowitembox">
+  <div class="wowitemboxinner">
+    <div class="imagearea">
+      <%= image_tag blog_entry.blog_entry_image.attachment.url(:large), :itemprop => "image", :class => "ttachment-post-thumbnail wp-post-image", :height => "555", :width => "370" %>
+      <div class="caption">
+        <div class="blur">
+        </div>
+        <div class="caption-text">
+          <div class="captionbuttons">
+            <%= link_to blog_entry_permalink(blog_entry), :class => "captiondetails" do %>
+              <i class="fa fa-link"> more... </i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="notesarea">
+      <a href="#">
+      <h2><%= link_to blog_entry.title, blog_entry_permalink(blog_entry) %></h2>
+      </a>
+      <span class="description"><%= blog_entry.entry_summary %></span>
+    </div>
+  </div>
+  <!-- .wowitemboxinner-->
+</div>
+              

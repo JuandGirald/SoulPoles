@@ -13,3 +13,4 @@
 //= require spree/backend/spree_variant_options
 //= require spree/backend/spree_instagram_photos
 //= require spree/backend/spree_paypal_express
+//= require spree/backend/spree_blogging_spree
