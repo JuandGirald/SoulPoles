@@ -1,0 +1,14 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:ambassador_page) %>
+<% end %>
+
+<%= form_for @ambassador, :via => :post, :url => admin_ambassadors_path do |f| %>
+  <fieldset data-hook="ambassador_page">
+    <%= render :partial => 'form', :locals => { f: f, ambassador: @ambassador } %>
+    <div class="form-actions" data-hook="buttons">
+      <%= button Spree.t('actions.save'), 'ok', 'submit', {class: 'btn-success'} %>
+      <span class="or"><%= Spree.t(:or) %></span>
+      <%= button_link_to Spree.t('actions.cancel'), admin_ambassadors_path, :icon => 'delete' %>
+    </div>
+  </fieldset>
+<% end %>
