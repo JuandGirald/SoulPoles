@@ -49,7 +49,7 @@ body.body--hidden .content--related {
 	transition: opacity 300ms ease-in-out;
 }
 
-a {
+/*a {
 	text-decoration: none;
 	color: #de6551;
 	outline: none;
@@ -78,7 +78,7 @@ a:focus {
 
 .demo-4 .codrops-header h1 span {
 	color: #4f4c4c;
-}
+}*/
 
 .hidden {
 	position: absolute;
