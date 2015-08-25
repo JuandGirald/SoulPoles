@@ -20,7 +20,7 @@
   <%= f.error_message_on :description %>
 <% end %>
 
-<% unless ambassador.images.empty? %>
+<% if ambassador.images.count >= 1 %>
   <% ambassador.images[0..1].each do |image| %>
     <%= image_tag(image.attachment.url(:small)) %>
   <% end %>
