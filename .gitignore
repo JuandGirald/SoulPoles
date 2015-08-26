@@ -11,6 +11,10 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+# Ignore local images
+/public/spree/products
+/public/spree/option_values
+
 /config/database.yml
 /config/local_env.yml
 # Ignore all logfiles and tempfiles.
