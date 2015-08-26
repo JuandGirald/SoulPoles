@@ -95,9 +95,12 @@
 
 #product-variants {
   .variant-option-values {
+    li {
+      text-align: center;
+      width: 6.5em;
+    }
     a {
       font-size: 0.7em;
-      width: 7em;
       img {
         width: 100%;
       }
