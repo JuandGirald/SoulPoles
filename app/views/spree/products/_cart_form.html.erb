@@ -1,5 +1,5 @@
 <% if params[:action] == 'edit' %>
-  <%= form_for @product do |f| %>
+  <%= form_for :product, :url => product_update_cart_path do |f| %>
     <%= hidden_field_tag "line_item_id", @line_item.id %>
     <div id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
       <% if @product.variants_and_option_values(current_currency).any? %>

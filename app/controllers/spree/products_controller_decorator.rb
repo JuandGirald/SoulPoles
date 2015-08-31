@@ -94,6 +94,25 @@ Spree::ProductsController.class_eval do
     end
   end
 
+  # Update products in the shopping cart
+  def update_cart
+    variant  = Spree::Variant.find(params[:variant_id])
+    line_item = Spree::LineItem.find(params[:line_item_id])
+
+    if params[:engraving].nil? or params[:engraving].empty?
+      engraving = line_item.variant.engraving
+    else
+      engraving = params[:engraving]
+    end
+
+    line_item.update(:variant_id => variant.id)
+    line_item.variant.update(:engraving => engraving)
+    
+    respond_to do |format|
+      format.html { redirect_to cart_path }
+    end
+  end
+
   private
   def product_params
     if params[:product]
