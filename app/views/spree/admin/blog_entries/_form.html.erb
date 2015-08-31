@@ -66,7 +66,7 @@
 
       <%= form.fields_for :images do |images_field| %>
         <%= form.field_container :images_attachment do %>
-          <% unless @blog_entry.images.new_record? %>
+          <% unless @blog_entry.new_record? %>
             <div class="images_thumbnail">
               <%= link_to image_tag(@blog_entry.images.attachment.url(:mini)), @blog_entry.images.attachment.url(:large) %>
               <%= @blog_entry.images.attachment_file_name %><br/>
