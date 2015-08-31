@@ -62,22 +62,22 @@
     <% end %>
 
     <%= field_set_tag Spree.t(:blog_entry_featured_image) do %>
-      <% @blog_entry.build_images unless @blog_entry.images %>
+      <% @blog_entry.build_blog_entry_image unless @blog_entry.blog_entry_image %>
 
-      <%= form.fields_for :images do |images_field| %>
-        <%= form.field_container :images_attachment do %>
-          <% unless @blog_entry.new_record? %>
-            <div class="images_thumbnail">
-              <%= link_to image_tag(@blog_entry.images.attachment.url(:mini)), @blog_entry.images.attachment.url(:large) %>
-              <%= @blog_entry.images.attachment_file_name %><br/>
+      <%= form.fields_for :blog_entry_image do |blog_entry_image_field| %>
+        <%= form.field_container :blog_entry_image_attachment do %>
+          <% unless @blog_entry.blog_entry_image.new_record? %>
+            <div class="blog_entry_image_thumbnail">
+              <%= link_to image_tag(@blog_entry.blog_entry_image.attachment.url(:mini)), @blog_entry.blog_entry_image.attachment.url(:large) %>
+              <%= @blog_entry.blog_entry_image.attachment_file_name %><br/>
             </div>
           <% end %>
-          <%= images_field.file_field :attachment %>
+          <%= blog_entry_image_field.file_field :attachment %>
         <% end %>
 
-        <%= form.field_container :images_alt do %>
-          <%= images_field.label :alt, Spree.t(:alt_text) %><br/>
-          <%= images_field.text_field :alt %>
+        <%= form.field_container :blog_entry_image_alt do %>
+          <%= blog_entry_image_field.label :alt, Spree.t(:alt_text) %><br/>
+          <%= blog_entry_image_field.text_field :alt %>
         <% end %>
       <% end %>
     <% end %>
