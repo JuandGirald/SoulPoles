@@ -1,0 +1,50 @@
+<% if @page.layout.present? and @page.render_layout_as_partial? %>
+  <%= render partial: @page.layout %>
+<% else %>
+  <% content_for :head do -%>
+    <%- if @page.meta_title.present? -%>
+      <meta name="title" content="<%= @page.meta_title %>">
+    <%- else -%>
+      <meta name="title" content="<%= @page.title %>">
+    <%- end -%>
+    <meta name="keywords" content="<%= @page.meta_keywords %>">
+    <meta name="description" content="<%= @page.meta_description %>">
+  <% end -%>
+
+  <% content_for :sidebar do %>
+    <% if (defined?(@products) && @products) && (defined?(@taxon) && @taxon) %>
+      <%= render partial: 'spree/shared/filters' %>
+    <% elsif defined?(@taxonomies) && @taxonomies %>
+      <%= render partial: 'spree/shared/taxonomies' %>
+    <% end %>
+  <% end %>
+
+  <header class="headerimage slider pages">
+    <div id="slider" class="carousel slider" >
+      <ul class="carousel-indicators">
+        <li data-target="#slider" data-slide-to="0" class="active"></li>
+        <li data-target="#slider%>" data-slide-to="1"></li>
+        <li data-target="#slider" data-slide-to="2"></li>
+      </ul>
+      
+      <div class="carousel-inner">
+        <% if @sliders %>
+          <div class="item active" style="background-image: url('<%= @sliders.images.first.attachment.url(:original) %>')"></div>
+          <div class="item" style="background-image: url('<%= @sliders.images[1].attachment.url(:original) %>')"></div>
+          <div class="item" style="background-image: url('<%= @sliders.images.last.attachment.url(:original) %>')"></div>
+        <% else %>
+          <div class="item active bg-1"></div>
+          <div class="item bg-2" ></div>
+          <div class="item bg-3"></div>
+        <% end %>
+      </div>
+    </div> 
+  </header>
+
+  <div class="container">
+    <h1 class="text-center text-capitalize"><%= @page.title %></h1>
+    <div id="page_content" class="col-xs-10 col-sm-offset-1">
+      <%= raw @page.body %>
+    </div>
+  </div>
+<% end %>
