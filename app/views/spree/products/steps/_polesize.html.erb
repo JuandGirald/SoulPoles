@@ -1,19 +1,22 @@
 <% option_type = @product.option_types.find_by_name("pole-size").option_values %>
-<h3 class="select-subtitle">select pole size </h3>
-<div class="col-xs-12">
-  <a class="select-subtitle" href="#" type="button" data-toggle="modal" data-target="#myModal">What do I need? </a>
-  <%= render 'spree/shared/size_modal' %>
-</div>
-<div class="col-xs-6">
-  <ul class="col-xs-12 size-values  list-inline">
-    <% option_type.each do |value| %>
-      <% size = value.presentation.split('/') %>
-      <li class="square-boxes" value="<%= value.presentation %>">
-          <span class="first-size"> <%= size.first  %> </span> 
-          <span class="last-size"> <%= size.last  %> </span>
-      </li>
-    <% end %>
-  </ul>
-  <%= hidden_field_tag "product[pole_size]", @product.pole_size %>
-  <%= hidden_field_tag "disabled", @product.pole_size.nil? ? true : false %>
+<div class="col-xs-8"> 
+  <h3 class="select-subtitle">select pole size </h3>
+  <div class="col-xs-12">
+    <a class="select-subtitle" href="#" type="button" data-toggle="modal" data-target="#myModal">What do I need? </a>
+    <%= render 'spree/shared/size_modal' %>
+  </div>
+  <div class="col-xs-10">
+    <ul class="col-xs-12 size-values  list-inline">
+      <% option_type.each do |value| %>
+        <% size = value.presentation.split('/') %>
+        <li class="square-boxes" value="<%= value.presentation %>">
+            <span class="first-size"> <%= size.first  %> </span> 
+            <span class="last-size"> <%= size.last  %> </span>
+        </li>
+      <% end %>
+    </ul>
+    <%= hidden_field_tag "product[pole_size]", @product.pole_size %>
+    <%= hidden_field_tag "disabled", @product.pole_size.nil? ? true : false %>
+  </div>
+
 </div>
