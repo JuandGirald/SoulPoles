@@ -6,7 +6,7 @@ Spree::ProductsController.class_eval do
 
   def index
     @searcher = build_searcher(params.merge(include_images: true))
-    @products = @searcher.retrieve_products
+    @products = @searcher.retrieve_products.where(is_custom: false)
     @taxonomies = Spree::Taxonomy.includes(root: :children)
   end
 
