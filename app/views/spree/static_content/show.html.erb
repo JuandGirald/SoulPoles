@@ -28,10 +28,11 @@
       </ul>
       
       <div class="carousel-inner">
-        <% if @sliders %>
-          <div class="item active" style="background-image: url('<%= @sliders.images.first.attachment.url(:original) %>')"></div>
-          <div class="item" style="background-image: url('<%= @sliders.images[1].attachment.url(:original) %>')"></div>
-          <div class="item" style="background-image: url('<%= @sliders.images.last.attachment.url(:original) %>')"></div>
+        <% css = "indigo" %>
+        <% if @page.images %>
+          <div class="item active" style="background-image: url('<%= @page.images.first.attachment.url(:original) %>')"></div>
+          <div class="item bg-2" style="background-image: <%= @page.images[1] ? url('@page.images[1].attachment.url(:original)') : css  %>"></div>
+          <div class="item bg-3" style="background-image: <%= @page.images[2] ? url('@page.images[2].attachment.url(:original)') : css  %>"></div>
         <% else %>
           <div class="item active bg-1"></div>
           <div class="item bg-2" ></div>

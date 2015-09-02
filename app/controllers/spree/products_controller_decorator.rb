@@ -4,6 +4,12 @@ Spree::ProductsController.class_eval do
   before_action :load_styles_images, only: [:new, :create]
   before_action :get_inspired,       only: [:new, :customize]
 
+  def index
+    @searcher = build_searcher(params.merge(include_images: true))
+    @products = @searcher.retrieve_products
+    @taxonomies = Spree::Taxonomy.includes(root: :children)
+  end
+
   def show
     @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
     @product_properties = @product.product_properties.includes(:property)

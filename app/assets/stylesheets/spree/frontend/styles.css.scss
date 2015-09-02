@@ -57,6 +57,12 @@ body {
   background-size: cover;
 }
 
+li.dropdown:hover {
+  .dropdown-menu {
+    display: block;
+  }
+}
+
 .btn {
   border-radius: 0 !important;
 }
