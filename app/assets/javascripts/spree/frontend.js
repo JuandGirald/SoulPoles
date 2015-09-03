@@ -7,6 +7,7 @@
 //= require spree/frontend/products
 //= require spree/frontend/wizard_product
 //= require spree/frontend/shopping_cart
+//= require spree/frontend/one_page_checkout
 //= require lightbox-bootstrap
 //= require jquery.waypoints
 //= require owl.carousel
