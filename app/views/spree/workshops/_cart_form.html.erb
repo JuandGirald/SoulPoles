@@ -1,0 +1,46 @@
+<%= form_for :order, :url => populate_orders_path do |f| %>
+    <div id="inside-workshop-cart-form" data-hook="inside_workshop_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+      <%= hidden_field_tag "variant_id", @workshop.master.id %>
+      
+      <div data-hook="new_workshop_date" class="col-md-4">
+        <%= f.field_container :date, :class => ['form-group'] do %>
+          <%= f.label :date, Spree.t(:date) %>
+          <%= f.text_field :date, :class => 'datepicker form-control', :data =>{provide:"datepicker"}%>
+        <% end %>
+      </div>
+
+      <div data-hook="workshop_price" >
+        <% if @workshop.price_in(current_currency) and !@workshop.price.nil? %>
+              <div data-hook="product_price" >
+                <div id="product-price">
+                  <% if @workshop.master.can_supply? %>
+                    <link itemprop="availability" href="https://schema.org/InStock" />
+                  <% elsif @workshop.variants.empty? %>
+                    <br />
+                    <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+                  <% end %>
+                </div>
+
+                <div class="add-to-cart">
+                  <br/>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <%= number_field_tag :quantity, 1, :class => 'title form-control', :min => 1%>
+                      <%= button_tag :class => 'btn btn-success', :id => 'add-to-cart-button', :type => :submit do %>
+                        <%= Spree.t(:add_to_cart) %>
+                      <% end %>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            <% else %>
+              <div id="product-price">
+                <br>
+                <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
+              </div>
+            <% end %>
+          </div>
+        
+      </div>
+    </div>
+  <% end %>

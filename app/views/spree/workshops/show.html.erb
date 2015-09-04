@@ -25,7 +25,7 @@
               <%= @workshop.price %>
             </h3>
             <div class="product-description" itemprop="description" data-hook="description">
-              <%= @workshop.description rescue Spree.t(:product_has_no_description) %>
+              <%= raw(@workshop.description) rescue Spree.t(:product_has_no_description) %>
             </div>
             
             <hr>
@@ -34,9 +34,44 @@
         </div>
       </div>
       <div id="cart-form" data-hook="cart_form">
-        <%= render :partial => 'spree/products/cart_form' %>
+        <%= render :partial => 'cart_form' %>
       </div>
       
     </div>
+
+    <div class="col-xs-10 col-xs-offset-1 product-tabs">
+
+            <!-- Nav tabs -->
+      <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation" class="btn-wood active"><a href="#specs" aria-controls="specs" role="tab" data-toggle="tab"> Specs</a></li>
+        <li class="btn-wood" role="presentation"><a href="#reviews_tab" aria-controls="reviews_tab" role="tab" data-toggle="tab"> Reviews </a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active in" id="specs">
+          <div data-hook="product_properties">
+            <%= render :partial => 'spree/products/properties' %>
+          </div>  
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="reviews_tab">
+          <div data-hook="product_reviews">
+            <div class="yotpo yotpo-main-widget"
+              data-product-id= <%= @workshop.id %> 
+              data-name= <%= @workshop.name %>
+              data-url="The url to the page where the product is url escaped"
+              data-image-url= "The product image url. Url escaped"
+              data-description="Product description">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </div>
+
+<script type="text/javascript">
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/Ha4qpItPu8AQe0dX1FhXeDCBq69guZSAhd227Ur6/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script>

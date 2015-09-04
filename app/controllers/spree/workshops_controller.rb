@@ -6,6 +6,7 @@ class Spree::WorkshopsController < Spree::StoreController
   end
 
   def show
-    @workshop = Spree::Product.find(params[:id])
+    @workshop = Spree::Product.friendly.find(params[:id])
+    @product_properties = @workshop.product_properties.includes(:property)
   end
 end
