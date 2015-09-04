@@ -1,0 +1,50 @@
+<header id="workshops" class="headerimage">
+  <div class="item bg-1"></div>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="workshops col-xs-10 col-sm-offset-1">
+      <p>
+        Our ski poles, hiking poles, trekking poles, nordic walking poles and walking stick are unique in every aspect and we want you to personalize your poles to your abilities and style. Start by getting the correct ski pole sizing from our ski pole size chart and pick one of our work shop options. Come in to our Park City, Utah soul shop for a private or drop in wrokshop or have our mobile shop come to you. 
+      </p>
+    </div>
+
+    <% if @workshops.any? %>
+      <div class="col-xs-10 wowitemboxlist sectionlatestitems clear">
+        <% @workshops.each do |product| %>
+          <div class="wowitembox">
+            <div id="product_<%= product.id %>" class="wowitemboxinner product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product" >
+              <div class="imagearea">
+                <%= product_image(product, :itemprop => "image", :class => "attachment-post-thumbnail wp-post-image") %>
+                <div class="caption">
+                  <div class="blur"></div>
+                  <div class="caption-text">
+                    <div class="captionbuttons">
+                      <%= link_to product, :class => "captiondetails" do %>
+                        <i class="fa fa-link fa-2x"> VIEW DETAILS </i> 
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="notesarea">
+                <%= link_to product, :class => "captiondetails" do %>
+                  <h2><%= product.name[0..22] %></h2>
+                <% end %>
+                
+                <div class="notesbottom">
+                  <div class="price pull-left">
+                    <%= product.price  %>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+            <!-- .wowitemboxinner-->
+          </div>
+          <!-- .wowitembox-->
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
