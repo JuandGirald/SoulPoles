@@ -1,5 +1,5 @@
 class Spree::WorkshopsController < Spree::StoreController
-  layout '/spree/layouts/ambassador'
+  layout '/spree/layouts/home'
   
   def index
     @workshops = Spree::Product.where(is_workshop: true)

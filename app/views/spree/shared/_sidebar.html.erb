@@ -1,3 +1,9 @@
-<aside id="sidebar" class="col-sm-2 col-md-2" data-hook>
-  <%= yield :sidebar %>
-</aside>
+<% if params[:controller] == "spree/blog_entries" %>
+  <aside id="sidebar" class="col-sm-2 col-md-3" data-hook>
+    <%= yield :sidebar %>
+  </aside>
+<% else %>
+  <aside id="sidebar" class="col-sm-2 col-md-2" data-hook>
+    <%= yield :sidebar %>
+  </aside>
+<% end %>
