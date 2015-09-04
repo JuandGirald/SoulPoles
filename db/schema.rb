@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825055842) do
+ActiveRecord::Schema.define(version: 20150904151033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -700,6 +700,7 @@ ActiveRecord::Schema.define(version: 20150825055842) do
     t.string   "tip_left"
     t.boolean  "is_custom",                                    default: false
     t.string   "custom_engraving"
+    t.boolean  "is_workshop"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
@@ -1307,6 +1308,7 @@ ActiveRecord::Schema.define(version: 20150825055842) do
     t.datetime "updated_at"
     t.integer  "stock_items_count",                          default: 0,     null: false
     t.text     "engraving"
+    t.integer  "workshop_id"
   end
 
   add_index "spree_variants", ["deleted_at"], name: "index_spree_variants_on_deleted_at", using: :btree
@@ -1324,6 +1326,19 @@ ActiveRecord::Schema.define(version: 20150825055842) do
     t.datetime "updated_at"
     t.integer  "watchable_id"
     t.string   "watchable_type"
+  end
+
+  create_table "spree_workshops", force: :cascade do |t|
+    t.string   "name",             default: "", null: false
+    t.text     "description"
+    t.datetime "date"
+    t.datetime "deleted_at"
+    t.string   "slug"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.integer  "count_on_hand",    default: 0,  null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "spree_zone_members", force: :cascade do |t|

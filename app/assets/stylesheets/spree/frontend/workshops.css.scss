@@ -1,0 +1,13 @@
+// workshops styles
+#workshops{
+  .item {
+    height: 294px !important;
+  }
+  .bg-1 {
+    background-image: url('workshop.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position-y: -26em;
+  }
+}

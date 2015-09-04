@@ -1,0 +1,42 @@
+<div class="container" id="individual-products">
+  <div class="container">
+    <div data-hook="product_show" class="row" itemscope itemtype="https://schema.org/Product">
+      <div class="col-xs-8" data-hook="product_left_part">
+        <div data-hook="product_left_part_wrap">
+          <div id="product-images" data-hook="product_images">
+              <div id="main-image" data-hook>
+                <div class="panel-body text-center">
+                  <%= render :partial => 'image' %>
+                </div>
+              </div>
+            <div class="text-center" id="thumbnails" data-hook>
+              <%= render :partial => 'thumbnails' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-4" data-hook="product_right_part">
+        <div data-hook="product_right_part_wrap">
+          <div id="product-description" data-hook="product_description">
+            <h1 class="product-title" itemprop="name"><%= @workshop.name.upcase %></h1>
+            <hr>
+            <h3 class="price selling" itemprop="price">
+              <%= @workshop.price %>
+            </h3>
+            <div class="product-description" itemprop="description" data-hook="description">
+              <%= @workshop.description rescue Spree.t(:product_has_no_description) %>
+            </div>
+            
+            <hr>
+
+          </div>
+        </div>
+      </div>
+      <div id="cart-form" data-hook="cart_form">
+        <%= render :partial => 'spree/products/cart_form' %>
+      </div>
+      
+    </div>
+  </div>
+</div>
