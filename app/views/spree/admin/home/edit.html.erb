@@ -29,6 +29,12 @@
       <% end %>
     </div>
 
+    <% if @cms_field.images.count >= 2 %>
+      <% @cms_field.images[0..2].each do |image| %>
+        <%= image_tag(image.attachment.url(:small)) %>
+      <% end %>
+    <% end %>
+    
     <%= f.fields_for :images do |ff| %>
       <div data-hook="file" class="form-group">
         <%= ff.label :attachment, Spree.t(:filename) %>

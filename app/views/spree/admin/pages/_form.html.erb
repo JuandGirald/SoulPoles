@@ -87,6 +87,12 @@
         <% end %>
       </div>
 
+      <% if resource.images.count >= 2 %>
+        <% resource.images[0..1].each do |image| %>
+          <%= image_tag(image.attachment.url(:small)) %>
+        <% end %>
+      <% end %>
+    
       <%= f.fields_for :images do |ff| %>
         <div data-hook="file" class="form-group">
           <%= ff.label :attachment, Spree.t(:filename) %>
