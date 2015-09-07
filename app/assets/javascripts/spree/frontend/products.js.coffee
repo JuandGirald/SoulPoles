@@ -1,5 +1,5 @@
 Spree.ready ($) ->
-  $("img[alt='Torched Soul'].top_image").removeClass("hidden")
+  $("img[alt='torched soul'].top_image").removeClass("hidden")
 
   $('.learn-more').click (event) ->
     event.preventDefault()
