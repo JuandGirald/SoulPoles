@@ -30,7 +30,7 @@
       <div class="carousel-inner">
         <% bg2 = "home-bg2.jpeg" %>
         <% bg3 = "https://soulpoles-production.s3.amazonaws.com/spree/images/155/original/home-bg1.jpeg?1439993753" %>
-        <% if @page.images %>
+        <% if !@page.images.empty? %>
           <div class="item active" style="background-image: url('<%= @page.images.first.attachment.url(:original) %>')"></div>
           <div class="item" style="background-image: url('<%= @page.images[1] ? @page.images[1].attachment.url(:original) : bg2%>')"></div>
           <div class="item" style="background-image: url('<%= @page.images[2] ? @page.images[2].attachment.url(:original) : bg3 %>')"></div>
