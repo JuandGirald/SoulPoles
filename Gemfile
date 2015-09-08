@@ -59,7 +59,7 @@ gem 'owlcarousel-rails'
 gem 'acts-as-taggable-on', '~> 3.4'
 
 
-gem 'spree', github: 'spree/spree', branch: '~> 3.0.1'
+gem 'spree', github: 'spree/spree', branch: '~> 3.1.0.beta'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '~> 3.1.0'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '~> 3.1.0'
 gem 'spree_related_products', github: 'spree-contrib/spree_related_products', branch: 'master'
@@ -70,4 +70,5 @@ gem 'spree_instagram_photos', git: 'https://github.com/JuandGirald/spree_instagr
 gem 'spree_paypal_express', github: 'spree-contrib/better_spree_paypal_express', branch: '~> 3.1.0'
 gem 'spree_static_content', github: 'spree-contrib/spree_static_content', branch: 'master'
 gem 'spree_blogging_spree', :git => 'git://github.com/JuandGirald/spree-blogging-spree.git', branch: 'master'
+gem 'spree_one_page_checkout', :git => 'git://github.com/JuandGirald/spree_one_page_checkout', branch: 'master'
 # gem 'spree_image_multi_upload', :git => 'git://github.com/huyngvu/spree_image_multi_upload.git'

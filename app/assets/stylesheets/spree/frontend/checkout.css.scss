@@ -1,0 +1,26 @@
+// Checkout Styles
+.steps-title {
+  background-color: #efefef;
+  padding-left: 20px;
+  height: 34px;
+  margin-bottom: 1em;
+  h3 {
+    line-height: 33px;
+    font-weight: 700;
+  }
+  span {
+    -moz-border-radius: 16px;
+    -webkit-border-radius: 16px;
+    border-radius: 16px;
+    height: 34px;
+    overflow: hidden;
+    width: 34px;
+    font-size: 18px;
+    margin: 0 10px 0 -30px;
+    background-color: #222;
+    color: #fff;
+    float: left;
+    line-height: 1.8;
+    text-align: center;
+  }
+}
