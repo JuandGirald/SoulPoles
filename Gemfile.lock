@@ -8,6 +8,14 @@ GIT
       spree_core (~> 3.1.0.beta)
 
 GIT
+  remote: git://github.com/JuandGirald/spree_one_page_checkout
+  revision: 35bf58a112384d7eb99356582febdab50138b0da
+  branch: master
+  specs:
+    spree_one_page_checkout (3.0.0)
+      spree_core (~> 3.1.0.beta)
+
+GIT
   remote: git://github.com/JuandGirald/spree_variant_options.git
   revision: 82ada55d97e993e093898f38f2eaf008311c925f
   branch: master
@@ -54,7 +62,7 @@ GIT
 GIT
   remote: git://github.com/spree/spree.git
   revision: 
-  branch: ~> 3.0.1
+  branch: ~> 3.1.0.beta
   specs:
     spree (3.1.0.beta)
       spree_api (= 3.1.0.beta)
@@ -473,6 +481,7 @@ DEPENDENCIES
   spree_editor!
   spree_gateway!
   spree_instagram_photos!
+  spree_one_page_checkout!
   spree_paypal_express!
   spree_related_products!
   spree_reviews!
