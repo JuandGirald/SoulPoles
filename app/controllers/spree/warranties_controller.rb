@@ -8,7 +8,7 @@ class Spree::WarrantiesController < Spree::StoreController
     @warranty = Spree::Warranty.new(permitted_params)
     # @return_authorization.being_submitted_by_client = true
     @warranty.order = @order
-    @warranty.status = 'waiting'
+    @warranty.status = 'pending'
     
     if @warranty.save
       # Spree::ReturnAuthorizationMailer.contains_exchange(@return_authorization).deliver if @return_authorization.contains_an_exchange?
