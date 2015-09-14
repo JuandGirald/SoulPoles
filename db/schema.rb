@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904151033) do
+ActiveRecord::Schema.define(version: 20150911180140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1327,6 +1327,21 @@ ActiveRecord::Schema.define(version: 20150904151033) do
     t.integer  "watchable_id"
     t.string   "watchable_type"
   end
+
+  create_table "spree_warranties", force: :cascade do |t|
+    t.integer  "order_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "reason"
+    t.string   "comments"
+    t.datetime "submitted_at"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "returned_products_ids"
+  end
+
+  add_index "spree_warranties", ["order_id"], name: "index_spree_warranties_on_order_id", using: :btree
 
   create_table "spree_workshops", force: :cascade do |t|
     t.string   "name",             default: "", null: false

@@ -1,0 +1,53 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:edit_warranty) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:back_to_warranty_requests), spree.admin_warranties_path, icon: 'arrow-left', class: 'btn-primary' %>
+<% end %>
+
+<%= form_for @warranty, :url => url_for(:controller => 'warranties', :action => 'update') do |f| %>
+  <div class="warranty-form col-xs-6 col-xs-offset-3">
+    <%= f.field_container :first_name, :class => ['form-group'] do %>
+      <%= f.label :first_name, Spree.t(:first_name) %> <span class="required">*</span>
+      <%= f.text_field :first_name, :class => 'form-control title', :readonly => true %>
+      <%= f.error_message_on :first_name %>
+    <% end %>
+
+    <%= f.field_container :last_name, :class => ['form-group'] do %>
+      <%= f.label :last_name, Spree.t(:last_name) %> <span class="required">*</span>
+      <%= f.text_field :last_name, :class => 'form-control title', :readonly => true %>
+      <%= f.error_message_on :last_name %>
+    <% end %>
+
+    <%= f.field_container :returned_products_ids, class: ['form-group'] do %>
+      <%= f.label :returned_products_ids, Spree.t(:choose_a_product_to_warranty) %>  <span class="required">*</span>
+      <%= f.select :returned_products_ids, @warranty.order.products.collect {|r| [r.name, r.id]}, {include_blank: true}, :class => 'form-control', :readonly => true %>
+      <%= f.error_message_on :returned_products_ids %>
+    <% end %>
+
+    <%= f.field_container :reason, class: ['form-group'] do %>
+      <%= f.label :reason, Spree.t(:reason) %>  <span class="required">*</span>
+      <%= f.select :reason, Spree::ReturnAuthorizationReason.all.collect{|r| r.name}, {include_blank: true}, :class => 'form-control', :readonly => true %>
+      <%= f.error_message_on :reason %>
+    <% end %>
+
+    <%= f.field_container :comments, :class => ['form-group'] do %>
+      <%= f.label :comments, Spree.t(:comments) %> 
+      <%= f.text_area :comments, :class => 'form-control title', placeholder: "what happened? please give us a brief description of why you are sending your poles in (ex. My poles have a crack, my poles broke, etc…)", rows: 4 , :readonly => true%>
+    <% end %>
+
+    <%= f.field_container :status, class: ['form-group'] do %>
+      <%= f.label :status, Spree.t(:status) %>  <span class="required">*</span>
+      <%= f.select :status, ['waiting', 'approve', 'rejected', 'shipped'], {}, :class => 'form-control' %>
+      <%= f.error_message_on :status %>
+    <% end %>
+
+    <div class="form-actions" data-hook="buttons">
+      <%= button Spree.t('actions.save'), 'ok', 'submit', {class: 'btn-success'} %>
+      <span class="or"><%= Spree.t(:or) %></span>
+      <%= button_link_to Spree.t('actions.cancel'), admin_warranties_path, :icon => 'delete' %>
+    </div>
+
+  </div>
+<% end %>

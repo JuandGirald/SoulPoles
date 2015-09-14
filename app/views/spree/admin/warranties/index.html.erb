@@ -1,0 +1,29 @@
+<% content_for :page_title do %>
+  Warranty Requests
+<% end %>
+
+<table class="table" id="listing_products">
+  <thead>
+    <tr>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td>Order Number</td>
+      <td>Request Status</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @warranties.each do |warranty| %>
+      <tr >
+        <td> <%= warranty.first_name %> </td>
+        <td> <%= warranty.last_name %> </td>
+        <td> <%= warranty.order.number %> </td>
+        <td> <%= warranty.status %> </td>
+        <td class="actions actions-3 text-right" data-hook="admin_products_index_row_actions">
+          <%= link_to "show", admin_warranty_path(warranty), class: 'edit' if can?(:show, warranty) %> | 
+          <%= link_to "edit", edit_admin_warranty_path(warranty), class: 'edit' if can?(:edit, warranty) %> | 
+          <%= link_to "delete", admin_warranty_path(warranty), method: :delete, data: { confirm: 'Are you sure?' }, :class => "jumbotron-icon" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

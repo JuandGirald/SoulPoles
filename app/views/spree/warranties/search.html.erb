@@ -1,0 +1,35 @@
+<div class="new-return-request row">
+
+  <div class="col-xs-12 return-request-form-container">
+    <%= form_for(:order, :url => spree.warranties_search_path, class: "six columns") do |f| %>
+
+      <fieldset data-hook="new_return_request_form_fields" class="no-border-top">
+        <legend align="center"><%= Spree.t(:search_your_order) %></legend>
+
+        <div class="warranty-form col-xs-6 col-xs-offset-3">
+          <%= f.field_container :order_number, :class => ['form-group'] do %>
+            <%= f.label :order_number, Spree.t(:order_number) %> <span class="required">*</span>
+            <%= f.text_field :order_number, :class => 'form-control title' %>
+            <%= f.error_message_on :order_number %>
+          <% end %>
+
+          <%= f.field_container :email_address, :class => ['form-group'] do %>
+            <%= f.label :email_address, Spree.t(:email_address) %> <span class="required">*</span>
+            <%= f.text_field :email_address, :class => 'form-control title' %>
+            <%= f.error_message_on :email_address %>
+          <% end %>
+          
+          <div class="form-buttons filter-actions actions" data-hook="buttons">
+            <%= f.button "Search" %>
+          </div>
+          
+          <% if @errors.any? %>
+            <% @errors.each do |e| %>
+              <p class="error"><%= e %></p>
+            <% end %>
+          <% end %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
