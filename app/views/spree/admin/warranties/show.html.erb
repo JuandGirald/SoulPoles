@@ -43,7 +43,12 @@
                 <%= @warranty.last_name %>
               </td>
             </tr>
-
+            <tr>
+              <td data-hook='admin_order_tab_total_title'>
+                <strong><%= Spree.t(:order_number) %>:</strong>
+              </td>
+              <td><%= @warranty.order.number %></td>
+            </tr>
             <tr>
               <td data-hook='admin_order_tab_total_title'>
                 <strong><%= Spree.t(:reason) %>:</strong>
