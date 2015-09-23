@@ -25,7 +25,19 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :home
       resources :ambassadors
+      resources :warranties
     end
+
+    match 'warranties/search', to: 'warranties#search', via: [:get, :post]
+    
+    resources :orders do
+      resources :warranties, only: [:new, :create, :labels], shallow: true do
+        member do
+          get 'labels'
+        end
+      end
+    end
+
   end
 
   # Example of regular route:

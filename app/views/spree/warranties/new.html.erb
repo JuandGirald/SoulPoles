@@ -1,0 +1,13 @@
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @warranty } %>
+<h1 class="text-center"><%= Spree.t(:warranty_form) %></h1>
+<%= form_for @warranty, :url => spree.order_warranties_path(@order), method: :post do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+
+    <div class="form-actions" data-hook="buttons">
+      <%= button Spree.t(:continue), 'arrow-right', :class => 'form-control' %>
+      <span class="or"><%= Spree.t(:or) %></span>
+      <%= button_link_to Spree.t('actions.cancel'), warranties_search_url, :icon => 'delete' %>
+    </div>
+  </fieldset>
+<% end %>
