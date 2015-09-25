@@ -90,6 +90,14 @@ img.top_image {
   }
 }
 
+.overlap {
+  position: absolute;
+  width: 100%;
+}
+.right-overlap {
+  margin-top: 156px;
+}
+
 .select-subtitle {
   color: #616161;
   margin-bottom: 0;
@@ -118,8 +126,8 @@ img.top_image {
   margin-bottom: 3em;
   li {
     border: none !important;
-    width: 6em !important;
-    height: 6em !important;
+    width: 4em !important;
+    height: 4em !important;
     img {
       width: 100%;
     }

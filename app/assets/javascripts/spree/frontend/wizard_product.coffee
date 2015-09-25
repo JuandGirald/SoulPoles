@@ -11,8 +11,10 @@ Spree.ready ($) ->
       3
     ]
 
-  pole_size   = $("input[name='product[pole_size]']").val()
-  size_values = $('.size-values li')
+  pole_size         = $("input[name='product[pole_size]']").val()
+  size_values       = $('.size-values li')
+  images_grip_right = $('img.right-overlap')
+  images_grip_left  = $('img.left-overlap')
 
   size_values.each ->
     if $(this).attr('value') == pole_size
@@ -29,6 +31,28 @@ Spree.ready ($) ->
     $(this).siblings("li.select").removeClass("select")
     $(this).addClass('select')
     value = $(this).attr('value')
+
+    if $(this).hasClass("left")
+      images_grip_left.each ->
+        if $(this).hasClass("selected")
+          $(this).removeClass("selected")
+          $(this).addClass("hidden")
+
+        if $(this).hasClass(value)
+          $(this).removeClass("hidden")
+          $(this).addClass("selected")
+        return
+
+    if $(this).hasClass("right")
+      images_grip_right.each ->
+        if $(this).hasClass("selected")
+          $(this).removeClass("selected")
+          $(this).addClass("hidden")
+
+        if $(this).hasClass(value)
+          $(this).removeClass("hidden")
+          $(this).addClass("selected")
+        return
     
     $(this).siblings("input[name='product[grip_right]']").val(value)
     $(this).siblings("input[name='product[grip_left]']").val(value)

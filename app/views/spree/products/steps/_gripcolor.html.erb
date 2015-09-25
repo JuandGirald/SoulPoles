@@ -1,19 +1,6 @@
 <% grip_colors = @product.option_types.find_by_name("grip-color").option_values %>
 <%= hidden_field_tag "disabled", @product.grip_left.nil? && @product.grip_right.nil? ? true : false %>
 <div class="col-xs-4 text-center">
-  <h3 class="select-subtitle">right grip color</h3>
-
-  <ul class="col-xs-12 grip-colors right-grip list-inline">
-    <% grip_colors.each do |value| %>
-      <% classes = ["option-value"] %>
-      <% css_classes = 'select' if value.presentation == @product.grip_right %>
-      <% classes << 'with-image' if value.has_image? %>
-      <li value="<%= value.presentation %>" class="square-boxes <%= css_classes %>" style="background-color:<%= value.presentation %>"><%= link_to content_tag(:span), "#", :title => value.presentation, :class => classes.join(" ") %></li>
-    <% end %>
-    <%= hidden_field_tag "product[grip_right]", @product.grip_right %>
-  </ul>
-</div>
-<div class="col-xs-4 text-center">
   <h3 class="select-subtitle">left grip color</h3>
 
   <ul class="col-xs-12 grip-colors left-grip list-inline">
@@ -21,9 +8,23 @@
       <% classes = ["option-value"] %>
       <% css_classes = 'select' if value.presentation == @product.grip_left %>
       <% classes << 'with-image' if value.has_image? %>
-      <li value="<%= value.presentation %>" class="square-boxes <%= css_classes %>" style="background-color:<%= value.presentation %>"><%= link_to content_tag(:span), "#", :title => value.presentation, :class => classes.join(" ") %></li>
+      <li value="<%= value.presentation %>" class="square-boxes <%= css_classes %> left" style="background-color:<%= value.presentation %>"><%= link_to content_tag(:span), "#", :title => value.presentation, :class => classes.join(" ") %></li>
     <% end %>
     <%= hidden_field_tag "product[grip_left]", @product.grip_left %>
   </ul>
 </div>
+<div class="col-xs-4 text-center">
+  <h3 class="select-subtitle">right grip color</h3>
+
+  <ul class="col-xs-12 grip-colors right-grip list-inline">
+    <% grip_colors.each do |value| %>
+      <% classes = ["option-value"] %>
+      <% css_classes = 'select' if value.presentation == @product.grip_right %>
+      <% classes << 'with-image' if value.has_image? %>
+      <li value="<%= value.presentation %>" class="square-boxes <%= css_classes %> right" style="background-color:<%= value.presentation %>"><%= link_to content_tag(:span), "#", :title => value.presentation, :class => classes.join(" ") %></li>
+    <% end %>
+    <%= hidden_field_tag "product[grip_right]", @product.grip_right %>
+  </ul>
+</div>
+
 

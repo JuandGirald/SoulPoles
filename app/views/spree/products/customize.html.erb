@@ -1,3 +1,7 @@
+<% grip_colors = @product.option_types.find_by_name("grip-color").option_values %>
+<% left_grips = Spree::Product.find_by_slug("left-grip") %>
+<% right_grips = Spree::Product.find_by_slug("right-grip") %>
+
 <div class="steps-nav col-sm-12" data-hook="product_progress">
   <div class="col-xs-1 sp-logo"><%= image_tag "spree/frontend/sp-logo.png" %></div>
   <div class="col-xs-11"><%= product_progress %></div> 
@@ -6,8 +10,18 @@
 <nav class="navbar navbar2 ">
   <div class="container">
     <div class="text-center">
-      <%= image_tag "spree/frontend/green-basket.png", :class => 'overlap righ-overlap hidden'%>
-      <%= image_tag "spree/frontend/orange-basket.png", :class => 'overlap left-overlap hidden' %>
+      <% left_grips.images.each do |image| %>
+        <% css_classes = 'hidden' if image.alt != @product.grip_left %>
+        <%= image_tag image.attachment(:original), :class => "overlap #{image.alt} #{css_classes} left-overlap"%>  
+      <% end %>
+      <% right_grips.images.each do |image| %>
+        <% css_classes = 'hidden' if image.alt != @product.grip_right %>
+        <%= image_tag image.attachment(:original), :class => "overlap #{image.alt} #{css_classes} right-overlap"%>  
+      <% end %>
+
+      
+      
+      
       <%= image_tag @product.images.first.attachment.url(:original), :itemprop => "image", :class => "top_image" %>
     </div>
     <hr>
