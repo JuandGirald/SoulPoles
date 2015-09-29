@@ -1,13 +1,16 @@
 <footer class="footer" >
   <div class="container">
-    <div class="left-side col-xs-4">
+    <div id="footer-right" class="left-side col-xs-4">
       <h4>Spread the soul</h4>
       <p>Sign up for our newletter or refer a friend and get a free custom engraving ($20.00 value)</p>
       <div class="newletter">
-        <input type="text" class="form-control" placeholder="enter email address">
-        <a href="#" type="submit"><i class="fa fa-angle-right fa-3" ></i></a>  
-      </div> 
-      
+        <% @subscriber ||= Spree::Chimpy::Subscriber.new %>
+        <%= form_for @subscriber do |f| %>
+          <%= f.email_field :email, placeholder: "enter email address", :class => "form-control" %>
+          <a href="#" type="submit" name="subscriber" value="Create Subscriber"><i class="fa fa-angle-right fa-3" ></i></a>  
+          <%= f.submit %>
+        <% end %>
+      </div>
     </div>
 
     <div class="right-side col-xs-8">
