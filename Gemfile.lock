@@ -8,6 +8,15 @@ GIT
       spree_core (~> 3.1.0.beta)
 
 GIT
+  remote: git://github.com/JuandGirald/spree_chimpy.git
+  revision: 0ba758ccc955b2c40a177db4bd20a5900f95273e
+  branch: master
+  specs:
+    spree_chimpy (2.0.0.alpha)
+      mailchimp-api (~> 2.0.5)
+      spree_core (~> 3.1.beta)
+
+GIT
   remote: git://github.com/JuandGirald/spree_one_page_checkout
   revision: 35bf58a112384d7eb99356582febdab50138b0da
   branch: master
@@ -265,6 +274,7 @@ GEM
     devise-encryptable (0.1.2)
       devise (>= 2.1.0)
     erubis (2.7.0)
+    excon (0.45.4)
     execjs (2.6.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -309,6 +319,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mailchimp-api (2.0.6)
+      excon (>= 0.16.0)
+      json (>= 1.7.7)
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.8.0)
@@ -478,6 +491,7 @@ DEPENDENCIES
   spree!
   spree_auth_devise!
   spree_blogging_spree!
+  spree_chimpy!
   spree_editor!
   spree_gateway!
   spree_instagram_photos!

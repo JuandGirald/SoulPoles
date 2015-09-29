@@ -58,6 +58,9 @@ gem 'jquery-waypoints-rails', '~> 2.0.5'
 gem 'owlcarousel-rails'
 gem 'acts-as-taggable-on', '~> 3.4'
 
+#Mail provider
+gem 'spree_chimpy', github: 'JuandGirald/spree_chimpy', branch: 'master'
+
 
 gem 'spree', github: 'spree/spree', branch: '~> 3.1.0.beta'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '~> 3.1.0'
