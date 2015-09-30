@@ -16,3 +16,4 @@
 //= require spree/frontend/ScrollToPlugin.min
 //= require spree/frontend/trianglify.min
 //= require spree/frontend/TweenMax.min
+//= require spree/frontend/variant_options_script

@@ -2,6 +2,9 @@
 
 <div class="modal-dialog modal-lg">
   <div class="modal-content">
+    <div class="modal-header" style="border:none;">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
     <div class="modal-body">
       <div class="col-xs-12 edit_product_modal">
         <div id="individual-products">
@@ -44,7 +47,7 @@
                     <hr>
 
                     <div id="cart-form" data-hook="cart_form">
-                      <%= render :partial => 'cart_form' %>
+                      <%= render :partial => 'cart_form', :variant => @variant %>
                     </div>
 
                   </div>

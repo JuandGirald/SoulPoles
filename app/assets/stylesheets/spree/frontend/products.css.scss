@@ -113,10 +113,14 @@
   }
 }
 
-.option-value.selected, .option-value.in-stock:hover {
+.option-value.selected, .option-value.selected_default, .option-value.in-stock:hover {
   background-color: rgba(92, 184, 92, 0.57) !important;
   border-color: #FFFFFF !important;
 }
+.option-value.selected_default {
+  color: white;
+}
+
 #spree-header {
   #logo {
     padding-top: 20px;
