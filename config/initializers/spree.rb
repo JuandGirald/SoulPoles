@@ -22,7 +22,7 @@ Spree::Config[:track_inventory_levels] = false
 Spree::PermittedAttributes.product_attributes << [
   :pole_size, :basket_size, :grip_left, :grip_right, 
   :basket_left, :basket_right, :tip_right, :tip_left, 
-  :is_custom, :custom_engraving, :is_workshop
+  :is_custom, :custom_engraving, :is_workshop, :engraving_font
 ]
 
 SpreeEditor::Config.tap do |config|

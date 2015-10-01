@@ -57,7 +57,7 @@
       <% end %>
 
       
-      <% if @product.has_engraving? %>
+      <% if @product.has_engraving? && @product.custom_engraving.nil? %>
         <div class="engraving text-left">
           <a href="#" class="engraving-link">Add custom engraving (+$19.00) </a>
           <div class="custom-engraving">

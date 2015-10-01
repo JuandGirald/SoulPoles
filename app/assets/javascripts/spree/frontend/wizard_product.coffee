@@ -11,10 +11,16 @@ Spree.ready ($) ->
       3
     ]
 
-  pole_size         = $("input[name='product[pole_size]']").val()
-  size_values       = $('.size-values li')
-  images_grip_right = $('img.right-overlap')
-  images_grip_left  = $('img.left-overlap')
+  pole_size            = $("input[name='product[pole_size]']").val()
+  size_values          = $('.size-values li')
+  images_grip_right    = $('img.right-overlap.grip')
+  images_grip_left     = $('img.left-overlap.grip')
+  images_basket_left   = $('img.left-overlap.basket')
+  images_basket_right  = $('img.right-overlap.basket')
+  images_tip_left      = $('img.left-overlap.tip')
+  images_tip_right     = $('img.right-overlap.tip')
+  engraving_live       = $('.engraving_live')
+  custom_engraving     = $('#product_custom_engraving')
 
   size_values.each ->
     if $(this).attr('value') == pole_size
@@ -23,6 +29,21 @@ Spree.ready ($) ->
 
   if $("input[name=disabled]").val() == "true"
     $("#continue-button").attr("disabled", true)
+
+  $('.font-radios input').click (event) ->
+    font = $(this).val()
+    $('h1#engraving-live').css("font-family", font)
+
+  $('.has-engraving-radios input').click (event) ->
+    if $(this).val() == "true"
+      engraving_live.fadeIn()
+      custom_engraving.removeAttr('disabled')
+    else if $(this).val() == "false"
+      engraving_live.fadeOut()
+      custom_engraving.attr('disabled', 'true')
+      custom_engraving.val('')
+      $('#engraving-live').val('')
+    return
 
   $('.grip-colors.left-grip li, .basket.left-basket li, .grip-colors.right-grip li, 
     .basket.right-basket li, .basket-size li, .left-tip li, .right-tip li').click (event) ->
@@ -45,6 +66,51 @@ Spree.ready ($) ->
 
     if $(this).hasClass("right")
       images_grip_right.each ->
+        if $(this).hasClass("selected")
+          $(this).removeClass("selected")
+          $(this).addClass("hidden")
+
+        if $(this).hasClass(value)
+          $(this).removeClass("hidden")
+          $(this).addClass("selected")
+        return
+
+    if $(this).hasClass("left_tip")
+      images_tip_left.each ->
+        if $(this).hasClass("selected")
+          $(this).removeClass("selected")
+          $(this).addClass("hidden")
+
+        if $(this).hasClass(value)
+          $(this).removeClass("hidden")
+          $(this).addClass("selected")
+        return
+
+    if $(this).hasClass("right_tip")
+      images_tip_right.each ->
+        if $(this).hasClass("selected")
+          $(this).removeClass("selected")
+          $(this).addClass("hidden")
+
+        if $(this).hasClass(value)
+          $(this).removeClass("hidden")
+          $(this).addClass("selected")
+        return
+
+
+    if $(this).hasClass("left_basket")
+      images_basket_left.each ->
+        if $(this).hasClass("selected")
+          $(this).removeClass("selected")
+          $(this).addClass("hidden")
+
+        if $(this).hasClass(value)
+          $(this).removeClass("hidden")
+          $(this).addClass("selected")
+        return
+
+    if $(this).hasClass("right_basket")
+      images_basket_right.each ->
         if $(this).hasClass("selected")
           $(this).removeClass("selected")
           $(this).addClass("hidden")

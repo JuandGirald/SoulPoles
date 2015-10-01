@@ -44,6 +44,32 @@ $coolgrey: #656565;
       }
     }
   }
+  .right-overlap {
+    margin-top: 128px !important;
+  }
+  #engraving-section {
+    .engraving-input {
+      height: 20em !important;
+      input[type="text"] {
+        top: 1em !important;
+        left: 17em !important;
+      }
+    }
+  }
+  #engraving-section ~ .continue-button {
+    top: 28em !important;
+  }
+  .font-radios {
+    top: 5.5em !important;
+    left: 15em !important;
+    li {
+      margin-bottom: 1.1em !important;
+    }
+  }
+  .has-engraving-radios {
+    left: 43em !important;
+    top: 5.5em !important;
+  } 
 }
 
 @media (max-width: 1000px) {
@@ -59,6 +85,33 @@ $coolgrey: #656565;
         font-size: 1em
       }
     }
+  }
+  .right-overlap {
+    margin-top: 98px !important;
+  }
+  #engraving-section {
+    .engraving-input {
+      height: 15em !important;
+      input[type="text"] {
+        top: 0.8em !important;
+        left: 13em !important;
+      }
+    }
+  }
+  #engraving-section ~ .continue-button {
+    top: 23.5em !important;
+  } 
+  .font-radios {
+    top: 4em !important;
+    left: 11.5em !important;
+    li {
+      margin-bottom: 0.5em !important;
+    }
+  }
+  .has-engraving-radios {
+    top: 7em !important;
+    left: 42em !important;
+    font-size: 11px;
   }
 }
 
@@ -96,6 +149,13 @@ img.top_image {
 }
 .right-overlap {
   margin-top: 156px;
+}
+.overlap.basket {
+  margin-left: 1px;
+  z-index: 2;
+}
+.overlap.tip {
+  z-index: 1;
 }
 
 .select-subtitle {
@@ -244,16 +304,47 @@ img.top_image {
 #engraving-section {
   margin-top: 6em;
   .engraving-input {
+    background-image: url('engraving-bg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
     margin-top: 2em;
+    height: 24em;
+    input[type="text"] {
+      width: 40.5%;
+      position: absolute;
+      top: 1.65em;
+      left: 20.7em;
+    }
   }
   .engraving_live {
     background-image: url('engraving_pole_bg.jpg');
     background-size: contain;
     height: 6em;
   }
+  .font-radios {
+    width: 2em;
+    position: absolute;
+    list-style: none;
+    top: 7em;
+    left: 18em;
+    li {
+      margin-bottom: 1.6em;
+    }
+  }
+  .has-engraving-radios {
+    width: 13em;
+    position: absolute;
+    list-style: none;
+    top: 7em;
+    left: 53em;
+    li {
+      margin-bottom: 1em;
+    }
+  }
 }
 #engraving-section ~ .continue-button {
-  margin-top: -65px;
+  position: absolute;
+  top: 32em;
 } 
 
 

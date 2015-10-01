@@ -10,7 +10,7 @@
         <% classes = ["option-value"] %>
         <% css_classes = 'select' if value.presentation == @product.basket_left %>
         <% classes << 'with-image' if value.has_image? %>
-        <li value="<%= value.presentation %>" class="square-boxes <%= css_classes %>" style="background-color:<%= value.presentation %>"><%= link_to content_tag(:span), "#", :title => value.presentation, :class => classes.join(" ") %></li>
+        <li value="<%= value.presentation %>" class="square-boxes <%= css_classes %> left_basket" style="background-color:<%= value.presentation %>"><%= link_to content_tag(:span), "#", :title => value.presentation, :class => classes.join(" ") %></li>
       <% end %>
       <%= hidden_field_tag "product[basket_left]", @product.basket_left %>
     </ul>
@@ -24,7 +24,7 @@
         <% classes = ["option-value"] %>
         <% css_classes = 'select' if value.presentation == @product.basket_right %>
         <% classes << 'with-image' if value.has_image? %>
-        <li value="<%= value.presentation %>" class="square-boxes <%= css_classes %>" style="background-color:<%= value.presentation %>"><%= link_to content_tag(:span), "#", :title => value.presentation, :class => classes.join(" ") %></li>
+        <li value="<%= value.presentation %>" class="square-boxes <%= css_classes %> right_basket" style="background-color:<%= value.presentation %>"><%= link_to content_tag(:span), "#", :title => value.presentation, :class => classes.join(" ") %></li>
       <% end %>
       <%= hidden_field_tag "product[basket_right]", @product.basket_right %>
     </ul>
