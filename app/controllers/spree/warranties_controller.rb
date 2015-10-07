@@ -2,6 +2,7 @@ class Spree::WarrantiesController < Spree::StoreController
   before_filter :ensure_order_has_shipped_units, only: [:new, :create]
   before_filter :check_authorization, only: [:new, :create, :labels]
   before_filter :load_order, only: [:new, :create]
+  before_filter :load_warranty_product, only: [:create]
 
   
   def create
@@ -9,12 +10,13 @@ class Spree::WarrantiesController < Spree::StoreController
     # @return_authorization.being_submitted_by_client = true
     @warranty.order = @order
     @warranty.status = 'pending'
+    current_order.empty!
     
     if @warranty.save
       # Spree::ReturnAuthorizationMailer.contains_exchange(@return_authorization).deliver if @return_authorization.contains_an_exchange?
 
       # @message = SpreeReturnRequests::Config[:return_request_success_text]
-      render :success
+      redirect_to product_path(@warranty_product)
       return
     end
 
@@ -48,6 +50,10 @@ class Spree::WarrantiesController < Spree::StoreController
   private
     def load_order
       @order = Spree::Order.find_by_number(params[:order_id])
+    end
+
+    def load_warranty_product
+      @warranty_product = Spree::Product.friendly.find('warranty-ship')    
     end
 
     def ensure_order_has_shipped_units
