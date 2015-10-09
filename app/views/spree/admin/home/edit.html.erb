@@ -29,23 +29,34 @@
       <% end %>
     </div>
 
-    <% if @cms_field.images.count >= 2 %>
-      <% @cms_field.images[0..2].each do |image| %>
-        <%= image_tag(image.attachment.url(:small)) %>
-      <% end %>
-    <% end %>
-    
-    <%= f.fields_for :images do |ff| %>
-      <div data-hook="file" class="form-group">
-        <%= ff.label :attachment, Spree.t(:filename) %>
-        <%= ff.file_field :attachment %>
-
-        <% if ff.object.persisted? %>
-          <%= ff.check_box :_destroy %>
-          <%= ff.label :_destroy, "Destroy" %>
-        <% end %>
-      </div>
-    <% end %>
+    <div data-hook="file" class="form-group">
+      <table class="table" id="listing_products">
+        <thead>
+          <tr>
+            <td>Images</td>
+            <td>Url</td>
+            <td>File</td>
+            <td>Destroy</td>
+          </tr>
+        </thead>
+        <tbody>
+          <%= f.fields_for :images do |ff| %>
+            <tr >
+              <td> <%= image_tag(ff.object.attachment.url(:small)) %> </td>
+              <td><%= ff.text_area :alt, :rows => 1, :class => 'form-control' %> </td>
+              <td><%= ff.label :attachment, Spree.t(:filename) %>
+                  <%= ff.file_field :attachment %></td>
+              <td> 
+                <% if ff.object.persisted? %>
+                  <%= ff.check_box :_destroy %>
+                  <%= ff.label :_destroy, "Destroy" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
     <div class="form-actions" data-hook="buttons">
       <%= button Spree.t('actions.update'), 'refresh', 'submit', {class: 'btn-success'} %>

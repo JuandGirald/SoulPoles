@@ -30,7 +30,8 @@
       <div data-hook="file" class="form-group">
         <%= ff.label :attachment, Spree.t(:filename) %>
         <%= ff.file_field :attachment %>
-
+        <%= ff.label :alt, Spree.t(:url_text) %>
+        <%= ff.text_area :alt, :rows => 1, :class => 'form-control' %>
 
         <% if ff.object.persisted? %>
           <%= ff.check_box :_destroy %>

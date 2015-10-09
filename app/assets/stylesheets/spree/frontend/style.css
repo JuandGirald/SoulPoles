@@ -379,7 +379,7 @@ span.price,span.cart {
 .wowitemboxinner a.edd-add-to-cart .edd-add-to-cart-label:before {
 	font-style: normal;
 	font-family: FontAwesome;
-	content: "\f217";
+	content: "\f06e";
 	margin-right :5px;
 }
 .wowitemboxinner a.edd_go_to_checkout:before {

@@ -13,7 +13,9 @@ module Spree
 
       def edit
         @cms_field = Spree::CmsField.find_by_id(params[:id])
-        @images = @cms_field.images.new
+        if !@cms_field.is_banner && @cms_field.images.count < 3
+          @images = @cms_field.images.new
+        end
       end
 
       def create
@@ -31,7 +33,7 @@ module Spree
       end
 
       def destroy
-        @cms_field = Spree::CmsField.friendly.find(params[:id])
+        @cms_field = Spree::CmsField.find_by_id(params[:id])
         @cms_field.destroy
 
         flash[:success] = Spree.t('notice_messages.home_fields_deleted')
@@ -45,7 +47,7 @@ module Spree
       private
         def cms_field_params
           params.require(:cms_field).permit(:product_title, :is_banner, :is_slider,
-                                            :images_attributes => [:id, :attachment, :_destroy])
+                                            :images_attributes => [:id, :attachment, :alt, :_destroy])
         end
     end
   end

@@ -56,18 +56,13 @@
 
             <!-- Nav tabs -->
       <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation" class="btn-wood active"><a href="#specs" aria-controls="specs" role="tab" data-toggle="tab"> Specs</a></li>
-        <li class="btn-wood" role="presentation"><a href="#reviews_tab" aria-controls="reviews_tab" role="tab" data-toggle="tab"> Reviews </a></li>
+        <li class="btn-wood active" role="presentation"><a href="#reviews_tab" aria-controls="reviews_tab" role="tab" data-toggle="tab"> Reviews </a></li>
+        <li role="presentation" class="btn-wood"><a href="#specs" aria-controls="specs" role="tab" data-toggle="tab"> Specs</a></li>
       </ul>
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade active in" id="specs">
-          <div data-hook="product_properties">
-            <%= render :partial => 'properties' %>
-          </div>  
-        </div>
-        <div role="tabpanel" class="tab-pane fade" id="reviews_tab">
+        <div role="tabpanel" class="tab-pane fade active in" id="reviews_tab">
           <div data-hook="product_reviews">
             <div class="yotpo yotpo-main-widget"
               data-product-id= <%= @product.id %> 
@@ -78,23 +73,13 @@
             </div>
           </div>
         </div>
+        <div role="tabpanel" class="tab-pane fade" id="specs">
+          <div data-hook="product_properties">
+            <%= render :partial => 'properties' %>
+          </div>  
+        </div>
       </div>
 
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="instagram_photos">
-          <!-- <a href="http://instagram.com/soulpoles" target="_blank" ><h2 class="text-center maintitle">@Soulpoles</h2></a> -->
-          <% instagram_photos_for_tag('soulpoles')[2..6].each do |soulpole| %>
-            <div class="instagram-image">
-              <a href="<%= soulpole.full %>" data-toggle="lightbox" data-gallery="multiimages">
-                <%= image_tag soulpole.full %>
-              </a>
-            </div>
-          <% end %>
-        </div>  
-      </div>
     </div>
 
     <div id="taxon-crumbs" class="col-xs-8 five " data-hook="product_taxons">
