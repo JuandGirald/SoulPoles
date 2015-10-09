@@ -1,77 +1,108 @@
 <footer class="footer" >
-  <div class="container">
-    <div id="footer-right" class="left-side col-xs-4">
-      <h4>Spread the soul</h4>
-      <p>Sign up for our newletter or refer a friend and get a free custom engraving ($20.00 value)</p>
-      <div class="newletter">
-        <% @subscriber ||= Spree::Chimpy::Subscriber.new %>
-        <%= form_for @subscriber do |f| %>
-          <%= f.email_field :email, placeholder: "enter email address", :class => "form-control" %>
-          <a href="#" type="submit" name="subscriber" value="Create Subscriber"><i class="fa fa-angle-right fa-3" ></i></a>  
-          <%= f.submit %>
-        <% end %>
+  <table class="footertable">
+    <tbody>
+      <tr class="footer-row-1">
+        <td class="newsletter">
+          <h4>Spread the soul</h4>
+          <p>Sign up for our newletter or refer a friend and get a free custom engraving ($20.00 value)</p>
+          <div class="newletter">
+            <% @subscriber ||= Spree::Chimpy::Subscriber.new %>
+            <%= form_for @subscriber do |f| %>
+              <%= f.email_field :email, placeholder: "enter email address", :class => "form-control" %>
+              <%= f.submit %>
+            <% end %>
+        </td>
+        <td class="mark_logo">
+        </td>
+        <td>
+          <h4>Needs help?</h4>
+          <p>Call us 24/7 at 1-800-612-7685</p>
+          <p>
+            <a href="mailto:info@soulpoles.com" class="footer-button button">EMAIL US</a>
+          </p>
+        </td>
+      </tr>
+      <tr class="footer-row-2">
+        <td colspan="2">
+          <div class="col-xs-4">
+            <h5>ski poles</h5>
+            <ul>
+              <li><a href="#">soulite</a></li>
+              <li><a href="#">original soul</a></li>
+              <li><a href="#">torched soul</a></li>
+              <li><a href="#">vibrant soul</a></li>
+              <li><a href="#">ltd. edition</a></li>
+              <li><a href="#">g-note</a></li>
+              <li><a href="/products/new">custom ski poles</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-4">
+            <h5>trekking poles</h5>
+            <ul>
+              <li><a href="#">soulite</a></li>
+              <li><a href="#">original soul</a></li>
+              <li><a href="#">torched soul</a></li>
+              <li><a href="#">vibrant soul</a></li>
+              <li><a href="#">ltd. edition</a></li>
+              <li><a href="#">g-note</a></li>
+              <li><a href="/products/new">custom ski poles</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-4">
+            <h5>apparel</h5>
+            <ul>
+              <li><a href="#">mens</a></li>
+              <li><a href="#">womens</a></li>
+              <li><a href="#">tees</a></li>
+              <li><a href="#">hoodies</a></li>
+              <li><a href="#">hats</a></li>
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="col-xs-6">
+            <h5>#plantyoursoul</h5>
+            <ul>
+              <li><a href="/blog">blog</a></li>
+              <li><a target="_blank" href="https://www.facebook.com/soulpoles?_rdr=p">facebook</a></li>
+              <li><a target="_blank" href="https://twitter.com/soulpoles">twitter</a></li>
+              <li><a target="_blank" href="https://instagram.com/soulpoles/">instagram</a></li>
+              <li><a target="_blank" href="https://www.pinterest.com/soulpoles/">pinterest</a></li>
+              <li><a target="_blank" href="https://plus.google.com/+SoulpolesSkiPoles/about">google +</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-6">
+            <h5>everything else</h5>
+            <ul>
+              <li><a href="http://www.protectourwinters.org" target="_blank">protect our winters</a></li>
+              <li><a href="http://www.onepercentfortheplanet.org" target="_blank">1% for the planet</a></li>
+              <li><a href="#">contact us</a></li>
+              <li><a href="#">need help?</a></li>
+              <li><a href="/affiliate-partner">affiliate program</a></li>
+              <li><a href="#">referral program</a></li>
+              <li><a href="/ambassadors">ambassadors</a></li>
+              <li><a href="#">donations</a></li>
+            </ul>
+          </div>  
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="footer-base">
+    <div class="copyright">
+      <div>
+        © 2015 Soulpoles, All Rights Reserved / 
+        <a href="#">Terms & Conditions</a> /
+        <a href="">Corporate Info</a>
       </div>
     </div>
-
-    <div class="right-side col-xs-8">
-      <div class="col-xs-2">
-        <h5>ski poles</h5>
-        <ul>
-          <li><a href="#">soulite</a></li>
-          <li><a href="#">original soul</a></li>
-          <li><a href="#">torched soul</a></li>
-          <li><a href="#">vibrant soul</a></li>
-          <li><a href="#">ltd. edition</a></li>
-          <li><a href="#">g-note</a></li>
-          <li><a href="/products/new">custom ski poles</a></li>
-        </ul>
-      </div>
-      <div class="col-xs-2">
-        <h5>trekking poles</h5>
-        <ul>
-          <li><a href="#">soulite</a></li>
-          <li><a href="#">original soul</a></li>
-          <li><a href="#">torched soul</a></li>
-          <li><a href="#">vibrant soul</a></li>
-          <li><a href="#">ltd. edition</a></li>
-          <li><a href="#">g-note</a></li>
-          <li><a href="/products/new">custom ski poles</a></li>
-        </ul>
-      </div>
-      <div class="col-xs-2">
-        <h5>apparel</h5>
-        <ul>
-          <li><a href="#">mens</a></li>
-          <li><a href="#">womens</a></li>
-          <li><a href="#">tees</a></li>
-          <li><a href="#">hoodies</a></li>
-          <li><a href="#">hats</a></li>
-        </ul>
-      </div>
-      <div class="col-xs-3">
-        <h5>#plantyoursoul</h5>
-        <ul>
-          <li><a href="/blog">blog</a></li>
-          <li><a target="_blank" href="https://www.facebook.com/soulpoles?_rdr=p">facebook</a></li>
-          <li><a target="_blank" href="#">twitter</a></li>
-          <li><a target="_blank" href="https://instagram.com/soulpoles/">instagram</a></li>
-          <li><a target="_blank" href="#">pinterest</a></li>
-          <li><a target="_blank" href="#">google +</a></li>
-        </ul>
-      </div>
-      <div class="col-xs-3">
-        <h5>everything else</h5>
-        <ul>
-          <li><a href="#">protect our winters</a></li>
-          <li><a href="#">1% for the planet</a></li>
-          <li><a href="#">contact us</a></li>
-          <li><a href="#">need help?</a></li>
-          <li><a href="#">affiliate program</a></li>
-          <li><a href="#">referral program</a></li>
-          <li><a href="/ambassadors">ambassadors</a></li>
-          <li><a href="#">donations</a></li>
-        </ul>
-      </div>
-    </div>    
+    <div class="footer-brands"></div>
+    <div class="social-links">
+      <span>Follow us :</span>
+      <a href="https://www.facebook.com/soulpoles" target="_blank"><i class="fa fa-facebook"></i>Facebook</a>
+      <a href="https://twitter.com/soulpoles" target="_blank"><i class="fa fa fa-twitter"></i>Twitter</a>
+      <a href="https://instagram.com/soulpoles" target="_blank"><i class="fa fa-instagram"></i>Instagram</a>
+      <a href="https://www.pinterest.com/soulpoles" target="_blank"><i class="fa fa-pinterest-p"></i>Pinterest</a>
+    </div>
   </div>
 </footer>

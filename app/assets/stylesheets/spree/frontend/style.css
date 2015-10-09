@@ -349,7 +349,6 @@ span.price,span.cart {
 	color:#fff;
 	position:absolute;
 	text-align:center;
-	top:37%;
 	width:100%;
 	display:block;
 	height:auto;
@@ -360,7 +359,6 @@ span.price,span.cart {
 }
 .wowitemboxinner .imagearea .caption-text a {
 	color:#fff;
-	border:2px solid;
 	padding:10px 12px;
 	display:inline-block;
 	min-width:120px;
@@ -368,6 +366,11 @@ span.price,span.cart {
 	margin-right:5px;
 	margin-bottom:5px;
 	letter-spacing:1px;
+	width: 100%;
+	height: 30em;
+}
+.wowitemboxinner .imagearea .caption-text a  i{
+	margin-top: 47%;
 }
 .wowitemboxinner .buy-now i {
 	color:#777;
