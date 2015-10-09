@@ -17,7 +17,7 @@
 </div>
 
 <% if products.any? %>
-  <div class="row products wowitemboxlist sectionlatestitems clear">
+  <div class="col-xs-12 products wowitemboxlist sectionlatestitems clear">
     <% products.each do |product| %>
       <div class="wowitembox">
         <div id="product_<%= product.id %>" class="wowitemboxinner product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product" >
@@ -45,7 +45,7 @@
               </div>
               <div class="cart pull-right">
                 <a href="#" class="edd-add-to-cart">
-                  <span class="edd-add-to-cart-label">Add to Cart</span>
+                  <span class="edd-add-to-cart-label">Show</span>
                 </a>
               </div>
               <div class="clearfix"></div>

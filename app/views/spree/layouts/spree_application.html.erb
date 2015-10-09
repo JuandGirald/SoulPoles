@@ -20,7 +20,7 @@
         <% if params[:controller] == "spree/blog_entries" %>
           <div id="content" class="<%= !content_for?(:sidebar) ? "col-sm-12" : "col-sm-8 col-md-9" %>" data-hook>
         <% else %>
-          <div id="content" class="<%= !content_for?(:sidebar) ? "col-sm-12" : "col-sm-8 col-md-10" %>" data-hook>
+          <div id="content" class="<%= !content_for?(:sidebar) ? "col-sm-12" : "col-sm-10" %>" data-hook>
         <% end %>
           <%= flash_messages %>
           <%= yield %>

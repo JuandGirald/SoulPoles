@@ -70,13 +70,47 @@ li.dropdown:hover {
   border-radius: 0 !important;
 }
 
+#spree-header {
+  #header {
+    .container {
+      width: 100em;
+    }
+  }
+}
+
 @media (min-width: 1200px) {
   #spree-header {
     #header {
       .container {
-        width: 100em;
+        width: 87em;
       }
     }
+  }
+  #search-bar {
+    #taxon, input[type='search'] {
+      width: 15em;
+    }
+  }
+}
+@media (min-width: 992px) {
+  #spree-header {
+    #header {
+      .container {
+        width: 81em;
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  #spree-header {
+    #header {
+      .container {
+        width: 55em;
+      }
+    }
+  }
+  #top-nav-bar {
+    display: none;
   }
 }
 @media (max-width: 1200px) {

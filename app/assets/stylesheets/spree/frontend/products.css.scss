@@ -20,6 +20,11 @@
       }
     }
   }
+  .products {
+    .wowitembox {
+      float: right;
+    }
+  }
 }
 #breadcrumbs {
   a {
@@ -135,7 +140,7 @@
   #logo {
     padding-top: 20px;
     img {
-      width: initial;
+      width: 19em;
     }
   }
 }
@@ -284,7 +289,7 @@ ul.related-entries li .relatedinner a {
 .products {
   .wowitembox {
     margin-bottom: 1em;
-    height: 27em;
+    height: auto;
   }
 }
 
