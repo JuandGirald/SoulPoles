@@ -1,9 +1,44 @@
 // Footer
 .footer {
-  background-color: #656565;
+  background-color: white;
   height: 20em;
   color: white;
-  .left-side {
+  .footertable {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #727272;
+    td {
+      border-top: 1px solid #e8e8e8;
+      border-right: 1px solid #e8e8e8;
+      padding: 30px;
+      position: relative;
+      vertical-align: top;
+      width: 33%;
+    }
+  }
+  .footer-button {
+    background: #494949;
+    color: #fff;
+    min-width: 220px;
+    margin-top: 20px;
+    line-height: normal;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 40px;
+  }
+  .button {
+    display: inline-block;
+    font-size: 11px;
+    padding: 14px 17px;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+  }
+  .footer-row-1 {
     margin-top: 2em;
     p {
       font-size: 12px;
@@ -13,7 +48,8 @@
       font-size: 22px;
       font-weight: bold;
     }
-    .newletter {
+    .newsletter {
+      padding: 30px;
       a {
         position: absolute;
         top: 78px;
@@ -22,17 +58,46 @@
         color: #656565;
       }
       .form-control {
-        border-radius: 0;
-        width: 60%;
-        height: 2.5em;
-        font-size: 17px;
+        height: 44px;
+        font-size: 11px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 200px;
+        position: relative;
+        float: left;
+      }
+      input[type=submit] {
+        background: url("submitbutton-sprite.png") no-repeat top left;
+        padding: 0;
+        text-transform: uppercase;
+        width: 42px;
+        height: 44px;
+        color: transparent;
+        cursor: pointer;
+        right: 42px;
+        position: relative;
+        float: left;
+      }
+      input[type=submit]:hover {
+        background-position: 0 -44px;
       }
     }
   }
-  .right-side {
-    margin-top: 2em;
+  .footer-row-2 {
+    td {
+      padding: 32px 40px 95px;
+      div {
+        text-align: center;
+      }
+    }
     h5 {
-      margin-bottom: 0;
+      font-size: 16px;
+      color: #666;
+      padding: 0;
+      height: 35px;
+      white-space: normal;
+      font-weight: bold;
+      font-style: normal;
     }
     ul {
       list-style: none;
@@ -40,29 +105,68 @@
       a {
         font-size: 12px;
         font-weight: 200;
-        color: white;
+        color: #727272;
+      }
+    }
+  }
+  .footer-base {
+    border-top: 1px solid #000;
+    background: #000;
+    padding: 0 32px 8px 32px;
+    display: block;
+    clear: both;
+    margin: 0;
+    color: #707070;
+    font-size: 12px;
+    overflow: hidden;
+    a {
+      color: #707070;
+    }
+    .copyright {
+      padding: 24px 0 0 0;
+      float: left;
+      text-align: left
+    }
+    .social-links {
+      float: right;
+      span {
+        float: left;
+        margin: 24px 12px 0 0;
+        font-size: 14px;
+      }
+      i {
+        color: #707070;
+        font-size: 16px
+      }
+      a {
+        margin-top: 24px;
+        display: inline-block;
+        float: left;
+        color: transparent;
       }
     }
   }
 }
+.mark_logo {
+  background-image: url("mark_logo.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-y: -16em;
+}
+
 
 // media queries
 @media (max-width: 1200px) {
-  .left-side {
-    .newletter {
+  .footer-row-1 {
+    .newsletter {
       .form-control {
         width: 75% !important;
       }
-    }
   }
 }
 
 @media (max-width: 1000px) {
-  .left-side {
-    .newletter {
-      a {
-        top: 95px !important;
-      }
+  .footer-row-1 {
       .form-control {
         width: 100% !important;
       }
