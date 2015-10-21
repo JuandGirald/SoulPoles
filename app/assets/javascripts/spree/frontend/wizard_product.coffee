@@ -30,9 +30,14 @@ Spree.ready ($) ->
   if $("input[name=disabled]").val() == "true"
     $("#continue-button").attr("disabled", true)
 
-  $('.font-radios input').click (event) ->
-    font = $(this).val()
+  $('.fonts-values li').click (event) ->
+    debugger
+    font = $(this).attr("value")
+    $("input[name='product[engraving_font]']").val(font)
     $('h1#engraving-live').css("font-family", font)
+    if ($("input[name='product[engraving-live]']").val() != "")
+      $("#continue-button").attr("disabled", false)
+
 
   $('.has-engraving-radios input').click (event) ->
     if $(this).val() == "true"
