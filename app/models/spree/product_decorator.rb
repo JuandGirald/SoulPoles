@@ -1,6 +1,6 @@
 Spree::Product.class_eval do
   STYLES = ['vibrant-soul', 'ski-poles-ltd-edition', 'original-soul', 'soullite',
-            'ski-poles-torched-soul']
+            'ski-poles-torched-soul', 'torched-soul']
   TYPES  = ['pole-size', 'basket-size', 'pole-color', 'grip-color', 'basket-color', 'tip-color', 'engraving-fonts']
 
   #Product Wizard using the State machine
@@ -8,8 +8,8 @@ Spree::Product.class_eval do
     event :next_step do
       transition :new  => :polesize
       transition :polesize => :gripcolor
-      transition :gripcolor => :basketsize
-      transition :basketsize => :tip
+      transition :gripcolor => :basket
+      transition :basket => :tip
       transition :tip => :engraving
       transition :engraving => :complete
     end
@@ -20,23 +20,23 @@ Spree::Product.class_eval do
 
     event :polesize do
       transition :gripcolor => :polesize
-      transition :basketsize => :polesize
+      transition :basket => :polesize
       transition :tip => :polesize
       transition :engraving => :polesize
       transition :complete => :polesize
     end
 
     event :gripcolor do
-      transition :basketsize => :gripcolor
+      transition :basket => :gripcolor
       transition :tip => :gripcolor
       transition :engraving => :gripcolor
       transition :complete => :gripcolor
     end
 
-    event :basketsize do
-      transition :tip => :basketsize
-      transition :engraving => :basketsize
-      transition :complete => :basketsize
+    event :basket do
+      transition :tip => :basket
+      transition :engraving => :basket
+      transition :complete => :basket
     end
 
     event :tip do

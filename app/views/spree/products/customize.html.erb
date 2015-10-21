@@ -5,6 +5,7 @@
 <% right_baskets = Spree::Product.find_by_slug("right-basket") %>
 <% right_tips = Spree::Product.find_by_slug("right-tip") %>
 <% left_tips = Spree::Product.find_by_slug("left-tip") %>
+<% custom_styles = Spree::Product.find_by_slug("custom-styles") %>
 
 <div class="steps-nav col-sm-12" data-hook="product_progress">
   <div class="col-xs-1 sp-logo"><%= image_tag "spree/frontend/sp-logo.png" %></div>
@@ -14,6 +15,13 @@
 <nav class="navbar navbar2 ">
   <div class="container">
     <div class="text-center">
+      <% blue_classes = 'hidden' if !@product.basket_right.nil? %>
+      <%= image_tag 'spree/frontend/blue-basket.png', :class => "overlap blue-basket #{blue_classes}" %>
+      <% custom_styles.images.each do |image| %>
+        <% css_classes = 'hidden' if image.alt != @product.name %>
+        <%= image_tag image.attachment(:original), :class => "overlap #{css_classes} style", alt: image.alt %>  
+      <% end %>
+
       <% left_grips.images.each do |image| %>
         <% css_classes = 'hidden' if image.alt != @product.grip_left %>
         <%= image_tag image.attachment(:original), :class => "overlap #{image.alt} #{css_classes} left-overlap grip"%>  
@@ -56,7 +64,7 @@
     <%= hidden_field_tag "product_id", @product.id %>
     <div class="col-xs-3 pull-right continue-button">
       <div class="add-to-cart">
-        <%= f.button 'Continue', :class => "btn btn-success", :id => "continue-button" %>
+        <%= f.button 'Next', :class => "btn btn-success", :id => "continue-button" %>
       </div>
     </div>
   <% end  %>  

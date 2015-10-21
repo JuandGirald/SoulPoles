@@ -10,9 +10,9 @@ module Spree
         current_index = states.index(:"#{@product.state}")
         state_index = states.index(state)
 
-        text1 = (state_index + 1).to_s + ". Choose your " + state.to_s
+        text1 = (state_index + 1).to_s + ". choose your " + state.to_s
         text2 = (state_index + 1).to_s + "."
-        text3 = (state_index + 1).to_s + ". Choose your style"
+        text3 = (state_index + 1).to_s + ". choose your style"
 
         if state.to_s == 'new'
           text = state.to_s == @product.state ? text3 : text2        

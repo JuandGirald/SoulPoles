@@ -116,7 +116,19 @@ $coolgrey: #656565;
 }
 
 img.top_image {
+  position: relative;
   width: 100%;
+  z-index: 1;
+}
+.blue-basket {
+  left: 16px;
+  z-index: 3;
+}
+.style {
+  z-index: 2
+}
+.grip, .tip {
+  z-index: 4;
 }
 
 .cards {
@@ -152,7 +164,7 @@ img.top_image {
 }
 .overlap.basket {
   margin-left: 1px;
-  z-index: 2;
+  z-index: 4;
 }
 .overlap.tip {
   z-index: 1;

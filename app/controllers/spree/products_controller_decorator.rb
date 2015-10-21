@@ -33,17 +33,12 @@ Spree::ProductsController.class_eval do
   def new
     @product    = Spree::Product.new
     @products   = Spree::Product.where(slug: Spree::Product::STYLES)
-    
-    @top_images = []
-    @styles.images.each do |image|
-      @top_images << { :url => image.attachment.url(:original) , alt: image.alt }
-    end
   end
 
   #Custome wizard for products
   def create
     if !params[:product_id].blank?
-      image          = @styles.images.find_by_alt(params[:alt])
+      image          = @styles.images.first
       product_choose = Spree::Product.find(params[:product_id])
       attributes     = product_choose.dup.attributes
       @product       = Spree::Product.new(attributes)

@@ -1,5 +1,5 @@
 Spree.ready ($) ->
-  $("img[alt='torched soul'].top_image").removeClass("hidden")
+  $("#continue-button").attr("disabled", true)
 
   $('.learn-more').click (event) ->
     event.preventDefault()
@@ -22,7 +22,7 @@ Spree.ready ($) ->
 
   $('.custom-style img').click (event) ->
     alt    = $(this).closest("div").children(".product_name").text()
-    images = $("img[alt].top_image")
+    images = $("img[alt].style")
 
     images.each ->
       if this.alt == alt
@@ -31,6 +31,8 @@ Spree.ready ($) ->
         $(this).addClass("hidden")
       return
     
+    $("#continue-button").attr("disabled", false)
+  
     event.preventDefault()
     $("div.select").removeClass("select")
     $(this).closest(".cards").addClass("select")
