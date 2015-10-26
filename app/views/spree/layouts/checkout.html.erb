@@ -1,0 +1,38 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
+  <head data-hook="inside_head">
+    <%= render partial: 'spree/shared/head' %>
+  </head>
+  <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
+    <%= render partial: 'spree/shared/google_analytics.js' %>
+    <div id="spree-header">
+      <header id="header" style="background:black;" data-hook>
+        <div class="container">
+          <figure id="logo" class="col-xs-4 col-xs-offset-4 text-center" data-hook>
+            <%= link_to image_tag("spree/frontend/white_logo.png"), root_path %>
+          </figure>
+        </div>
+      </header>
+    </div>
+    <div class="container" style="margin-top:5em;">
+      <div class="row" data-hook>
+        <%= breadcrumbs(@taxon) %>
+
+        <% if params[:controller] == "spree/blog_entries" %>
+          <div id="content" class="<%= !content_for?(:sidebar) ? "col-sm-12" : "col-sm-8 col-md-9" %>" data-hook>
+        <% else %>
+          <div id="content" class="<%= !content_for?(:sidebar) ? "col-sm-12" : "col-sm-10" %>" data-hook>
+        <% end %>
+          <%= flash_messages %>
+          <%= yield %>
+        </div>
+
+        <%= yield :templates %>
+      </div>
+    </div>
+  </body>
+</html>

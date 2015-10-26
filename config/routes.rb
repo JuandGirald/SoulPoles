@@ -17,10 +17,10 @@ Rails.application.routes.draw do
   
   Spree::Core::Engine.routes.prepend do
     match 'wizard/:product_id/:state/', :to => 'products#customize', as: 'wizard', via: :get
-    get 'ambassadors', :to => 'ambassadors#index', as: 'ambassadors'
     post  'product/update_cart' => 'products#update_cart'
 
     resources :workshops, only: [:index, :show]
+    resources :ambassadors, only: [:index, :show]
 
     namespace :admin do
       resources :home
