@@ -1,7 +1,7 @@
 <% variant = line_item.variant %>
 
 <%= order_form.fields_for :line_items, line_item do |item_form| %>
-  <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+  <div id="modal-window" class="modal " role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
   <tr class="line-item">
     <td class="cart-item-image col-xs-2" data-hook="cart_item_image">
       <% if variant.images.length == 0 %>

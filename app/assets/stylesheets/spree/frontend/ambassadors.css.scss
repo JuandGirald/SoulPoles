@@ -10,3 +10,26 @@
     z-index: 1;
   }
 }
+.ambassador-image {
+  height: 12em !important;
+}
+.ambassador-back {
+  height: 24em;
+}
+.ambassador-info {
+  margin-bottom: 1em;
+  span {
+    font-weight: bold;
+  }
+}
+hr.divider-ambassador {
+  width: 100%;
+  height: 1px;
+  color: #efefef;
+  background-color: #efefef;
+  margin: 40px auto 0;
+  margin-bottom: 2em;
+}
+.ambassador-description {
+  margin-bottom: 5em;
+}

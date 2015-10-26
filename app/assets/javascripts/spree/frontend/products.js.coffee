@@ -20,6 +20,11 @@ Spree.ready ($) ->
     $(this).closest('.custom-engraving').slideUp()
     $('.engraving-link').fadeIn()
 
+  $(document).on 'loaded.bs.modal', '#modal-window', ->
+    debugger
+    $('.engraving-link').click (event) ->
+      alert "hola"
+
   $('.custom-style img').click (event) ->
     alt    = $(this).closest("div").children(".product_name").text()
     images = $("img[alt].style")

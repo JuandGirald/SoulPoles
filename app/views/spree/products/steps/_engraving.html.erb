@@ -1,28 +1,39 @@
 <% @fonts = @product.option_types.find_by_name("engraving-fonts").option_values %>
 <div id="engraving-section">
-  <h3 class="select-subtitle">engraving</h3>
-  <div class="engraving-input col-xs-10 col-xs-offset-1">
-    <%= text_field_tag "product[custom_engraving]", @product.custom_engraving, placeholder: 'Type up to 25 characters', class: 'form-control', maxlength: 25 %>  
-    <ul class="font-radios">
-      <% @fonts.each do |font| %>
+  <h3 class="select-subtitle">choose your engraving and font type</h3>
+  <div class="engraving-input col-xs-12">
+    <div class="col-xs-6">
+      <div class="col-xs-12">
+        <%= text_field_tag "product[custom_engraving]", @product.custom_engraving, placeholder: 'Type up to 25 characters', class: 'form-control', maxlength: 25 %>  
+      </div>
+      <div class="col-xs-12 engraving_live">
+        <h1 id="engraving-live" style="font-family: <%= @product.engraving_font %>"> <%= @product.custom_engraving %></h1> 
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <ul class="col-xs-12 size-values fonts-values  list-inline">
+        <% @fonts.each do |value| %>
+          <li class="square-boxes" value="<%= value.presentation %>">
+            <%= value.presentation  %> 
+          </li>
+        <% end %>
+      </ul>
+      <%= hidden_field_tag "product[engraving_font]", @product.engraving_font %>
+      <%= hidden_field_tag "disabled", @product.pole_size.nil? ? true : false %>
+    </div>
+    <div class="col-xs-2">
+      <ul class="has-engraving-radios">
         <li>
-          <%= f.radio_button :engraving_font, font.name %>
+          <%= f.radio_button :has_engraving, "true", :checked => true %>
+          <%= label :has_engraving, 'engraving(+$19.99)' %>
         </li>
-      <% end %>
-    </ul>
-    <ul class="has-engraving-radios">
-      <li>
-        <%= f.radio_button :has_engraving, "true", :checked => true %>
-        <%= label :has_engraving, 'engraving(+$19.99)' %>
-      </li>
-      <li>
-        <%= f.radio_button :has_engraving, "false" %>
-        <%= label :has_engraving, 'no thanks' %>
-      </li>
-    </ul>
-  </div>
-  <div class="col-xs-10 col-xs-offset-1 engraving_live">
-    <h1 id="engraving-live" style="font-family: <%= @product.engraving_font %>"> <%= @product.custom_engraving %></h1> 
+        <li>
+          <%= f.radio_button :has_engraving, "false" %>
+          <%= label :has_engraving, 'no thanks' %>
+        </li>
+      </ul>  
+    </div>
+    
   </div>
   
 </div>

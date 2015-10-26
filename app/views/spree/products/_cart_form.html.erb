@@ -13,6 +13,12 @@
         <%= hidden_field_tag "variant_id", @product.master.id %>
       <% end %>
 
+      <% if !@line_item.variant.engraving.nil? && !@line_item.variant.engraving.blank? %>
+        <div class="text-left">
+          <%= text_field_tag :engraving, @line_item.variant.engraving, class: 'form-control' %>
+        </div>
+      <% end %>
+
       <% if @product.price_in(current_currency) and !@product.price.nil? %>
         <div data-hook="product_price" >
           <div id="product-price">

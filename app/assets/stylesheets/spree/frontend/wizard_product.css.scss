@@ -58,17 +58,6 @@ $coolgrey: #656565;
   }
   #engraving-section ~ .continue-button {
     top: 28em !important;
-  }
-  .font-radios {
-    top: 5.5em !important;
-    left: 15em !important;
-    li {
-      margin-bottom: 1.1em !important;
-    }
-  }
-  .has-engraving-radios {
-    left: 43em !important;
-    top: 5.5em !important;
   } 
 }
 
@@ -101,18 +90,6 @@ $coolgrey: #656565;
   #engraving-section ~ .continue-button {
     top: 23.5em !important;
   } 
-  .font-radios {
-    top: 4em !important;
-    left: 11.5em !important;
-    li {
-      margin-bottom: 0.5em !important;
-    }
-  }
-  .has-engraving-radios {
-    top: 7em !important;
-    left: 42em !important;
-    font-size: 11px;
-  }
 }
 
 img.top_image {
@@ -315,17 +292,20 @@ img.top_image {
 
 #engraving-section {
   margin-top: 6em;
+  .fonts-values {
+    margin-top: 0 !important;
+    li {
+      width: 6.5em;
+      font-size: 1em;
+      text-align: center;
+    }
+  }
   .engraving-input {
-    background-image: url('engraving-bg.png');
-    background-repeat: no-repeat;
-    background-size: contain;
     margin-top: 2em;
-    height: 24em;
     input[type="text"] {
-      width: 40.5%;
-      position: absolute;
-      top: 1.65em;
-      left: 20.7em;
+      margin: 0 auto;
+      margin-bottom: 2em;
+      width: 80%;
     }
   }
   .engraving_live {
@@ -333,22 +313,9 @@ img.top_image {
     background-size: contain;
     height: 6em;
   }
-  .font-radios {
-    width: 2em;
-    position: absolute;
-    list-style: none;
-    top: 7em;
-    left: 18em;
-    li {
-      margin-bottom: 1.6em;
-    }
-  }
   .has-engraving-radios {
     width: 13em;
-    position: absolute;
     list-style: none;
-    top: 7em;
-    left: 53em;
     li {
       margin-bottom: 1em;
     }

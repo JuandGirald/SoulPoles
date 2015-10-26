@@ -12,37 +12,42 @@
           <!-- cards -->
           <div class="wrapper">
             <% @ambassadors.each do |ambassador| %>
-              <div class="card">
-                <div class="card__container card__container--closed">
-                  <svg class="card__image" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 500" preserveAspectRatio="xMidYMid slice">
-                    <defs>
-                      <clipPath id="clipPath1">
-                        <!-- r = 992 = hyp = Math.sqrt(960*960+250*250) -->
-                        <circle class="clip" cx="960" cy="250" r="992"></circle>
-                      </clipPath>
-                    </defs>
-                    <image clip-path="url(#clipPath2)" width="1920" height="500" xlink:href="<%= ambassador.images.first.attachment.url(:original) %>" ></image>
-                  </svg>
-                  <div class="card__content">
-                    <i class="card__btn-close fa fa-times"></i>
-                    <div class="card__caption">
-                      <h2 class="card__title"><%= ambassador.name %></h2>
-                      <p class="card__subtitle"><%= ambassador.home_town %></p>
-                    </div>
-                    <div class="card__copy">
-                      <div class="meta">
-                        <img class="meta__avatar" width="243" height="243" src="<%= ambassador.images.last.attachment.url(:product) %>" alt="author01" />
-                        <span class="meta__author"><%= ambassador.name %></span>
-                        <span class="meta__date">06/19/2015</span>
+              <div class="wowitembox">
+                <div id="ambassador_<%= ambassador.id %>" class="wowitemboxinner product-list-item" data-hook="ambassador_list" itemscope itemtype="https://schema.org/ambassador" >
+                  <div class="imagearea">
+                    <%= image_tag ambassador.images.first.attachment.url(:large), :itemprop => "image", :class => "attachment-post-thumbnail wp-post-image ambassador-image"%>
+                    <div class="caption">
+                      <div class="blur"></div>
+                      <div class="caption-text">
+                        <div class="captionbuttons">
+                          <%= link_to ambassador, :class => "captiondetails" do %>
+                            <i class="fa fa-link fa-2x"> VIEW DETAILS </i> 
+                          <% end %>
+                        </div>
                       </div>
-                      <p><%= raw ambassador.description %></p>
+                    </div>
+                  </div>
+                  <div class="notesarea">
+                    <%= link_to ambassador, :class => "captiondetails" do %>
+                      <h2><%= ambassador.name[0..22] %></h2>
+                    <% end %>
+                    
+                    <div class="notesbottom">
+                      <div class="price pull-left">
+                        <%= ambassador.home_town %>
+                      </div>
+                      <div class="cart pull-right">
+                        <a href="#" class="edd-add-to-cart">
+                          <span class="edd-add-to-cart-label">show</span>
+                        </a>
+                      </div>
+                      <div class="clearfix"></div>
                     </div>
                   </div>
                 </div>
+                <!-- .wowitemboxinner-->
               </div>
-
-
-
+              <!-- .wowitembox-->
             <% end %>
           </div>
         </div>

@@ -13,9 +13,12 @@ module Spree
         text1 = (state_index + 1).to_s + ". choose your " + state.to_s
         text2 = (state_index + 1).to_s + "."
         text3 = (state_index + 1).to_s + ". choose your style"
+        text4 = (state_index + 1).to_s + ". custom engraving"
 
         if state.to_s == 'new'
           text = state.to_s == @product.state ? text3 : text2        
+        elsif state.to_s == 'engraving' 
+          text = state.to_s == @product.state ? text4 : text2
         else
           text = state.to_s == @product.state ? text1 : text2 
         end
