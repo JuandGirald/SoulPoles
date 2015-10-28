@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   
   Spree::Core::Engine.routes.prepend do
     match 'wizard/:product_id/:state/', :to => 'products#customize', as: 'wizard', via: :get
+    post  'home/apply_coupon_bar' => 'home#apply_coupon_bar' 
     post  'product/update_cart' => 'products#update_cart'
 
     resources :workshops, only: [:index, :show]
