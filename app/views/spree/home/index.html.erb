@@ -129,6 +129,6 @@
 <div class="actionbeforefooter text-center" style="background-color:<%= @cupon_bar.color %>;">
   <div class="container">
     <span><i class="fa fa-star fa-spin"></i> <%= raw @cupon_bar.description %> </span>
-    <%= link_to "buy now", { :controller => :home, :action => :apply_coupon_bar}, :method => :post , :class => "actionbutton" %>
+    <%= link_to "apply coupon", { :controller => :home, :action => :apply_coupon_bar}, :method => :post , :class => "actionbutton" %>
   </div>
 </div>

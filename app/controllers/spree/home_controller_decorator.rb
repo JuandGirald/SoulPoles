@@ -14,7 +14,7 @@ Spree::HomeController.class_eval do
   def apply_coupon_bar
     @order = current_order
     if @order.promotions.any?
-      flash[:error] = "Your current order already have a coupon applied"
+      flash[:error] = "Your current order already has a coupon applied"
       redirect_back_or_default(spree.root_path)
     else
       @order.coupon_code = @cupon_bar.code
