@@ -1,3 +1,4 @@
+<% @cupon_bar = Spree::Promotion.find_by_name("cupon bar") %>
 <!-- TITLE BEGINS -->
 <header class="headerimage slider">
   <div id="slider" class="carousel slider" >
@@ -39,11 +40,16 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="instagram_photos col-xs-12">
-      <a href="http://instagram.com/soulpoles" target="_blank" ><h2 class="text-center maintitle">@Soulpoles</h2></a>
-      <% instagram_photos_for_tag('soulpoles')[12..16].each do |soulpole| %>
+      <a href="http://instagram.com/soulpoles" target="_blank" ><h2 class="text-center maintitle">@soulpoles</h2></a>
+      <% instagram_photos_for_tag('soulpoles')[0..4].each_with_index do |soulpole, index| %>
         <div class="instagram-image">
-          <a href="<%= soulpole.full %>" data-toggle="lightbox" data-gallery="multiimages">
-            <%= image_tag soulpole.full %>
+          <a  href="<%= soulpole.full %>" data-toggle="lightbox" data-gallery="multiimages">
+            <%= image_tag soulpole.full, :class => "on" %>
+            <div class="off">
+              <i class="fa fa fa-heart"> <%= @instagram[index].likes[:count] %> </i>
+              <i class="fa fa-comment"> <%= @instagram[index].comments[:count] %> </i>  
+            </div>
+            
           </a>
         </div>
       <% end %>
@@ -120,9 +126,9 @@
 </div>  
 
 <!-- ================================================== -->
-<div class="actionbeforefooter text-center">
+<div class="actionbeforefooter text-center" style="background-color:<%= @cupon_bar.color %>;">
   <div class="container">
-    <span><i class="fa fa-star fa-spin"></i> Psst! Like what you see? Enter code <b>WOWKAILO10</b> and get 10% discount for your total shopping cart. This week only! </span>
-    <a target="_blank" class="actionbutton" href="#">Buy Now </a>
+    <span><i class="fa fa-star fa-spin"></i> <%= raw @cupon_bar.description %> </span>
+    <%= link_to "buy now", { :controller => :home, :action => :apply_coupon_bar}, :method => :post , :class => "actionbutton" %>
   </div>
 </div>

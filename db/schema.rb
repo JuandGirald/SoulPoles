@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022192943) do
+ActiveRecord::Schema.define(version: 20151028074816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -809,6 +809,7 @@ ActiveRecord::Schema.define(version: 20151022192943) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.integer  "promotion_category_id"
+    t.string   "color"
   end
 
   add_index "spree_promotions", ["advertise"], name: "index_spree_promotions_on_advertise", using: :btree

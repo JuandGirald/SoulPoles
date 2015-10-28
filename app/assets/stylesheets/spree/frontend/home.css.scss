@@ -69,3 +69,24 @@
     }
   }
 }
+
+.instagram-image .on { dislay: block; }
+.instagram-image .off { display: none; }
+.instagram-image:hover .off { 
+  z-index: 0;
+  font-size: 18pt;
+  font-weight: bolder;
+  position: relative;
+  margin-top: -6em;
+  display: block; 
+  i {
+    display: initial;
+    color: #484949;
+    margin-left: 5px;
+  }
+}
+.instagram-image:hover .on {
+  z-index: 10; 
+  background-color: black;
+  opacity: 0.4;
+}
