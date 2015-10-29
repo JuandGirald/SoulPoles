@@ -11,7 +11,7 @@
     <aside id="recent-posts-3" class="widget widget_recent_entries">
       <h1 class="widget-title section-title"><span>Latest Posts</span></h1>
       <ul>
-        <%= render 'spree/blog_entries/recent_blog_entries', recent_blog_entries: Spree::BlogEntry.recent(10) %>
+        <%= render 'spree/blog_entries/recent_blog_entries', recent_blog_entries: Spree::BlogEntry.recent(4) %>
       </ul>
     </aside>
     
@@ -19,11 +19,7 @@
       <h1 class="widget-title section-title"><span>Categories</span></h1>
       <%= render 'spree/blog_entries/categories_list' %>
     </aside>
-    <aside class="widget">
-      <h1 class="widget-title section-title"><span>Tags</span></h1>
-      <%= render 'spree/blog_entries/tag_cloud' %>
-    </aside>
-    <aside class="widget">
+    <aside class="widget col-xs-12">
       <h1 class="widget-title section-title"><span>Archive</span></h1>
       <%= render 'spree/blog_entries/news_archive', news_archive: Spree::BlogEntry.organize_blog_entries %>
     </aside>
