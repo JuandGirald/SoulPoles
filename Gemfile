@@ -57,6 +57,7 @@ gem 'lightbox-bootstrap-rails'
 gem 'jquery-waypoints-rails', '~> 2.0.5'
 gem 'owlcarousel-rails'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'bootstrap-datepicker-rails'
 
 #Mail provider
 gem 'spree_chimpy', github: 'JuandGirald/spree_chimpy', branch: 'master'

@@ -1,6 +1,7 @@
 Spree.ready ($) ->
   $("#continue-button").attr("disabled", true)
 
+
   $('.learn-more').click (event) ->
     event.preventDefault()
     $('.nav-tabs li a[href="#properties"]').trigger('click')
@@ -21,10 +22,8 @@ Spree.ready ($) ->
     $('.engraving-link').fadeIn()
 
   $(document).on 'loaded.bs.modal', '#modal-window', ->
-    debugger
     $('.engraving-link').click (event) ->
-      alert "hola"
-
+  
   $('.custom-style img').click (event) ->
     alt    = $(this).closest("div").children(".product_name").text()
     images = $("img[alt].style")
@@ -60,7 +59,15 @@ Spree.ready ($) ->
   # ),
   #   offset: "-100px"
 
+  nowDate = new Date()
+  today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0)
 
+  $(document).on "focus", "[data-behaviour~='datepicker']", (e) ->
+    $(this).datepicker
+      format: "dd-mm-yyyy"
+      startDate: today
+      weekStart: 1
+      autoclose: true
 
   $(document).delegate '*[data-toggle="lightbox"]', 'click', (event) ->
     event.preventDefault()

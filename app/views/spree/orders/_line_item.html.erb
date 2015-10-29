@@ -21,6 +21,11 @@
       <% if !variant.engraving.nil?  and !variant.engraving.empty? %>
         <h6 class="col-xs-12"><b> Engraving: </b>  <%= variant.engraving %> </h6>
       <% end %>
+      
+      <% if !variant.workshop_date.nil? %>
+        <h6 class="col-xs-12"><b> Workshop Date: </b>  <%= variant.workshop_date %> </h6>
+      <% end %>
+
       <% if line_item.insufficient_stock? %>
         <span class="out-of-stock">
           <%= Spree.t(:out_of_stock) %>&nbsp;&nbsp;<br />

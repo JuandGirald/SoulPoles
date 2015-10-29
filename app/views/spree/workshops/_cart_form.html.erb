@@ -2,11 +2,9 @@
     <div id="inside-workshop-cart-form" data-hook="inside_workshop_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
       <%= hidden_field_tag "variant_id", @workshop.master.id %>
       
-      <div data-hook="new_workshop_date" class="col-md-4">
-        <%= f.field_container :date, :class => ['form-group'] do %>
-          <%= f.label :date, Spree.t(:date) %>
-          <%= f.text_field :date, :class => 'datepicker form-control', :data =>{provide:"datepicker"}%>
-        <% end %>
+      <div data-hook="new_workshop_date" class="col-md-4 workshop-date">
+        <%= label_tag "workshop date" %>
+        <%= text_field_tag :date, nil, placeholder: 'mm/dd/yy', class: 'form-control', 'data-behaviour' => 'datepicker' %>
       </div>
 
       <div data-hook="workshop_price" >

@@ -22,7 +22,7 @@
             <h1 class="product-title" itemprop="name"><%= @workshop.name.upcase %></h1>
             <hr>
             <h3 class="price selling" itemprop="price">
-              <%= @workshop.price %>
+              <%= display_price(@workshop) %>
             </h3>
             <div class="product-description" itemprop="description" data-hook="description">
               <%= raw(@workshop.description) rescue Spree.t(:product_has_no_description) %>
