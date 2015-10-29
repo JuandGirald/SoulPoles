@@ -27,16 +27,28 @@
               <div class="blur"></div>
               <div class="caption-text">
                 <div class="captionbuttons">
-                  <%= link_to product, :class => "captiondetails" do %>
-                    <i class="fa fa-link fa-2x"> VIEW DETAILS </i> 
+                  <% if product.is_workshop %>
+                    <%= link_to workshop_path(product), :class => "captiondetails" do %>
+                      <i class="fa fa-link fa-2x"> VIEW DETAILS </i> 
+                    <% end %>
+                  <% else %>
+                    <%= link_to product, :class => "captiondetails" do %>
+                      <i class="fa fa-link fa-2x"> VIEW DETAILS </i> 
+                    <% end %>
                   <% end %>
                 </div>
               </div>
             </div>
           </div>
           <div class="notesarea">
-            <%= link_to product, :class => "captiondetails" do %>
-              <h2><%= product.name[0..22] %></h2>
+            <% if product.is_workshop %>
+              <%= link_to workshop_path(product), :class => "captiondetails" do %>
+                <h2><%= product.name[0..22] %></h2>
+              <% end %>
+            <% else %>
+              <%= link_to product, :class => "captiondetails" do %>
+                <h2><%= product.name[0..22] %></h2>
+              <% end %>
             <% end %>
             
             <div class="notesbottom">

@@ -11,7 +11,11 @@
       <% end %>
     </td>
     <td class="cart-item-description col-xs-6" data-hook="cart_item_description">
-      <h4 class="col-xs-12"><%= link_to line_item.name, product_path(variant.product), class: 'bamboo-color' %></h4>
+      <% if variant.product.is_workshop %>
+        <h4 class="col-xs-12"><%= link_to line_item.name, workshop_path(variant.product), class: 'bamboo-color' %></h4>
+      <% else %>
+        <h4 class="col-xs-12"><%= link_to line_item.name, product_path(variant.product), class: 'bamboo-color' %></h4>
+      <% end %>
       <% variant.options_text.split(',').each do |variant| %>
         <h6 class="col-xs-12">
           <% details = variant.split(':') %>
