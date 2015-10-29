@@ -451,3 +451,11 @@ ul.edd-taxonomy-widget li a:before {
 .blog_categories_list {
   list-style: none;
 }
+
+#blog_entry_container {
+  .wowitemboxinner .imagearea {
+    img {
+      height: 13em;
+    }
+  }
+}

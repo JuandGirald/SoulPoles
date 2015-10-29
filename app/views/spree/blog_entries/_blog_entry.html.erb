@@ -18,7 +18,7 @@
       <a href="#">
       <h2><%= link_to blog_entry.title, blog_entry_permalink(blog_entry) %></h2>
       </a>
-      <span class="description"><%= blog_entry.entry_summary %></span>
+      <span class="description"><%= blog_entry.entry_summary.truncate(20) %></span>
     </div>
   </div>
   <!-- .wowitemboxinner-->
