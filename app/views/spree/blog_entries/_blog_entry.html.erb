@@ -16,7 +16,7 @@
     </div>
     <div class="notesarea">
       <a href="#">
-      <h2><%= link_to blog_entry.title, blog_entry_permalink(blog_entry) %></h2>
+      <h2><%= link_to blog_entry.title.truncate(20), blog_entry_permalink(blog_entry) %></h2>
       </a>
       <span class="description"><%= blog_entry.entry_summary.truncate(20) %></span>
     </div>
