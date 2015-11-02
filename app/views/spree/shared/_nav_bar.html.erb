@@ -1,14 +1,15 @@
 <% @taxonomies  = load_taxons.find_by_name("Categories") %>
 <% @categories = @taxonomies.taxons %>
+<% @hikes = load_taxons.find_by_name("hike").taxons %>
 <nav class="navbar col-xs-10" id="top-nav-bar">
   <ul id="nav-bar" class="nav navbar-nav navbar-right" data-hook>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ski<span class="caret"></span></a>
       <ul class="dropdown-menu">
         <% @categories.each do |category| %>
-          <li>
-            <a href="/t/<%= category.permalink %>"> <%= category.name %></a>
-          </li>
+          <% unless category.name == 'Categories' %>
+            <li> <a href="/t/<%= category.permalink %>"> <%= category.name %></a> </li>
+          <% end %>
         <% end %>
       </ul>
     </li>
@@ -16,17 +17,21 @@
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hike<span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <li><a href="#">Something else here</a></li>
-        <li><a href="#">Separated link</a></li>
-        <li><a href="#">One more separated link</a></li>
+        <% @hikes.each do |category| %>
+          <% unless category.name == 'hike' %>
+            <li>
+              <a href="/t/<%= category.permalink %>"> <%= category.name %></a>
+            </li>
+          <% end %>
+        <% end %>
       </ul>
     </li>
 
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Custom<span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <li><a href="/products/new">Custome your own pole</a></li>
-        <li><a href="#">Get inspired</a></li>
+        <li><a href="/products/new">customize your own poles</a></li>
+        <li><a href="#">get inspired</a></li>
       </ul>
     </li>
     <li class="dropdown">
