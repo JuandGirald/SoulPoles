@@ -48,44 +48,48 @@
   </div>
 </nav>
 
-<%= button_to "edit", {:controller => :products,
+<div class="edit-inspired col-xs-2">
+  <%= button_to "Edit", {:controller => :products,
       :action => 'edit_inspired', :id => @product.id }, :method => :post, :class => 'btn btn-success' %>
-<%= form_for :order, :url => populate_orders_path do |f| %>
-  <div id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-    <%= hidden_field_tag "product_id", @product.id %>
-    <%= hidden_field_tag "variant_id", @product.master.id %>
-    <% if @product.price_in(current_currency) and !@product.price.nil? %>
-      <div data-hook="product_price" >
-        <div id="product-price">
-          <% if @product.master.can_supply? %>
-            <link itemprop="availability" href="https://schema.org/InStock" />
-          <% elsif @product.variants.empty? %>
-            <br />
-            <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
-          <% end %>
-        </div>
+</div>
+<div class="order-form col-xs-2">
+  <%= form_for :order, :url => populate_orders_path do |f| %>
+    <div id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+      <%= hidden_field_tag "product_id", @product.id %>
+      <%= hidden_field_tag "variant_id", @product.master.id %>
+      <% if @product.price_in(current_currency) and !@product.price.nil? %>
+        <div data-hook="product_price" >
+          <div id="product-price">
+            <% if @product.master.can_supply? %>
+              <link itemprop="availability" href="https://schema.org/InStock" />
+            <% elsif @product.variants.empty? %>
+              <br />
+              <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+            <% end %>
+          </div>
 
-        <div class="add-to-cart final-step">
-          <br/>
-          <div class="input-group">
-            <span class="input-group-btn">
-              <%= number_field_tag :quantity, 1, :class => 'title form-control', :min => 1%>
-              <%= button_tag :class => 'btn btn-success', :id => 'add-to-cart', :type => :submit do %>
-                <%= Spree.t(:add_to_cart) %>
-              <% end %>
-            </span>
+          <div class="add-to-cart final-step">
+            <br/>
+            <div class="input-group">
+              <span class="input-group-btn">
+                <%= number_field_tag :quantity, 1, :class => 'title form-control', :min => 1%>
+                <%= button_tag :class => 'btn btn-success', :id => 'add-to-cart', :type => :submit do %>
+                  <%= Spree.t(:add_to_cart) %>
+                <% end %>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-    <% else %>
-      <div id="product-price">
-        <br>
-        <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
-      </div>
-    <% end %>
-  </div>
-<% end %>  
+      <% else %>
+        <div id="product-price">
+          <br>
+          <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>  
 
+</div>
 <%= render 'spree/shared/inspired' %>
 
 
