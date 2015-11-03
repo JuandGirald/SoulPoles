@@ -25,6 +25,7 @@
       <% if variant.product.is_custom %>
         <h6 class="col-xs-12"><b> custom product </b>  </h6>
         <h6 class="col-xs-12"><b> pole size: </b>  <%= variant.product.pole_size %> </h6>
+        <h6 class="col-xs-12"><b> pole size: </b>  <%= variant.product.pole_size %> </h6>
         <h6 class="col-xs-12"><b> basket size: </b>  <%= variant.product.basket_size %> </h6>
         <h6 class="col-xs-12"><b> grip right: </b>  <%= variant.product.grip_right %> </h6>
         <h6 class="col-xs-12"><b> grip left: </b>  <%= variant.product.grip_left %> </h6>
@@ -32,7 +33,7 @@
         <h6 class="col-xs-12"><b> basket left: </b>  <%= variant.product.basket_left %> </h6>
         <h6 class="col-xs-12"><b> tip left: </b>  <%= variant.product.tip_left %> </h6>
         <h6 class="col-xs-12"><b> tip left: </b>  <%= variant.product.tip_left %> </h6>
-        <% if variant.product.custom_engraving.nil? &&  variant.product.custom_engraving.empty? %> 
+        <% if !variant.product.custom_engraving.nil? &&  !variant.product.custom_engraving.empty? %> 
           <h6 class="col-xs-12"><b> custom engraving: </b>  <%= variant.product.custom_engraving %> </h6>
           <h6 class="col-xs-12"><b> engraving font: </b>  <%= variant.product.engraving_font %> </h6>
         <% end %>
