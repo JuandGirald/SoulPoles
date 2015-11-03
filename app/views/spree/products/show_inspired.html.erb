@@ -1,0 +1,91 @@
+<% grip_colors = @product.option_types.find_by_name("grip-color").option_values %>
+<% left_grips = Spree::Product.find_by_slug("left-grip") %>
+<% right_grips = Spree::Product.find_by_slug("right-grip") %>
+<% left_baskets = Spree::Product.find_by_slug("left-basket") %>
+<% right_baskets = Spree::Product.find_by_slug("right-basket") %>
+<% right_tips = Spree::Product.find_by_slug("right-tip") %>
+<% left_tips = Spree::Product.find_by_slug("left-tip") %>
+<% custom_styles = Spree::Product.find_by_slug("custom-styles") %>
+
+<nav class="navbar navbar2 ">
+  <div class="container">
+    <div class="text-center">
+      <% blue_classes = 'hidden' if !@product.basket_right.nil? %>
+      <%= image_tag 'spree/frontend/blue-basket.png', :class => "overlap blue-basket #{blue_classes}" %>
+      <% custom_styles.images.each do |image| %>
+        <% css_classes = 'hidden' if image.alt != @product.name %>
+        <%= image_tag image.attachment(:original), :class => "overlap #{css_classes} style", alt: image.alt %>  
+      <% end %>
+
+      <% left_grips.images.each do |image| %>
+        <% css_classes = 'hidden' if image.alt != @product.grip_left %>
+        <%= image_tag image.attachment(:original), :class => "overlap #{image.alt} #{css_classes} left-overlap grip"%>  
+      <% end %>
+      <% right_grips.images.each do |image| %>
+        <% css_classes = 'hidden' if image.alt != @product.grip_right %>
+        <%= image_tag image.attachment(:original), :class => "overlap #{image.alt} #{css_classes} right-overlap grip"%>  
+      <% end %>
+      <% left_baskets.images.each do |image| %>
+        <% css_classes = 'hidden' if image.alt != @product.basket_left %>
+        <%= image_tag image.attachment(:original), :class => "overlap #{image.alt} #{css_classes} left-overlap basket"%>  
+      <% end %>
+      <% right_baskets.images.each do |image| %>
+        <% css_classes = 'hidden' if image.alt != @product.basket_right %>
+        <%= image_tag image.attachment(:original), :class => "overlap #{image.alt} #{css_classes} right-overlap basket"%>  
+      <% end %>
+      <% left_tips.images.each do |image| %>
+        <% css_classes = 'hidden' if image.alt != @product.tip_left %>
+        <%= image_tag image.attachment(:original), :class => "overlap #{image.alt} #{css_classes} left-overlap tip"%>  
+      <% end %>
+      <% right_tips.images.each do |image| %>
+        <% css_classes = 'hidden' if image.alt != @product.tip_right %>
+        <%= image_tag image.attachment(:original), :class => "overlap #{image.alt} #{css_classes} right-overlap tip"%>  
+      <% end %>
+      
+      <%= image_tag @product.images.first.attachment.url(:original), :itemprop => "image", :class => "top_image" %>
+    </div>
+    <hr>
+  </div>
+</nav>
+
+<%= button_to "edit", {:controller => :products,
+      :action => 'edit_inspired', :id => @product.id }, :method => :post, :class => 'btn btn-success' %>
+<%= form_for :order, :url => populate_orders_path do |f| %>
+  <div id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+    <%= hidden_field_tag "product_id", @product.id %>
+    <%= hidden_field_tag "variant_id", @product.master.id %>
+    <% if @product.price_in(current_currency) and !@product.price.nil? %>
+      <div data-hook="product_price" >
+        <div id="product-price">
+          <% if @product.master.can_supply? %>
+            <link itemprop="availability" href="https://schema.org/InStock" />
+          <% elsif @product.variants.empty? %>
+            <br />
+            <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+          <% end %>
+        </div>
+
+        <div class="add-to-cart final-step">
+          <br/>
+          <div class="input-group">
+            <span class="input-group-btn">
+              <%= number_field_tag :quantity, 1, :class => 'title form-control', :min => 1%>
+              <%= button_tag :class => 'btn btn-success', :id => 'add-to-cart', :type => :submit do %>
+                <%= Spree.t(:add_to_cart) %>
+              <% end %>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div id="product-price">
+        <br>
+        <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
+      </div>
+    <% end %>
+  </div>
+<% end %>  
+
+<%= render 'spree/shared/inspired' %>
+
+
