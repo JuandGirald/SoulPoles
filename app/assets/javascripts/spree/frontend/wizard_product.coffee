@@ -31,7 +31,6 @@ Spree.ready ($) ->
     $("#continue-button").attr("disabled", true)
 
   $('.fonts-values li').click (event) ->
-    debugger
     font = $(this).attr("value")
     $("input[name='product[engraving_font]']").val(font)
     $('h1#engraving-live').css("font-family", font)

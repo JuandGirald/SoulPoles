@@ -22,12 +22,28 @@
           <b> <%= details.first %> </b> : <%= details.last %>
         </h6>
       <% end %>
+      <% if variant.product.is_custom %>
+        <h6 class="col-xs-12"><b> custom product </b>  </h6>
+        <h6 class="col-xs-12"><b> pole size: </b>  <%= variant.product.pole_size %> </h6>
+        <h6 class="col-xs-12"><b> basket size: </b>  <%= variant.product.basket_size %> </h6>
+        <h6 class="col-xs-12"><b> grip right: </b>  <%= variant.product.grip_right %> </h6>
+        <h6 class="col-xs-12"><b> grip left: </b>  <%= variant.product.grip_left %> </h6>
+        <h6 class="col-xs-12"><b> basket right: </b>  <%= variant.product.basket_right %> </h6>
+        <h6 class="col-xs-12"><b> basket left: </b>  <%= variant.product.basket_left %> </h6>
+        <h6 class="col-xs-12"><b> tip left: </b>  <%= variant.product.tip_left %> </h6>
+        <h6 class="col-xs-12"><b> tip left: </b>  <%= variant.product.tip_left %> </h6>
+        <% if variant.product.custom_engraving.nil? &&  variant.product.custom_engraving.empty? %> 
+          <h6 class="col-xs-12"><b> custom engraving: </b>  <%= variant.product.custom_engraving %> </h6>
+          <h6 class="col-xs-12"><b> engraving font: </b>  <%= variant.product.engraving_font %> </h6>
+        <% end %>
+      <% end %>
+
       <% if !variant.engraving.nil?  and !variant.engraving.empty? %>
-        <h6 class="col-xs-12"><b> Engraving: </b>  <%= variant.engraving %> </h6>
+        <h6 class="col-xs-12"><b> engraving: </b>  <%= variant.engraving %> </h6>
       <% end %>
       
       <% if !variant.workshop_date.nil? %>
-        <h6 class="col-xs-12"><b> Workshop Date: </b>  <%= variant.workshop_date %> </h6>
+        <h6 class="col-xs-12"><b> workshop date: </b>  <%= variant.workshop_date %> </h6>
       <% end %>
 
       <% if line_item.insufficient_stock? %>
@@ -36,10 +52,13 @@
         </span>
       <% end %>
       <h6 class="col-xs-12 line-item-description" data-hook="line_item_description">
-        <b> Description </b> : <%= line_item_description_text(line_item.description) %>
+        <b> description </b> : <%= line_item_description_text(line_item.description) %>
       </h6>
+
       <h5 class="cart-item-delete col-xs-12" data-hook="cart_item_delete">
-        <%= link_to 'Edit |', edit_product_path(id: variant.product.id, line_item: line_item.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'data-dev' => "#{line_item.id}", class: 'bamboo-color'}%>
+        <% unless variant.product.is_custom %>
+          <%= link_to 'Edit |', edit_product_path(id: variant.product.id, line_item: line_item.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'data-dev' => "#{line_item.id}", class: 'bamboo-color'}%>
+        <% end %>
         <%= link_to content_tag(:span, 'Remove', class: 'bamboo-color'), '#', class: 'delete', id: "delete_#{dom_id(line_item)}" 
         %> 
       </h5>

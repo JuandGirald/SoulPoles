@@ -3,6 +3,12 @@ Spree::OrdersController.class_eval do
   before_action :apply_coupon_code
   # Adds a new item to the order (creating a new order if none already exists)
   def populate
+    if params[:product_id]
+      @product = Spree::Product.find(params[:product_id])
+      @product.attributes = product_params
+      @product.update_attributes(:is_custom => true)
+      @product.next_step
+    end
     order    = current_order(create_order_if_necessary: true)
     variant  = Spree::Variant.find(params[:variant_id])
     quantity = params[:quantity].to_i
@@ -28,5 +34,14 @@ Spree::OrdersController.class_eval do
         format.html { redirect_to cart_path }
       end
     end
-  end   
+  end  
+
+  private
+    def product_params
+      if params[:product]
+        params[:product].permit(Spree::PermittedAttributes.product_attributes)
+      else
+        {}
+      end
+    end 
 end
