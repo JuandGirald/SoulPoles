@@ -6,6 +6,7 @@ class Spree::AmbassadorsController < Spree::StoreController
   end
 
   def show
+    @ambassadors = Spree::Ambassador.all
     @ambassador = Spree::Ambassador.find(params[:id])
   end
 end

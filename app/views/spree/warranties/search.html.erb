@@ -8,7 +8,7 @@
 
         <div class="warranty-form col-xs-6 col-xs-offset-3">
           <%= f.field_container :order_number, :class => ['form-group'] do %>
-            <%= f.label :order_number, Spree.t(:order_number) %> <span class="required">*</span>
+            <%= f.label :order_number, "Order Number" %> <span class="required">*</span>
             <%= f.text_field :order_number, :class => 'form-control title', :placeholder => "enter your order number (6 digits number)" %>
             <%= f.error_message_on :order_number %>
           <% end %>

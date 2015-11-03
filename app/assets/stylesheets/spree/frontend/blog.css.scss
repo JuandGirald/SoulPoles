@@ -453,9 +453,19 @@ ul.edd-taxonomy-widget li a:before {
 }
 
 #blog_entry_container {
-  .wowitemboxinner .imagearea {
-    img {
-      height: 13em;
+  // .wowitembox {
+
+  // }
+  .wowitemboxinner {
+    .imagearea {
+      img {
+        height: 13em;
+      }
+    }
+    h2 {
+      a {
+        color: #333;
+      }
     }
   }
 }

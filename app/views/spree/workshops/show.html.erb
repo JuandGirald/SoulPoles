@@ -43,18 +43,13 @@
 
             <!-- Nav tabs -->
       <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation" class="btn-wood active"><a href="#specs" aria-controls="specs" role="tab" data-toggle="tab"> Specs</a></li>
-        <li class="btn-wood" role="presentation"><a href="#reviews_tab" aria-controls="reviews_tab" role="tab" data-toggle="tab"> Reviews </a></li>
+        <li class="active" role="presentation"><a href="#reviews_tab" aria-controls="reviews_tab" role="tab" data-toggle="tab"> Reviews 
+        <li role="presentation"><a href="#specs" aria-controls="specs" role="tab" data-toggle="tab"> Specs</a></li></a></li>
       </ul>
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade active in" id="specs">
-          <div data-hook="product_properties">
-            <%= render :partial => 'spree/products/properties' %>
-          </div>  
-        </div>
-        <div role="tabpanel" class="tab-pane fade" id="reviews_tab">
+        <div role="tabpanel" class="tab-pane fade active in" id="reviews_tab">
           <div data-hook="product_reviews">
             <div class="yotpo yotpo-main-widget"
               data-product-id= <%= @workshop.id %> 
@@ -64,6 +59,11 @@
               data-description="Product description">
             </div>
           </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="specs">
+          <div data-hook="product_properties">
+            <%= render :partial => 'spree/products/properties' %>
+          </div>  
         </div>
       </div>
 

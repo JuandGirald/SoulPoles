@@ -1,0 +1,14 @@
+<!-- SIDEBAR BEGINS -->
+<div class="col-md-12 padtop50">
+  <div id="secondary" class="widget-area" role="complementary">
+    <aside id="recent-posts-3" class="widget widget_recent_entries">
+      <h1 class="widget-title section-title"><span>athletes</span></h1>
+      <ul>
+        <% @ambassadors.each do |ambassador| %>
+          <li> <%= link_to ambassador.name, ambassador %> </li>
+        <% end %>
+      </ul>
+    </aside>
+  </div>
+</div>
+<!-- SIDEBAR ENDS -->         

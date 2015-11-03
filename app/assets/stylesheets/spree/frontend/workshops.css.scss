@@ -14,3 +14,26 @@
 .workshop-date {
   margin-bottom: 2em;
 }
+
+.nav-tabs {
+  .active {
+    background-image: url('button-bg.png');
+    background-color: white;
+    background-size: 470px 120px;
+    color: white;
+    border: 1px solid #ccc; 
+    a {
+      background-color: transparent !important;
+      color: white !important; 
+    }
+  }
+  li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    cursor: default;
+    a {
+      color: #555555 !important;
+    }
+  }
+}

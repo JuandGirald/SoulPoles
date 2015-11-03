@@ -159,3 +159,12 @@ li.dropdown:hover {
 .disabled-step {
   opacity: .5;
 }
+
+.pagination {
+  .active {
+    a {
+      background-color: #5cb85c !important;
+      border-color: #5cb85c !important;
+    }
+  }
+}
