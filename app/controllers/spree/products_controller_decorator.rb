@@ -1,8 +1,8 @@
 Spree::ProductsController.class_eval do
   before_action :load_product,       only: [:show, :edit, :update, :event]
-  before_action :load_option_types,  only: [:create]
+  before_action :load_option_types,  only: [:create, :edit_inspired]
   before_action :load_styles_images, only: [:new, :create]
-  before_action :get_inspired,       only: [:new, :customize]
+  before_action :get_inspired,       only: [:new, :customize, :show_inspired]
 
   def index
     @searcher = build_searcher(params.merge(include_images: true))
@@ -113,6 +113,29 @@ Spree::ProductsController.class_eval do
     
     respond_to do |format|
       format.html { redirect_to cart_path }
+    end
+  end
+
+  def show_inspired
+    @product = Spree::Product.friendly.find(params[:id])
+  end
+
+  def edit_inspired
+    @product = Spree::Product.friendly.find(params[:id])
+    if @product
+      image              = @product.images.first
+      slug               = @product.slug.gsub(/\d+/, "")
+      attributes         = @product.dup.attributes
+      @new_product       = Spree::Product.new(attributes)
+      @new_product.price = @product.price 
+      @new_product.slug      = "#{slug}#{rand(100000000)}"
+      @new_product.option_types << @option_types
+
+      @product_image  = @new_product.images.new(attachment: image.attachment)
+    end
+    
+    if @new_product.next_step
+      redirect_to wizard_path(@new_product, 'polesize')
     end
   end
 
