@@ -24,12 +24,13 @@ Spree.ready ($) ->
   $(document).on 'loaded.bs.modal', '#modal-window', ->
     $('.engraving-link').click (event) ->
   
-  $('.custom-style img').click (event) ->
+  $('.custom-style img, .vibrant-colors li').click (event) ->
+    value  = $(this).attr("value")
     alt    = $(this).closest("div").children(".product_name").text()
     images = $("img[alt].style")
 
     images.each ->
-      if this.alt == alt
+      if this.alt == alt || this.alt == value
         $(this).removeClass("hidden")
       else if !$(this).hasClass("hidden")
         $(this).addClass("hidden")
@@ -40,10 +41,16 @@ Spree.ready ($) ->
     event.preventDefault()
     $("div.select").removeClass("select")
     $(this).closest(".cards").addClass("select")
-    
-    product_id = $(this).siblings('input').val()
-    $("input[name='product_id']").val(product_id)
-    $("input[name='alt']").val(alt)
+
+    if value
+      colors     = $(this).parents('.vibrant-colors')
+      product_id = colors.siblings('a').children('input').val()
+      $("input[name='product_id']").val(product_id)
+      $("input[name='alt']").val(value)
+    else 
+      product_id = $(this).siblings('input').val()
+      $("input[name='product_id']").val(product_id)
+      $("input[name='alt']").val(alt)
 
     $('html, body').animate { scrollTop: $('.navbar2').offset().top }, 1000
 

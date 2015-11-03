@@ -7,6 +7,10 @@ $coolgrey: #656565;
   .list-inline {
     margin-top: 1em;
   }
+  .final-step {
+    width: 20% !important;
+    float: right;
+  }
 }
 
 .steps-nav {
@@ -127,6 +131,7 @@ img.top_image {
 }
 .grip-colors, .basket {
   li.select {
+    box-shadow: 8px 9px 7px #555;
     width: 3.2em;
     height: 3.2em;
   }
@@ -173,6 +178,9 @@ img.top_image {
 }
 .basket-sizes {
   margin-bottom: 3em;
+  li.select {
+    box-shadow: 1px 1px 8px !important;
+  }
   li {
     border: none !important;
     width: 4em !important;
@@ -190,6 +198,16 @@ img.top_image {
   }
 }
 
+.vibrant-colors {
+  ul {
+    margin-top: -0.3em;
+    li {
+      margin: 0;
+      height: 1em;
+      width: 1em;
+    }
+  }
+}
 .size-values {
   margin-top: 1em;
   li {
@@ -305,7 +323,7 @@ img.top_image {
     input[type="text"] {
       margin: 0 auto;
       margin-bottom: 2em;
-      width: 80%;
+      width: 100%;
     }
   }
   .engraving_live {

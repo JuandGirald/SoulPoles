@@ -29,7 +29,17 @@
       </a>
       <h5 class="product_name text-left"><%= product.name %></h5>
       <hr>
-      <h6 class="text-right"><%= product.price %> </h6>
+      <% if product.name.downcase == "vibrant soul" %>
+        <div class="vibrant-colors">
+          <ul class="col-xs-8 list-inline">
+            <li class="square-boxes" value="brightgreen" style="background-color: #00A133"></li>
+            <li class="square-boxes" value="copperorange" style="background-color: #D33212"></li>
+            <li class="square-boxes" value="solidblue" style="background-color: #9FC1D5"></li>
+            <li class="square-boxes" value="translucentblue" style="background-color: #296E55"></li>
+          </ul>
+        </div>
+      <% end %>
+      <h6 class="text-right"><%= display_price(product) %> </h6>
     </div>
   <% end %>
   

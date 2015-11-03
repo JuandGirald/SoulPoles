@@ -40,7 +40,9 @@
         <% css_classes = 'select' if value.presentation == @product.basket_size %>
         <% classes << 'with-image' if value.has_image? %>
         <li value="<%= value.presentation %>" class="square-boxes <%= css_classes %>">
-          <%= link_to value.has_image? ? image_tag(value.image.url, :alt => value.presentation) : content_tag(:span, value.presentation), "#", :title => value.presentation, :class => classes.join(" ") %></li>
+          <%= link_to value.has_image? ? image_tag(value.image.url, :alt => value.presentation) : content_tag(:span, value.presentation), "#", :title => value.presentation, :class => classes.join(" ") %>
+          <h6> <%= value.presentation %> </h6>
+        </li>
       <% end %>
       <%= hidden_field_tag "product[basket_size]", @product.basket_size %>
     </ul>

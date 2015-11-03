@@ -43,6 +43,7 @@ Spree::ProductsController.class_eval do
       attributes     = product_choose.dup.attributes
       @product       = Spree::Product.new(attributes)
       @product.price = product_choose.price 
+      @product.name  = params[:alt]
       @product.slug  = "#{product_choose.slug}-#{rand(100000000)}"
       @product.option_types << @option_types
 
@@ -56,6 +57,7 @@ Spree::ProductsController.class_eval do
       redirect_to wizard_path(@product, @product.state)
     else
       redirect_to new_product_path
+      flash[:error] = "chose a pole style first"
     end
   end
 
