@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029211032) do
+ActiveRecord::Schema.define(version: 20151104223017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -290,8 +290,11 @@ ActiveRecord::Schema.define(version: 20151029211032) do
 
   create_table "spree_cms_fields", force: :cascade do |t|
     t.string  "product_title"
-    t.boolean "is_banner",     default: false
-    t.boolean "is_slider",     default: false
+    t.boolean "is_banner",       default: false
+    t.boolean "is_slider",       default: false
+    t.boolean "category_top",    default: false
+    t.boolean "category_bottom", default: false
+    t.text    "content"
   end
 
   create_table "spree_countries", force: :cascade do |t|
@@ -718,6 +721,7 @@ ActiveRecord::Schema.define(version: 20151029211032) do
     t.string   "custom_engraving"
     t.boolean  "is_workshop"
     t.string   "engraving_font"
+    t.string   "pole_style"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree

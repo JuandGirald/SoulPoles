@@ -43,7 +43,8 @@ Spree::ProductsController.class_eval do
       attributes     = product_choose.dup.attributes
       @product       = Spree::Product.new(attributes)
       @product.price = product_choose.price 
-      @product.name  = params[:alt]
+      @product.name  = "custome product"
+      @product.pole_style  = params[:alt]
       @product.slug  = "#{product_choose.slug}-#{rand(100000000)}"
       @product.option_types << @option_types
 
@@ -132,6 +133,7 @@ Spree::ProductsController.class_eval do
       @new_product.option_types << @option_types
 
       @product_image  = @new_product.images.new(attachment: image.attachment)
+      @new_product.state = "new"
     end
     
     if @new_product.next_step

@@ -46,7 +46,8 @@ module Spree
 
       private
         def cms_field_params
-          params.require(:cms_field).permit(:product_title, :is_banner, :is_slider,
+          params.require(:cms_field).permit(:product_title, :is_banner, :is_slider, :content, :category_bottom,
+                                            :category_top,  
                                             :images_attributes => [:id, :attachment, :alt, :_destroy])
         end
     end

@@ -5,7 +5,8 @@
       <h1 class="widget-title section-title"><span>athletes</span></h1>
       <ul>
         <% @ambassadors.each do |ambassador| %>
-          <li> <%= link_to ambassador.name, ambassador %> </li>
+          <% css = "active" if @ambassador.try(:name) == ambassador.name %>
+          <li class="<%= css %> list-group-item text-center"> <%= link_to ambassador.name, ambassador %> </li>
         <% end %>
       </ul>
     </aside>

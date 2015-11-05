@@ -9,8 +9,7 @@ Spree::Product.class_eval do
       transition :new  => :polesize
       transition :polesize => :gripcolor
       transition :gripcolor => :basket
-      transition :basket => :tip
-      transition :tip => :engraving
+      transition :basket => :engraving
       transition :engraving => :complete
     end
 
@@ -21,28 +20,28 @@ Spree::Product.class_eval do
     event :polesize do
       transition :gripcolor => :polesize
       transition :basket => :polesize
-      transition :tip => :polesize
+      # transition :tip => :polesize
       transition :engraving => :polesize
       transition :complete => :polesize
     end
 
     event :gripcolor do
       transition :basket => :gripcolor
-      transition :tip => :gripcolor
+      # transition :tip => :gripcolor
       transition :engraving => :gripcolor
       transition :complete => :gripcolor
     end
 
     event :basket do
-      transition :tip => :basket
+      # transition :tip => :basket
       transition :engraving => :basket
       transition :complete => :basket
     end
 
-    event :tip do
-      transition :engraving => :tip
-      transition :complete => :tip
-    end
+    # event :tip do
+    #   transition :engraving => :tip
+    #   transition :complete => :tip
+    # end
 
     event :engraving do
       transition :complete => :engraving

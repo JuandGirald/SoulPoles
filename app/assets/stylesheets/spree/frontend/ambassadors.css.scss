@@ -16,6 +16,9 @@
 
 .ambassador-sidebar {
   margin-top: 3em;
+  #secondary .widget {
+    padding: 0;
+  }
 }
 .ambassador-back {
   height: 20em;
@@ -25,6 +28,9 @@
   margin-bottom: 1em;
   span {
     font-weight: bold;
+  }
+  p {
+    word-wrap: break-word;
   }
 }
 hr.divider-ambassador {

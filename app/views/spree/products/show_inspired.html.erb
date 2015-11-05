@@ -13,7 +13,7 @@
       <% blue_classes = 'hidden' if !@product.basket_right.nil? %>
       <%= image_tag 'spree/frontend/blue-basket.png', :class => "overlap blue-basket #{blue_classes}" %>
       <% custom_styles.images.each do |image| %>
-        <% css_classes = 'hidden' if image.alt != @product.name %>
+        <% css_classes = 'hidden' if image.alt != @product.pole_style %>
         <%= image_tag image.attachment(:original), :class => "overlap #{css_classes} style", alt: image.alt %>  
       <% end %>
 
