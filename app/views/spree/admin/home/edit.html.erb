@@ -6,20 +6,6 @@
   <fieldset>
     <div class="cms_booleans row">
       <div class="col-xs-3">
-        <%= f.field_container :category_top do %>
-          <%= f.label :category_top, raw(Spree.t(:category_top)) %>
-          <%= f.check_box :category_top,  {}, 'true', 'false' %>
-          <%= f.error_message_on :category_top %>
-        <% end %>
-      </div>
-      <div class="col-xs-3">
-        <%= f.field_container :category_bottom do %>
-          <%= f.label :category_bottom, raw(Spree.t(:category_bottom)) %>
-          <%= f.check_box :category_bottom,  {}, 'true', 'false' %>
-          <%= f.error_message_on :category_bottom %>
-        <% end %>  
-      </div>
-      <div class="col-xs-3">
         <%= f.field_container :is_banner do %>
           <%= f.label :is_banner, raw(Spree.t(:is_banner)) %>
           <%= f.check_box :is_banner,  {}, 'true', 'false' %>
@@ -42,12 +28,6 @@
         <%= f.text_field :product_title, class: 'form-control title' %>
       <% end %>
     </div>
-
-    <%= f.field_container :content, :class => ['form-group'] do %>
-      <%= f.label :content, Spree.t(:content) %> <span class="required">*</span>
-      <%= f.text_area :content, :rows => 6, :class => 'form-control title', :id => "cms_content_area" %>
-      <%= f.error_message_on :content %>
-    <% end %>
 
     <% if @cms_field.images.count > 0 %>
       <div data-hook="file" class="form-group">

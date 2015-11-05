@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104223017) do
+ActiveRecord::Schema.define(version: 20151105142933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -295,6 +295,8 @@ ActiveRecord::Schema.define(version: 20151104223017) do
     t.boolean "category_top",    default: false
     t.boolean "category_bottom", default: false
     t.text    "content"
+    t.text    "bottom_content"
+    t.string  "category"
   end
 
   create_table "spree_countries", force: :cascade do |t|

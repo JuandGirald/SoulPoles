@@ -43,7 +43,7 @@ Spree::ProductsController.class_eval do
       attributes     = product_choose.dup.attributes
       @product       = Spree::Product.new(attributes)
       @product.price = product_choose.price 
-      @product.name  = "custome product"
+      @product.name  = "custom poles"
       @product.pole_style  = params[:alt]
       @product.slug  = "#{product_choose.slug}-#{rand(100000000)}"
       @product.option_types << @option_types
@@ -137,7 +137,7 @@ Spree::ProductsController.class_eval do
     end
     
     if @new_product.next_step
-      redirect_to wizard_path(@new_product, 'polesize')
+      redirect_to wizard_path(@new_product, 'size')
     end
   end
 

@@ -1,0 +1,40 @@
+<% @taxonomies  = load_taxons.find_by_name("Categories") %>
+<% content_for :page_title do %>
+  <%= Spree.t(:category_content) %>
+<% end %>
+
+<%= form_for @cms_field, :url => url_for(:controller => 'categories', :action => 'update')  do |f| %>
+  <fieldset>
+    <%= f.field_container :product_title, :class => ['form-group'] do %>
+      <%= f.label :product_title, Spree.t(:product_title) %> <span class="required">*</span>
+      <%= f.text_field :product_title, :class => 'form-control title' %>
+    <% end %>
+
+    <%= f.field_container :category, class: ['form-group'] do %>
+      <%= f.label :category, Spree.t(:category) %>  <span class="required">*</span>
+      <%= f.select :category, @taxonomies.taxons.collect {|r| [r.name, r.name]}, {include_blank: true}, :class => 'form-control' %>
+      <%= f.error_message_on :category %>
+    <% end %>
+
+    <%= f.field_container :content, :class => ['form-group'] do %>
+      <%= f.label :content, Spree.t(:top_content) %> <span class="required">*</span>
+      <%= f.text_area :content, :rows => 6, :class => 'form-control title', :id => "cms_content_area" %>
+      <%= f.error_message_on :content %>
+    <% end %>
+
+    <%= f.field_container :bottom_content, :class => ['form-group'] do %>
+      <%= f.label :bottom_content, Spree.t(:buttom_content) %> <span class="required">*</span>
+      <%= f.text_area :bottom_content, :rows => 6, :class => 'form-control title', :id => "cms_bottom_content_area" %>
+      <%= f.error_message_on :bottom_content %>
+    <% end %>
+
+    
+    <div class="form-actions" data-hook="buttons">
+      <%= button Spree.t('actions.update'), 'refresh', 'submit', {class: 'btn-success'} %>
+      <span class="or"><%= Spree.t(:or) %></span>
+      <%= button_link_to Spree.t('actions.cancel'), admin_categories_path, :icon => 'delete' %>
+    </div>
+
+
+  </fieldset>
+<% end %>

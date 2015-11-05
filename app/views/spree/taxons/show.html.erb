@@ -1,3 +1,11 @@
+<% @category_content = Spree::CmsField.where.not(category: nil ) %>
+<% @category = @category_content.find_by_category(@taxon.name) %>
+<h1 class="taxon-title"><%= @taxon.name %></h1>
+
+<div class="col-xs-12 top-products-content">
+  <%= raw @category.content if @category %>
+</div>
+
 <% content_for :sidebar do %>
   <div data-hook="taxon_sidebar_navigation">
     <%= render partial: 'spree/shared/taxonomies' %>
@@ -7,6 +15,11 @@
 <div data-hook="taxon_products">
   <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon } %>
 </div>
+
+<div class="col-xs-12 top-products-content">
+  <%= raw @category.bottom_content if @category %>
+</div>
+
 
 <% unless params[:keywords].present? %>
   <div data-hook="taxon_children">

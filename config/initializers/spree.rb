@@ -39,6 +39,7 @@ SpreeEditor::Config.tap do |config|
                 product_description page_body event_body
                 blog_entry_body
                 cms_content_area
+                cms_bottom_content_area
                 ambassador_description_area'
 
 end

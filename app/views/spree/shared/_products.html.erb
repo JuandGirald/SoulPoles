@@ -1,6 +1,3 @@
-<% @top = Spree::CmsField.find_by(category_top: true) %>
-<% @bottom = Spree::CmsField.find_by(category_bottom: true) %>
-
 <% content_for :head do %>
   <% if products.respond_to?(:num_pages) %>
     <%= rel_next_prev_link_tags products %>
@@ -17,10 +14,6 @@
       <h6 class="search-results-title"><%= Spree.t(:search_results, keywords: h(params[:keywords])) %></h6>
     </div>
   <% end %>
-</div>
-
-<div class="col-xs-12 top-products-content">
-  <%= raw @top.content %>
 </div>
 
 <% if products.any? %>
@@ -81,7 +74,3 @@
 <% if products.respond_to?(:num_pages) %>
   <%= paginate products, theme: 'twitter-bootstrap-3' %>
 <% end %>
-
-<div class="col-xs-12 top-products-content">
-  <%= raw @bottom.content %>
-</div>

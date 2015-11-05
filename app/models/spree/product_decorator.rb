@@ -6,23 +6,23 @@ Spree::Product.class_eval do
   #Product Wizard using the State machine
   state_machine :initial => :new do
     event :next_step do
-      transition :new  => :polesize
-      transition :polesize => :gripcolor
+      transition :new  => :size
+      transition :size => :gripcolor
       transition :gripcolor => :basket
       transition :basket => :engraving
       transition :engraving => :complete
     end
 
-    state :new, :polesize do
+    state :new, :size do
       validates_presence_of :slug
     end
 
-    event :polesize do
-      transition :gripcolor => :polesize
-      transition :basket => :polesize
-      # transition :tip => :polesize
-      transition :engraving => :polesize
-      transition :complete => :polesize
+    event :size do
+      transition :gripcolor => :size
+      transition :basket => :size
+      # transition :tip => :size
+      transition :engraving => :size
+      transition :complete => :size
     end
 
     event :gripcolor do

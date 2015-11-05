@@ -10,9 +10,10 @@
   <tbody>
     <% @cms_fields.each do |product| %>
         <tr >
-          <td class="sku"><%= product.product_title rescue '' %></td>
-          <td> <%= "Banner images" if  product.is_banner %> </td>
-          <td> <%= "Slider images" if  product.is_slider %> </td>
+          <td> 
+            <%= "home static banner" if  product.is_banner %> 
+          </td>
+          <td> <%= "home slider banner" if  product.is_slider %> </td>
           <% if !product.images.empty? %>
             <td> <%= link_to image_tag(product.images.first.attachment.url(:mini)) %> </td>
           <% end %>

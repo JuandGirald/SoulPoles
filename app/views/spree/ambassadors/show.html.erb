@@ -13,10 +13,6 @@
   <div class="col-xs-12 ambassador-info">
     <div class="col-xs-2">
       <div class="col-xs-10">
-        <span>Website</span>  </br>
-        <p><%= @ambassador.website %></p>
-      </div>
-      <div class="col-xs-10">
         <span>DOB</span> </br>
         <p><%= @ambassador.date_of_birth %></p>
       </div>
@@ -27,6 +23,7 @@
     </div>
     <div class="col-xs-8  ambassador-description">
       <%= raw @ambassador.description %>
+      <p><a href="<%= @ambassador.website %>" target="_blank"><%= @ambassador.website %></a> </p>
     </div>
     
   </div>

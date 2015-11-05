@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :ambassadors, only: [:index, :show]
 
     namespace :admin do
+      resources :categories
       resources :home
       resources :ambassadors
       resources :warranties
