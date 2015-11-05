@@ -75,4 +75,5 @@ gem 'spree_paypal_express', github: 'spree-contrib/better_spree_paypal_express',
 gem 'spree_static_content', github: 'spree-contrib/spree_static_content', branch: 'master'
 gem 'spree_blogging_spree', :git => 'git://github.com/JuandGirald/spree-blogging-spree.git', branch: 'master'
 gem 'spree_one_page_checkout', :git => 'git://github.com/JuandGirald/spree_one_page_checkout', branch: 'master'
+gem 'spree_mail_settings', github: 'spree-contrib/spree_mail_settings', branch: 'master'
 # gem 'spree_image_multi_upload', :git => 'git://github.com/huyngvu/spree_image_multi_upload.git'
