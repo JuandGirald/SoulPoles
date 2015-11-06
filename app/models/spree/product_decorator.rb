@@ -1,6 +1,6 @@
 Spree::Product.class_eval do
   STYLES = ['vibrant-soul', 'ski-poles-ltd-edition', 'original-soul', 'soullite',
-            'ski-poles-torched-soul', 'torched-soul']
+            'ski-poles-torched-soul', 'torched-soul', 'ski-poles-soullite']
   TYPES  = ['pole-size', 'basket-size', 'pole-color', 'grip-color', 'basket-color', 'tip-color', 'engraving-fonts']
 
   #Product Wizard using the State machine
