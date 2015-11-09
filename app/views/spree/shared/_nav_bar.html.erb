@@ -1,6 +1,6 @@
 <% @taxonomies  = load_taxons.find_by_name("Categories") %>
-<% @categories = @taxonomies.taxons %>
-<% @hikes = load_taxons.find_by_name("hike").taxons %>
+<% @categories = @taxonomies.try(:taxons) %>
+<% @hikes = load_taxons.find_by_name("hike").try(:taxons) %>
 <nav class="navbar col-xs-10" id="top-nav-bar">
   <ul id="nav-bar" class="nav navbar-nav navbar-right" data-hook>
     <li class="dropdown">
