@@ -6,7 +6,7 @@
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ski<span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <% @categories.each do |category| %>
+        <% @categories.try(:each) do |category| %>
           <% unless category.name == 'Categories' %>
             <li> <a href="/t/<%= category.permalink %>"> <%= category.name %></a> </li>
           <% end %>
@@ -17,7 +17,7 @@
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hike<span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <% @hikes.each do |category| %>
+        <% @hikes.try(:each) do |category| %>
           <% unless category.name == 'hike' %>
             <li>
               <a href="/t/<%= category.permalink %>"> <%= category.name %></a>
