@@ -1,4 +1,4 @@
-<% @taxonomies  = load_taxons.find_by_name("Categories") %>
+<% @taxonomies  = load_taxons.find_by_name("ski") %>
 <% @categories = @taxonomies.try(:taxons) %>
 <% @hikes = load_taxons.find_by_name("hike").try(:taxons) %>
 <nav class="navbar col-xs-10" id="top-nav-bar">
